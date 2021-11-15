@@ -56,7 +56,7 @@ namespace Modal.test
 
             using (MySqlConnection connection = new MySqlConnection(strconn))
             {
-                string insertQuery = "Select Count(*) from userINFO where UserID = '" + textBoxID.Text + "' and UserPW = '" + textBoxPW.Text + "'";
+                string insertQuery = "Select Count(*) from user where userID = '" + textBoxID.Text + "' and userPW = '" + textBoxPW.Text + "'";
 
                 connection.Open();
                 MySqlCommand command = new MySqlCommand(insertQuery, connection);

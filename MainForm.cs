@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿//using MySql.Data.MySqlClient;
+using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -30,7 +31,7 @@ namespace Modal.test
 
         private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
-            AddInfoForm mainForm3 = new AddInfoForm();
+            UpdateInfo mainForm3 = new UpdateInfo();
             mainForm3.ShowDialog();
         }
 
@@ -82,7 +83,7 @@ namespace Modal.test
 
                 if (textBoxSearchResult.Text == "")
                 {
-                    MessageBox.Show("검색 정보를 입력해주세요");
+                    MessageBox.Show("추가할 친구 목록이 없습니다");
                 }
                 else
                 {
@@ -92,7 +93,7 @@ namespace Modal.test
                     textBoxSearchResult.Text = "";
                 }
 
-                string query = "UPDATE user SET friendID = '" + textBoxSearchResult.Text + "'";
+                string query = "UPDATE user SET friendsID = '" + textBoxSearchResult.Text + "'";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
 

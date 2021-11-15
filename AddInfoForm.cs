@@ -40,6 +40,8 @@ namespace Modal.test
                 conn.Close();
             }
             fs.Close();
+
+            this.Close();
         }
 
         private void buttonPictureRegister_Click(object sender, EventArgs e)
