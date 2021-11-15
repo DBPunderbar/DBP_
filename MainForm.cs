@@ -75,6 +75,8 @@ namespace Modal.test
             }
         }
 
+        
+
         private void buttonAdd_Click(object sender, EventArgs e)
         {
             using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))

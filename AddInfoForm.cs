@@ -89,6 +89,43 @@ namespace Modal.test
 
             textBoxAddr3.Focus();
         }
+
+        private void buttonIDCheck_Click(object sender, EventArgs e)
+        {
+            IsIDChecked(textBoxID.Text);
+        }
+
+        public bool IsIDChecked(string valueToChecked)
+        {
+            if (valueToChecked == null)
+            {
+                MessageBox.Show("ID를 적어주세요.");
+                return false;
+            }
+            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
+            {
+                conn.Open();
+
+                string query = "SELECT * FROM s5584534.user WHERE userID='" + valueToChecked + "';";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+                rdr.Read();
+                if (rdr == null)
+                {
+                    MessageBox.Show("사용 가능한 ID입니다.");
+                    conn.Close();
+                    return true;
+                }
+                else
+                {
+                    MessageBox.Show("이미 존재하는 ID입니다.");
+                    conn.Close();
+                    return false;
+                }
+            }
+        }
+
         /*
 private void buttonFindZoneCode_Click(object sender, EventArgs e)
 {
