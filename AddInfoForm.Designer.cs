@@ -47,6 +47,8 @@ namespace Modal.test
             this.textBoxAddr2 = new System.Windows.Forms.TextBox();
             this.textBoxAddr3 = new System.Windows.Forms.TextBox();
             this.textBoxAddr4 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,7 +134,7 @@ namespace Modal.test
             // 
             // buttonAddInfo
             // 
-            this.buttonAddInfo.Location = new System.Drawing.Point(382, 267);
+            this.buttonAddInfo.Location = new System.Drawing.Point(382, 303);
             this.buttonAddInfo.Name = "buttonAddInfo";
             this.buttonAddInfo.Size = new System.Drawing.Size(118, 25);
             this.buttonAddInfo.TabIndex = 10;
@@ -142,7 +144,7 @@ namespace Modal.test
             // 
             // buttonPictureRegister
             // 
-            this.buttonPictureRegister.Location = new System.Drawing.Point(382, 225);
+            this.buttonPictureRegister.Location = new System.Drawing.Point(382, 264);
             this.buttonPictureRegister.Name = "buttonPictureRegister";
             this.buttonPictureRegister.Size = new System.Drawing.Size(118, 27);
             this.buttonPictureRegister.TabIndex = 11;
@@ -154,7 +156,7 @@ namespace Modal.test
             // 
             this.pictureBoxProfile.Location = new System.Drawing.Point(382, 81);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(118, 138);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(118, 171);
             this.pictureBoxProfile.TabIndex = 12;
             this.pictureBoxProfile.TabStop = false;
             // 
@@ -200,11 +202,29 @@ namespace Modal.test
             this.textBoxAddr4.TabIndex = 17;
             this.textBoxAddr4.TextChanged += new System.EventHandler(this.textBox3_TextChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(36, 308);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "직책";
+            // 
+            // textBoxPosition
+            // 
+            this.textBoxPosition.Location = new System.Drawing.Point(107, 305);
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(256, 25);
+            this.textBoxPosition.TabIndex = 19;
+            // 
             // AddInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 349);
+            this.Controls.Add(this.textBoxPosition);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxAddr4);
             this.Controls.Add(this.textBoxAddr3);
             this.Controls.Add(this.textBoxAddr2);
@@ -253,5 +273,7 @@ namespace Modal.test
         private System.Windows.Forms.TextBox textBoxAddr2;
         private System.Windows.Forms.TextBox textBoxAddr3;
         private System.Windows.Forms.TextBox textBoxAddr4;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxPosition;
     }
 }

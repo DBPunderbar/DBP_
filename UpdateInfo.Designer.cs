@@ -47,6 +47,8 @@ namespace Modal.test
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -108,21 +110,21 @@ namespace Modal.test
             // 
             this.textBoxID.Location = new System.Drawing.Point(63, 31);
             this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(240, 25);
+            this.textBoxID.Size = new System.Drawing.Size(235, 25);
             this.textBoxID.TabIndex = 6;
             // 
             // textBoxPW
             // 
             this.textBoxPW.Location = new System.Drawing.Point(63, 70);
             this.textBoxPW.Name = "textBoxPW";
-            this.textBoxPW.Size = new System.Drawing.Size(240, 25);
+            this.textBoxPW.Size = new System.Drawing.Size(235, 25);
             this.textBoxPW.TabIndex = 7;
             // 
             // textBoxName
             // 
             this.textBoxName.Location = new System.Drawing.Point(63, 110);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(240, 25);
+            this.textBoxName.Size = new System.Drawing.Size(235, 25);
             this.textBoxName.TabIndex = 8;
             // 
             // textBoxAddr
@@ -136,22 +138,22 @@ namespace Modal.test
             // 
             this.textBoxNickname.Location = new System.Drawing.Point(63, 250);
             this.textBoxNickname.Name = "textBoxNickname";
-            this.textBoxNickname.Size = new System.Drawing.Size(208, 25);
+            this.textBoxNickname.Size = new System.Drawing.Size(235, 25);
             this.textBoxNickname.TabIndex = 10;
             // 
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.Location = new System.Drawing.Point(309, 52);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(162, 144);
+            this.pictureBoxProfile.Size = new System.Drawing.Size(164, 184);
             this.pictureBoxProfile.TabIndex = 11;
             this.pictureBoxProfile.TabStop = false;
             // 
             // buttonPictureRegister
             // 
-            this.buttonPictureRegister.Location = new System.Drawing.Point(326, 202);
+            this.buttonPictureRegister.Location = new System.Drawing.Point(309, 248);
             this.buttonPictureRegister.Name = "buttonPictureRegister";
-            this.buttonPictureRegister.Size = new System.Drawing.Size(129, 25);
+            this.buttonPictureRegister.Size = new System.Drawing.Size(164, 25);
             this.buttonPictureRegister.TabIndex = 12;
             this.buttonPictureRegister.Text = "사진 불러오기";
             this.buttonPictureRegister.UseVisualStyleBackColor = true;
@@ -159,9 +161,9 @@ namespace Modal.test
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(304, 253);
+            this.buttonUpdate.Location = new System.Drawing.Point(309, 280);
             this.buttonUpdate.Name = "buttonUpdate";
-            this.buttonUpdate.Size = new System.Drawing.Size(167, 23);
+            this.buttonUpdate.Size = new System.Drawing.Size(164, 23);
             this.buttonUpdate.TabIndex = 13;
             this.buttonUpdate.Text = "수정하기";
             this.buttonUpdate.UseVisualStyleBackColor = true;
@@ -197,11 +199,29 @@ namespace Modal.test
             this.textBox3.Size = new System.Drawing.Size(87, 25);
             this.textBox3.TabIndex = 17;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(20, 284);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 15);
+            this.label7.TabIndex = 18;
+            this.label7.Text = "직책";
+            // 
+            // textBoxPosition
+            // 
+            this.textBoxPosition.Location = new System.Drawing.Point(63, 281);
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(237, 25);
+            this.textBoxPosition.TabIndex = 19;
+            // 
             // UpdateInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 309);
+            this.ClientSize = new System.Drawing.Size(507, 319);
+            this.Controls.Add(this.textBoxPosition);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -250,5 +270,7 @@ namespace Modal.test
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxPosition;
     }
 }
