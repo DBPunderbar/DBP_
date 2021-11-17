@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MouveForm;
 
 namespace Modal.test
 {
@@ -23,6 +24,7 @@ namespace Modal.test
         public MainForm()
         {
             InitializeComponent();
+            MouveForm.Mouve.Go(panel1);
         }
 
         private void buttonGoLogin_Click(object sender, EventArgs e)
@@ -244,5 +246,16 @@ namespace Modal.test
                 conn.Close();
             }
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
     }
+
 }

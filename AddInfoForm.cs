@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MouveForm;
 
 namespace Modal.test
 {
@@ -18,6 +19,7 @@ namespace Modal.test
         public AddInfoForm()
         {
             InitializeComponent();
+            MouveForm.Mouve.Go(panel1);
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -124,6 +126,16 @@ namespace Modal.test
                     return false;
                 }
             }
+        }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
         /*
