@@ -75,7 +75,7 @@ namespace Modal.test
                 if (rdr == null)
                     MessageBox.Show("일치하는 ID가 없습니다.");
                 else
-                    textBoxSearchResult.Text = rdr["userID"].ToString() + "\t" + rdr["name"].ToString();
+                    textBoxSearchResult.Text = rdr["userID"].ToString();
 
                 conn.Close();
             }
@@ -91,23 +91,22 @@ namespace Modal.test
 
                 if (textBoxSearchResult.Text == "")
                 {
-                    MessageBox.Show("추가할 친구 목록이 없습니다");
+                    MessageBox.Show("검색 정보를 입력해주세요");
                 }
                 else
                 {
-                    string valueToSearch = textBoxSearchResult.Text.ToString();
-                    searchData(valueToSearch);
+                    string query = "INSERT INTO friends(userID, friendID) VALUES ('" + userID + "', '" + textBoxSearchResult.Text + "')";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+
+                    cmd.ExecuteNonQuery();
+
+                    conn.Close();
+
                     //텍스트 박스 초기화
                     textBoxSearchResult.Text = "";
                 }
 
-                string query = "UPDATE user SET friendsID = '" + textBoxSearchResult.Text + "'";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
             }
         }
 
