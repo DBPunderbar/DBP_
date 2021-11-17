@@ -63,6 +63,7 @@ namespace Modal.test
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(160, 25);
             this.textBoxID.TabIndex = 2;
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // textBoxPW
             // 

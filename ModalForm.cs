@@ -15,6 +15,18 @@ namespace Modal.test
 {
     public partial class ModalForm : Form
     {
+        //userID를 다른 class에서 얻어올 수 있게 static으로 해야 하나..? 왜냐면 객체 생성없이도 해야 하니까?
+        //근데 static이면 textBox에 접근할 수 없어 static은 static속성에만 접근이 가능하니까
+
+        private string userID = "";
+        private bool textBoxIDChange = false;
+        public string getUserId()
+        {
+            if (textBoxIDChange)
+                return userID;
+            else
+                return "입력없음";
+        }
         public ModalForm()
         {
             InitializeComponent();
@@ -109,6 +121,12 @@ namespace Modal.test
         private void checkBoxAutoLogin_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBoxID_TextChanged(object sender, EventArgs e)
+        {
+            textBoxIDChange = true;
+            userID = textBoxID.Text;
         }
     }
 }

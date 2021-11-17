@@ -32,7 +32,6 @@ namespace Modal.test
             this.buttonFriend = new System.Windows.Forms.Button();
             this.buttonChatting = new System.Windows.Forms.Button();
             this.buttonGoLogin = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.buttonUpdateInfo = new System.Windows.Forms.Button();
             this.textBoxSearchResult = new System.Windows.Forms.TextBox();
             this.textBoxSearch = new System.Windows.Forms.TextBox();
@@ -48,6 +47,7 @@ namespace Modal.test
             this.buttonFriend.TabIndex = 0;
             this.buttonFriend.Text = "친구";
             this.buttonFriend.UseVisualStyleBackColor = true;
+            this.buttonFriend.Click += new System.EventHandler(this.buttonFriend_Click);
             // 
             // buttonChatting
             // 
@@ -67,17 +67,6 @@ namespace Modal.test
             this.buttonGoLogin.Text = "로그인";
             this.buttonGoLogin.UseVisualStyleBackColor = true;
             this.buttonGoLogin.Click += new System.EventHandler(this.buttonGoLogin_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(94, 58);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(442, 374);
-            this.textBox1.TabIndex = 3;
             // 
             // buttonUpdateInfo
             // 
@@ -134,7 +123,6 @@ namespace Modal.test
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.textBoxSearchResult);
             this.Controls.Add(this.buttonUpdateInfo);
-            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.buttonGoLogin);
             this.Controls.Add(this.buttonChatting);
             this.Controls.Add(this.buttonFriend);
@@ -151,7 +139,6 @@ namespace Modal.test
         private System.Windows.Forms.Button buttonFriend;
         private System.Windows.Forms.Button buttonChatting;
         private System.Windows.Forms.Button buttonGoLogin;
-        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button buttonUpdateInfo;
         private System.Windows.Forms.TextBox textBoxSearchResult;
         private System.Windows.Forms.TextBox textBoxSearch;
