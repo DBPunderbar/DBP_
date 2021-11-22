@@ -135,7 +135,7 @@ namespace AddressFinder {
                 string val33 = (string)obj33;
 
                 string strADDR1 = "";
-                string strADDR2 = "";
+                //string strADDR2 = "";
                 string strEX = "";
                 #endregion
                 string strTMP1 = "";

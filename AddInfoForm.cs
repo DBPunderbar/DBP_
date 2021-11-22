@@ -48,20 +48,9 @@ namespace Modal.test
             FileStream fs = new FileStream(pictureBoxProfile.Tag.ToString(), FileMode.Open, FileAccess.Read);
             byte[] bImage = new byte[fs.Length];
             fs.Read(bImage, 0, (int)fs.Length);
+            string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr1.Text + "', '" + textBoxNickname.Text + "', @Image, '" + textBoxPosition.Text + "')";
 
-            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
-            {
-                conn.Open();
-
-                string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr1.Text + "', '" + textBoxNickname.Text + "', @Image, '" + textBoxPosition.Text + "')";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Image", bImage);
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-            }
+            DBManager.GetDBManager().SqlImageCommand(query);
             fs.Close();
 
             this.Close();
@@ -125,28 +114,21 @@ namespace Modal.test
                 MessageBox.Show("ID를 적어주세요.");
                 return false;
             }
-            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
+            
+            string query = "SELECT * FROM s5584534.user WHERE userID='" + valueToChecked + "';";
+            DataTable checkedTable = new DataTable();
+            checkedTable = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
+            if (checkedTable == null)
             {
-                conn.Open();
-
-                string query = "SELECT * FROM s5584534.user WHERE userID='" + valueToChecked + "';";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
-                if (rdr == null)
-                {
-                    MessageBox.Show("사용 가능한 ID입니다.");
-                    conn.Close();
-                    return true;
-                }
-                else
-                {
-                    MessageBox.Show("이미 존재하는 ID입니다.");
-                    conn.Close();
-                    return false;
-                }
+                MessageBox.Show("사용 가능한 ID입니다.");
+                return true;
             }
+            else
+            {
+                MessageBox.Show("이미 존재하는 ID입니다.");
+                return false;
+            }
+        }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
