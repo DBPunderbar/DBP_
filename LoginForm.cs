@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MouveForm;
 using MySql.Data.MySqlClient;
 
 namespace Modal.test
@@ -31,9 +30,30 @@ namespace Modal.test
         public LoginForm()
         {
             InitializeComponent();
-            MouveForm.Mouve.Go(panel1);
             LoadLoginData();
         }
+
+        //창 이동
+        private bool onClick;
+        private Point startPoint = new Point(0, 0);
+        private void moveWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (onClick)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
+            }
+        }
+        private void moveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            onClick = true;
+            startPoint = new Point(e.X, e.Y);
+        }
+        private void moveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            onClick = false;
+        }
+        //↑여기까지
 
         private void LoadLoginData()
         {
@@ -104,11 +124,14 @@ namespace Modal.test
                 {
                     //로그인 성공
 
-                    MainForm fr = new MainForm();
+                    MainForm fr = new MainForm(userID);
+                    this.Hide();
 
-                    fr.Show();
-
+                    fr.ShowDialog();
                     this.Close();
+
+
+
 
 
                     /*this.Hide();
@@ -160,5 +183,6 @@ namespace Modal.test
             textBoxIDChange = true;
             userID = textBoxID.Text;
         }
+
     }
 }

@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MouveForm;
+using AddressFinder;
 
 namespace Modal.test
 {
@@ -19,8 +19,29 @@ namespace Modal.test
         public AddInfoForm()
         {
             InitializeComponent();
-            MouveForm.Mouve.Go(panel1);
         }
+        
+        // 창 이동
+        private bool onClick;
+        private Point startPoint = new Point(0, 0);
+        private void moveWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (onClick)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
+            }
+        }
+        private void moveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            onClick = true;
+            startPoint = new Point(e.X, e.Y);
+        }
+        private void moveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            onClick = false;
+        }
+        // ↑여기까지
 
         private void buttonSave_Click(object sender, EventArgs e)
         {
@@ -78,7 +99,7 @@ namespace Modal.test
 
         private void buttonFindZoneCode_Click(object sender, EventArgs e)
         {
-            AddressFinder.AdressFinder frm = new AddressFinder.AdressFinder();
+            AdressFinder frm = new AdressFinder();
             frm.ShowDialog();
 
             if (frm.Tag == null) { return; }

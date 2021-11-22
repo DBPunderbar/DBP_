@@ -49,9 +49,6 @@
     <Reference Include="K4os.Hash.xxHash, Version=1.0.6.0, Culture=neutral, PublicKeyToken=32cd54395057cec3, processorArchitecture=MSIL">
       <HintPath>packages\K4os.Hash.xxHash.1.0.6\lib\net46\K4os.Hash.xxHash.dll</HintPath>
     </Reference>
-    <Reference Include="Mouve">
-      <HintPath>..\..\..\Desktop\DB\Mouve.dll</HintPath>
-    </Reference>
     <Reference Include="MySql.Data, Version=8.0.27.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <HintPath>packages\MySql.Data.8.0.27\lib\net452\MySql.Data.dll</HintPath>
     </Reference>
@@ -114,11 +111,12 @@
     <Compile Include="AdressFinder.designer.cs">
       <DependentUpon>AdressFinder.cs</DependentUpon>
     </Compile>
-    <Compile Include="FriendsPage.cs">
+    <Compile Include="DarkMode.cs" />
+    <Compile Include="friendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="FriendsPage.Designer.cs">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
+    <Compile Include="friendsPage.Designer.cs">
+      <DependentUpon>friendsPage.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -126,11 +124,11 @@
     <Compile Include="LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MessagesPage.cs">
+    <Compile Include="messagesPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="MessagesPage.Designer.cs">
-      <DependentUpon>MessagesPage.cs</DependentUpon>
+    <Compile Include="messagesPage.Designer.cs">
+      <DependentUpon>messagesPage.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateInfo.cs">
       <SubType>Form</SubType>
@@ -155,8 +153,8 @@
     <EmbeddedResource Include="AddInfoForm.resx">
       <DependentUpon>AddInfoForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FriendsPage.resx">
-      <DependentUpon>FriendsPage.cs</DependentUpon>
+    <EmbeddedResource Include="friendsPage.resx">
+      <DependentUpon>friendsPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
@@ -164,8 +162,8 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MessagesPage.resx">
-      <DependentUpon>MessagesPage.cs</DependentUpon>
+    <EmbeddedResource Include="messagesPage.resx">
+      <DependentUpon>messagesPage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ModalForm.resx">
       <DependentUpon>ModalForm.cs</DependentUpon>

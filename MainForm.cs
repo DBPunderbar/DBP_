@@ -1,5 +1,5 @@
-﻿//using MySql.Data.MySqlClient;
-using MySqlConnector;
+﻿using MySql.Data.MySqlClient;
+//using MySqlConnector;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,28 +11,44 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MouveForm;
 
 namespace Modal.test
 {
     public partial class MainForm : Form
     {
         private string userID = "";
-        private bool beforeLogin = false;
         DataTable table = new DataTable();
 
         public MainForm()
         {
             InitializeComponent();
-            MouveForm.Mouve.Go(panel1);
         }
 
-        private void buttonGoLogin_Click(object sender, EventArgs e)
+        public MainForm(string userID)
         {
-            ModalForm mainForm1 = new ModalForm();
-            mainForm1.ShowDialog();
-            beforeLogin = true;
-            userID = mainForm1.getUserId();
+            InitializeComponent();
+            this.userID = userID;
+        }
+
+        // 창 이동
+        private bool onClick;
+        private Point startPoint = new Point(0, 0);
+        private void moveWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (onClick)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
+            }
+        }
+        private void moveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            onClick = true;
+            startPoint = new Point(e.X, e.Y);
+        }
+        private void moveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            onClick = false;
         }
 
         private void buttonUpdateInfo_Click(object sender, EventArgs e)
@@ -40,75 +56,7 @@ namespace Modal.test
             UpdateInfo mainForm3 = new UpdateInfo();
             mainForm3.ShowDialog();
         }
-
-        private void buttonSearch_Click(object sender, EventArgs e)
-        {
-            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
-            {
-                conn.Open();
-
-                string query = "SELECT * FROM s5584534.user WHERE userID='"+textBoxSearch.Text+"';";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
-                if (rdr == null)
-                    MessageBox.Show("일치하는 ID가 없습니다.");
-                else
-                    textBoxSearchResult.Text = rdr["userID"].ToString()+"\t"+rdr["name"].ToString();
-
-                conn.Close();
-            }
-        }
-
-        public void searchData(string valueToSearch)
-        {
-            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
-            {
-                conn.Open();
-
-                string query = "SELECT * FROM s5584534.user WHERE userID='" + textBoxSearch.Text + "';";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                MySqlDataReader rdr = cmd.ExecuteReader();
-                rdr.Read();
-                if (rdr == null)
-                    MessageBox.Show("일치하는 ID가 없습니다.");
-                else
-                    textBoxSearchResult.Text = rdr["userID"].ToString();
-
-                conn.Close();
-            }
-        }
-
-        
-
-        private void buttonAdd_Click(object sender, EventArgs e)
-        {
-            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
-            {
-                conn.Open();
-
-                if (textBoxSearchResult.Text == "")
-                {
-                    MessageBox.Show("검색 정보를 입력해주세요");
-                }
-                else
-                {
-                    string query = "INSERT INTO friends(userID, friendID) VALUES ('" + userID + "', '" + textBoxSearchResult.Text + "')";
-
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-
-                    cmd.ExecuteNonQuery();
-
-                    conn.Close();
-
-                    //텍스트 박스 초기화
-                    textBoxSearchResult.Text = "";
-                }
-
-            }
-        }
+        //↑여기까지
 
         private void MainForm_Load(object sender, EventArgs e)
         {
@@ -117,13 +65,8 @@ namespace Modal.test
         //친구 테이블이 생성되었으니까 따로 수정 필요
         private void buttonFriend_Click(object sender, EventArgs e)
         {
-            if (beforeLogin == false)
-            {
-                MessageBox.Show("로그인을 먼저 해주세요.");
-                buttonGoLogin_Click(sender, e);
-                return;
+            friendsPage1.BringToFront();
 
-            }
             //친구 버튼을 클릭하면 그룹박스를 동적생성해
             //첫번째 버튼은 본인 프로필
             //두번째부터는 친구 프로필
@@ -254,6 +197,28 @@ namespace Modal.test
         private void buttonMin_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void SetColor()
+        {
+            panel1.BackColor = DarkMode.panelcolor;
+            panel2.BackColor = DarkMode.panelcolor;
+            friendsPage1.BackColor = DarkMode.backcolor;
+            messagesPage1.BackColor = DarkMode.backcolor;
+            buttonDarkMode.Image = DarkMode.imgMode;
+            buttonMin.ForeColor = DarkMode.fontcolor;
+            buttonClose.ForeColor = DarkMode.fontcolor;
+        }
+
+        private void buttonDarkMode_Click(object sender, EventArgs e)
+        {
+            DarkMode.changeMode();
+            SetColor();
+        }
+
+        private void buttonChatting_Click(object sender, EventArgs e)
+        {
+            messagesPage1.BringToFront();
         }
     }
 

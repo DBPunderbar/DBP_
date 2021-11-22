@@ -17,9 +17,9 @@ namespace Modal.test
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
-            MainForm fr = new MainForm();
+            // MainForm fr = new MainForm();
 
-            Application.Run(fr);
+            //Application.Run(fr);
         }
     }
 }

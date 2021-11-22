@@ -1,7 +1,7 @@
 ﻿
 namespace Modal.test
 {
-    partial class FriendsPage
+    partial class friendsPage
     {
         /// <summary> 
         /// 필수 디자이너 변수입니다.
@@ -42,7 +42,7 @@ namespace Modal.test
             this.label1.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.Location = new System.Drawing.Point(695, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(120, 30);
+            this.label1.Size = new System.Drawing.Size(121, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "친구 목록";
             // 
@@ -54,6 +54,7 @@ namespace Modal.test
             this.buttonAdd.TabIndex = 12;
             this.buttonAdd.Text = "추가";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonSearch
             // 
@@ -63,6 +64,7 @@ namespace Modal.test
             this.buttonSearch.TabIndex = 11;
             this.buttonSearch.Text = "검색";
             this.buttonSearch.UseVisualStyleBackColor = true;
+            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // textBoxSearch
             // 

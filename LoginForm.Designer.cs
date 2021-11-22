@@ -30,8 +30,8 @@ namespace Modal.test
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonClose = new System.Windows.Forms.Button();
             this.buttonMin = new System.Windows.Forms.Button();
+            this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -55,20 +55,9 @@ namespace Modal.test
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(384, 39);
             this.panel1.TabIndex = 0;
-            // 
-            // buttonClose
-            // 
-            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonClose.FlatAppearance.BorderSize = 0;
-            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClose.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonClose.Location = new System.Drawing.Point(345, 0);
-            this.buttonClose.Name = "buttonClose";
-            this.buttonClose.Size = new System.Drawing.Size(39, 39);
-            this.buttonClose.TabIndex = 0;
-            this.buttonClose.Text = "×";
-            this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseUp);
             // 
             // buttonMin
             // 
@@ -83,6 +72,20 @@ namespace Modal.test
             this.buttonMin.Text = "_";
             this.buttonMin.UseVisualStyleBackColor = true;
             this.buttonMin.Click += new System.EventHandler(this.buttonMin_Click);
+            // 
+            // buttonClose
+            // 
+            this.buttonClose.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonClose.FlatAppearance.BorderSize = 0;
+            this.buttonClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonClose.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonClose.Location = new System.Drawing.Point(345, 0);
+            this.buttonClose.Name = "buttonClose";
+            this.buttonClose.Size = new System.Drawing.Size(39, 39);
+            this.buttonClose.TabIndex = 0;
+            this.buttonClose.Text = "×";
+            this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // panel2
             // 

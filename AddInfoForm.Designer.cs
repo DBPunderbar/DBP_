@@ -63,6 +63,9 @@ namespace Modal.test
             this.panel12 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel14 = new System.Windows.Forms.Panel();
+            this.panel15 = new System.Windows.Forms.Panel();
+            this.label7 = new System.Windows.Forms.Label();
+            this.textBoxPosition = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -179,7 +182,7 @@ namespace Modal.test
             this.buttonAddInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddInfo.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buttonAddInfo.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonAddInfo.Location = new System.Drawing.Point(484, 354);
+            this.buttonAddInfo.Location = new System.Drawing.Point(484, 417);
             this.buttonAddInfo.Name = "buttonAddInfo";
             this.buttonAddInfo.Size = new System.Drawing.Size(142, 39);
             this.buttonAddInfo.TabIndex = 10;
@@ -276,6 +279,9 @@ namespace Modal.test
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(673, 39);
             this.panel1.TabIndex = 18;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseMove);
+            this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseUp);
             // 
             // buttonMin
             // 
@@ -406,15 +412,47 @@ namespace Modal.test
             this.panel14.BackColor = System.Drawing.Color.GhostWhite;
             this.panel14.Location = new System.Drawing.Point(408, 44);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(3, 383);
+            this.panel14.Size = new System.Drawing.Size(3, 440);
             this.panel14.TabIndex = 24;
+            // 
+            // panel15
+            // 
+            this.panel15.BackColor = System.Drawing.Color.Lavender;
+            this.panel15.Location = new System.Drawing.Point(118, 455);
+            this.panel15.Name = "panel15";
+            this.panel15.Size = new System.Drawing.Size(256, 3);
+            this.panel15.TabIndex = 27;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("나눔스퀘어 Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label7.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label7.Location = new System.Drawing.Point(42, 427);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(46, 22);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "직책";
+            // 
+            // textBoxPosition
+            // 
+            this.textBoxPosition.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxPosition.Font = new System.Drawing.Font("나눔스퀘어", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBoxPosition.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.textBoxPosition.Location = new System.Drawing.Point(118, 424);
+            this.textBoxPosition.Name = "textBoxPosition";
+            this.textBoxPosition.Size = new System.Drawing.Size(256, 23);
+            this.textBoxPosition.TabIndex = 25;
             // 
             // AddInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(674, 434);
+            this.ClientSize = new System.Drawing.Size(674, 494);
+            this.Controls.Add(this.panel15);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.textBoxPosition);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.panel13);
             this.Controls.Add(this.panel12);
@@ -496,5 +534,8 @@ namespace Modal.test
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
         private System.Windows.Forms.Panel panel14;
+        private System.Windows.Forms.Panel panel15;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox textBoxPosition;
     }
 }

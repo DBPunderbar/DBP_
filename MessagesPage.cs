@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Modal.test
 {
-    public partial class MessagesPage : UserControl
+    public partial class messagesPage : UserControl
     {
-        public MessagesPage()
+        public messagesPage()
         {
             InitializeComponent();
         }
