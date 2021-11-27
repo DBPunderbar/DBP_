@@ -46,10 +46,8 @@ namespace Modal.test
         }
 
         // image 삽입 쿼리문 함수
-        public void SqlImageCommand(string query)
+        public void SqlImageCommand(string query, byte[] bImage)
         {
-            DataTable result = new DataTable();
-
             using (MySqlConnection conn = new MySqlConnection(strconn))
             {
                 conn.Open();

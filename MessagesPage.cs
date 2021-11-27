@@ -12,17 +12,13 @@ namespace Modal.test
 {
     public partial class messagesPage : UserControl
     {
-<<<<<<< Updated upstream
-        public messagesPage()
-=======
         // 채팅 contents 작성 방식
         // 이름|시간|내용\n ...
         //
         // 현재시간 작성 기준
         // DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-        public MessagesPage()
->>>>>>> Stashed changes
+        public messagesPage()
         {
             InitializeComponent();
         }

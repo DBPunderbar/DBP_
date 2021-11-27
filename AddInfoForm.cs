@@ -50,7 +50,7 @@ namespace Modal.test
             fs.Read(bImage, 0, (int)fs.Length);
             string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr1.Text + "', '" + textBoxNickname.Text + "', @Image, '" + textBoxPosition.Text + "')";
 
-            DBManager.GetDBManager().SqlImageCommand(query);
+            DBManager.GetDBManager().SqlImageCommand(query, bImage);
             fs.Close();
 
             this.Close();
@@ -129,17 +129,8 @@ namespace Modal.test
                 return false;
             }
         }
-        }
+    
 
-        private void buttonClose_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void buttonMin_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
 
         /*
 private void buttonFindZoneCode_Click(object sender, EventArgs e)

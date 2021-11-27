@@ -35,26 +35,11 @@ namespace Modal.test
         private Point startPoint = new Point(0, 0);
         private void moveWindow_MouseMove(object sender, MouseEventArgs e)
         {
-<<<<<<< Updated upstream
             if (onClick)
             {
                 Point p = PointToScreen(e.Location);
                 Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
             }
-=======
-            string query = "SELECT * FROM s5584534.user WHERE userID='" + textBoxSearch.Text + "';";
-            DataTable tb = DBManager.GetDBManager().SqlDataTableReturnCommand(query);          
-
-            // tb index
-            // 0.id    1.userID   2.userPW    3.name
-            // 4.addr  5.nickname 6.StateMessage
-            // 7.profileImage   8.Darkflag  9.role
-
-            if (tb == null)
-                MessageBox.Show("일치하는 ID가 없습니다.");
-            else
-                textBoxSearchResult.Text = tb.Rows[1].ToString() + "\t" + tb.Rows[3].ToString();
->>>>>>> Stashed changes
         }
         private void moveWindow_MouseDown(object sender, MouseEventArgs e)
         {

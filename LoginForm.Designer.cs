@@ -128,7 +128,6 @@ namespace Modal.test
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(234, 23);
             this.textBoxID.TabIndex = 2;
-            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // panel3
             // 
@@ -195,7 +194,6 @@ namespace Modal.test
             this.checkBoxAutoLogin.TabIndex = 7;
             this.checkBoxAutoLogin.Text = "자동 로그인";
             this.checkBoxAutoLogin.UseVisualStyleBackColor = true;
-            this.checkBoxAutoLogin.CheckedChanged += new System.EventHandler(this.checkBoxAutoLogin_CheckedChanged);
             // 
             // buttonAddInfo
             // 
@@ -210,7 +208,6 @@ namespace Modal.test
             this.buttonAddInfo.TabIndex = 6;
             this.buttonAddInfo.Text = "회원가입";
             this.buttonAddInfo.UseVisualStyleBackColor = false;
-            this.buttonAddInfo.Click += new System.EventHandler(this.buttonAddInfo_Click);
             // 
             // LoginForm
             // 

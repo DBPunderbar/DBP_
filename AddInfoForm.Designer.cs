@@ -295,7 +295,6 @@ namespace Modal.test
             this.buttonMin.TabIndex = 1;
             this.buttonMin.Text = "_";
             this.buttonMin.UseVisualStyleBackColor = true;
-            this.buttonMin.Click += new System.EventHandler(this.buttonMin_Click);
             // 
             // buttonClose
             // 
@@ -309,7 +308,6 @@ namespace Modal.test
             this.buttonClose.TabIndex = 0;
             this.buttonClose.Text = "×";
             this.buttonClose.UseVisualStyleBackColor = true;
-            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // panel3
             // 

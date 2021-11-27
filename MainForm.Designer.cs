@@ -143,8 +143,8 @@ namespace Modal.test
             // 
             // panel3
             // 
-            this.panel3.Controls.Add(this.friendsPage1);
-            this.panel3.Controls.Add(this.messagesPage1);
+            //this.panel3.Controls.Add(this.friendsPage1);
+            //this.panel3.Controls.Add(this.messagesPage1);
             this.panel3.Location = new System.Drawing.Point(98, 39);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(828, 546);

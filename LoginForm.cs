@@ -149,24 +149,7 @@ namespace Modal.test
                     //로그인 실패
                     MessageBox.Show("아이디와 비밀번호를 확인해주세요.");
                 }
-            }
-        }
-
-        private void buttonAddInfo_Click(object sender, EventArgs e)
-        {
-            AddInfoForm mainForm2 = new AddInfoForm();
-            mainForm2.ShowDialog();
-        }
-
-        private void checkBoxAutoLogin_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxID_TextChanged(object sender, EventArgs e)
-        {
-            textBoxIDChange = true;
-            userID = textBoxID.Text;
+           
         }
 
     }
