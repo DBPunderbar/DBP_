@@ -63,18 +63,20 @@ namespace Modal.test
             StreamReader sr = new StreamReader(new FileStream("login.dat", FileMode.Open));
 
             string a = sr.ReadLine(); // 파일 구조 [ 체크박스 체크여부(1 or 0) / ID / PW(쿼리문을 통한 암호화, 복호화 처리) ]
-            string query = "SELECT * FROM s5584534.user WHERE userID='" + textBoxID.Text + "'";
 
             if (a == "1")
             {
                 textBoxID.Text = sr.ReadLine();
                 sr.Close();
+                string query = "SELECT * FROM s5584534.user WHERE userID= '" + textBoxID.Text + "'";
 
                 DataTable tb = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
+                DataRow data = tb.Rows[0];
+                textBoxPW.Text = data["userPW"].ToString();
 
                 // 원하시는 방법을 사용은 했지만 굳이 반복문을 돌아야되는지 모르겠습니다..(성민)
-                foreach(DataRow data in tb.Rows)
-                    textBoxPW.Text = data["userPW"] + "";
+                //foreach (DataRow data in tb.Rows)
+
                 
                 checkBoxAutoLogin.Checked = true;
             }
@@ -103,47 +105,41 @@ namespace Modal.test
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
-            string query = "Select Count(*) from user where UserID = '" + textBoxID.Text + "' and UserPW = '" + textBoxPW.Text + "'";
+            string query = "Select Count(*) as cnt from user where userID = '" + textBoxID.Text + "' and userPW = '" + textBoxPW.Text + "'";
 
             DataTable dt = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
-                if (dt.ToString() == "1")
+            DataRow dataRow = dt.Rows[0];
+            if (dataRow["cnt"].ToString() == "1")
                 {
-                    //로그인 성공
+                //로그인 성공
 
-                    MainForm fr = new MainForm(userID);
+                if (checkBoxAutoLogin.Checked == true)
+                {
+                    StreamWriter sw = new StreamWriter(new FileStream("login.dat", FileMode.Create));
+
+                    sw.WriteLine("1");
+                    sw.WriteLine(textBoxID.Text.ToString());
+
+                    sw.Close();
+                }
+
+                else
+                {
+                    StreamWriter sw = new StreamWriter(new FileStream("login.dat", FileMode.Create));
+
+                    sw.WriteLine("0");
+                    sw.WriteLine("");
+
+                    sw.Close();
+                }
+
+                MainForm fr = new MainForm(userID);
                     this.Hide();
 
                     fr.ShowDialog();
                     this.Close();
 
-
-
-
-
-                    /*this.Hide();
-
-                    this.Close();*/
-
-                    if (checkBoxAutoLogin.Checked == true)
-                    {
-                        StreamWriter sw = new StreamWriter(new FileStream("login.dat", FileMode.Create));
-
-                        sw.WriteLine("1");
-                        sw.WriteLine(textBoxID.Text);
-
-                        sw.Close();
-                    }
-
-                    else
-                    {
-                        StreamWriter sw = new StreamWriter(new FileStream("login.dat", FileMode.Create));
-
-                        sw.WriteLine("0");
-                        sw.WriteLine("");
-
-                        sw.Close();
-                    }
-                }
+            }
                 else
                 {
                     //로그인 실패

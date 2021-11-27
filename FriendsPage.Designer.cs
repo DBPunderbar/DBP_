@@ -30,10 +30,9 @@ namespace Modal.test
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonSearch = new System.Windows.Forms.Button();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.textBoxSearchResult = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.buttonSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -46,19 +45,25 @@ namespace Modal.test
             this.label1.TabIndex = 1;
             this.label1.Text = "친구 목록";
             // 
-            // buttonAdd
+            // textBoxSearchResult
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(688, 86);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(75, 26);
-            this.buttonAdd.TabIndex = 12;
-            this.buttonAdd.Text = "추가";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.textBoxSearchResult.Location = new System.Drawing.Point(246, 107);
+            this.textBoxSearchResult.Multiline = true;
+            this.textBoxSearchResult.Name = "textBoxSearchResult";
+            this.textBoxSearchResult.Size = new System.Drawing.Size(261, 346);
+            this.textBoxSearchResult.TabIndex = 9;
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Location = new System.Drawing.Point(246, 76);
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(180, 25);
+            this.textBoxSearch.TabIndex = 10;
+            this.textBoxSearch.Text = "dbp";
             // 
             // buttonSearch
             // 
-            this.buttonSearch.Location = new System.Drawing.Point(612, 85);
+            this.buttonSearch.Location = new System.Drawing.Point(432, 73);
             this.buttonSearch.Name = "buttonSearch";
             this.buttonSearch.Size = new System.Drawing.Size(75, 27);
             this.buttonSearch.TabIndex = 11;
@@ -66,32 +71,16 @@ namespace Modal.test
             this.buttonSearch.UseVisualStyleBackColor = true;
             this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
-            // textBoxSearch
-            // 
-            this.textBoxSearch.Location = new System.Drawing.Point(502, 85);
-            this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(104, 25);
-            this.textBoxSearch.TabIndex = 10;
-            // 
-            // textBoxSearchResult
-            // 
-            this.textBoxSearchResult.Location = new System.Drawing.Point(502, 116);
-            this.textBoxSearchResult.Multiline = true;
-            this.textBoxSearchResult.Name = "textBoxSearchResult";
-            this.textBoxSearchResult.Size = new System.Drawing.Size(261, 346);
-            this.textBoxSearchResult.TabIndex = 9;
-            // 
-            // FriendsPage
+            // friendsPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.buttonSearch);
             this.Controls.Add(this.textBoxSearch);
             this.Controls.Add(this.textBoxSearchResult);
             this.Controls.Add(this.label1);
-            this.Name = "FriendsPage";
+            this.Name = "friendsPage";
             this.Size = new System.Drawing.Size(828, 546);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -101,9 +90,8 @@ namespace Modal.test
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonSearch;
-        private System.Windows.Forms.TextBox textBoxSearch;
         private System.Windows.Forms.TextBox textBoxSearchResult;
+        private System.Windows.Forms.TextBox textBoxSearch;
+        private System.Windows.Forms.Button buttonSearch;
     }
 }

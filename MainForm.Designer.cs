@@ -42,7 +42,6 @@ namespace Modal.test
             this.messagesPage1 = new Modal.test.messagesPage();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.panel3.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonFriend
@@ -133,6 +132,7 @@ namespace Modal.test
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.buttonFriend);
             this.panel2.Controls.Add(this.buttonChatting);
             this.panel2.Controls.Add(this.buttonUpdateInfo);
@@ -143,9 +143,7 @@ namespace Modal.test
             // 
             // panel3
             // 
-            //this.panel3.Controls.Add(this.friendsPage1);
-            //this.panel3.Controls.Add(this.messagesPage1);
-            this.panel3.Location = new System.Drawing.Point(98, 39);
+            this.panel3.Location = new System.Drawing.Point(98, 0);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(828, 546);
             this.panel3.TabIndex = 11;
@@ -172,17 +170,14 @@ namespace Modal.test
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(926, 583);
-            this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.MainForm_Load);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
