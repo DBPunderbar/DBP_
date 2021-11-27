@@ -65,7 +65,7 @@ namespace Modal.test
             {
                 textBoxID.Text = sr.ReadLine();
                 sr.Close();
-                string query = "SELECT * FROM s5584534.user WHERE userID= '" + textBoxID.Text + "'";
+                string query = "SELECT CAST(AES_DECRYPT(UNHEX(userPW), 'pw') as char) as userPW FROM s5584534.user WHERE userID= '" + textBoxID.Text + "'";
 
                 DataTable tb = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
                 DataRow data = tb.Rows[0];
@@ -103,7 +103,8 @@ namespace Modal.test
         private void buttonLogin_Click(object sender, EventArgs e)
         {
             //CAST(AES_DECRYPT(unhex(userPW), 'pw') as char)
-            string query = "Select Count(*) as cnt from user where userID = '" + textBoxID.Text + "' and userPW = '" + textBoxPW.Text + "'";
+            string query = "SELECT COUNT(*) as cnt FROM user WHERE userID='" + textBoxID.Text + "' AND '" + textBoxPW.Text + "'=(SELECT AES_DECRYPT(UNHEX(userPW),'pw') FROM user WHERE userID='" + textBoxID.Text + "');";
+            //string query = "Select Count(*) as cnt from user where userID = '" + textBoxID.Text + "' and userPW = '" + textBoxPW.Text + "'";
 
             DataTable dt = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
             DataRow dataRow = dt.Rows[0];
@@ -148,8 +149,8 @@ namespace Modal.test
 
         private void buttonAddInfo_Click(object sender, EventArgs e)
         {
-            joinUsInfo joinUsInfo = new joinUsInfo();
-            joinUsInfo.ShowDialog();
+            AddInfoForm addInfoForm = new AddInfoForm();
+            addInfoForm.ShowDialog();
         }
 
         private void textBoxID_TextChanged(object sender, EventArgs e)

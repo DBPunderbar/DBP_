@@ -41,7 +41,6 @@ namespace Modal.test
             this.label5 = new System.Windows.Forms.Label();
             this.buttonAddInfo = new System.Windows.Forms.Button();
             this.buttonPictureRegister = new System.Windows.Forms.Button();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.buttonFindZoneCode = new System.Windows.Forms.Button();
             this.textBoxAddr2 = new System.Windows.Forms.TextBox();
@@ -66,8 +65,11 @@ namespace Modal.test
             this.panel15 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxPosition = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.textBoxStateMessage = new System.Windows.Forms.TextBox();
+            this.buttonIDCheck = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
             // textBoxID
@@ -205,14 +207,6 @@ namespace Modal.test
             this.buttonPictureRegister.UseVisualStyleBackColor = false;
             this.buttonPictureRegister.Click += new System.EventHandler(this.buttonPictureRegister_Click);
             // 
-            // pictureBoxProfile
-            // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(444, 94);
-            this.pictureBoxProfile.Name = "pictureBoxProfile";
-            this.pictureBoxProfile.Size = new System.Drawing.Size(182, 185);
-            this.pictureBoxProfile.TabIndex = 12;
-            this.pictureBoxProfile.TabStop = false;
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -308,6 +302,7 @@ namespace Modal.test
             this.buttonClose.TabIndex = 0;
             this.buttonClose.Text = "×";
             this.buttonClose.UseVisualStyleBackColor = true;
+            this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // panel3
             // 
@@ -442,12 +437,39 @@ namespace Modal.test
             this.textBoxPosition.Size = new System.Drawing.Size(256, 23);
             this.textBoxPosition.TabIndex = 25;
             // 
+            // pictureBoxProfile
+            // 
+            this.pictureBoxProfile.Location = new System.Drawing.Point(444, 94);
+            this.pictureBoxProfile.Name = "pictureBoxProfile";
+            this.pictureBoxProfile.Size = new System.Drawing.Size(182, 185);
+            this.pictureBoxProfile.TabIndex = 12;
+            this.pictureBoxProfile.TabStop = false;
+            // 
+            // textBoxStateMessage
+            // 
+            this.textBoxStateMessage.Location = new System.Drawing.Point(118, 489);
+            this.textBoxStateMessage.Name = "textBoxStateMessage";
+            this.textBoxStateMessage.Size = new System.Drawing.Size(100, 25);
+            this.textBoxStateMessage.TabIndex = 28;
+            // 
+            // buttonIDCheck
+            // 
+            this.buttonIDCheck.Location = new System.Drawing.Point(308, 71);
+            this.buttonIDCheck.Name = "buttonIDCheck";
+            this.buttonIDCheck.Size = new System.Drawing.Size(75, 23);
+            this.buttonIDCheck.TabIndex = 29;
+            this.buttonIDCheck.Text = "중복확인";
+            this.buttonIDCheck.UseVisualStyleBackColor = true;
+            this.buttonIDCheck.Click += new System.EventHandler(this.buttonIDCheck_Click);
+            // 
             // AddInfoForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(674, 494);
+            this.ClientSize = new System.Drawing.Size(674, 550);
+            this.Controls.Add(this.buttonIDCheck);
+            this.Controls.Add(this.textBoxStateMessage);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxPosition);
@@ -489,8 +511,8 @@ namespace Modal.test
             this.Name = "AddInfoForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "회원가입";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -535,5 +557,7 @@ namespace Modal.test
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxPosition;
+        private System.Windows.Forms.TextBox textBoxStateMessage;
+        private System.Windows.Forms.Button buttonIDCheck;
     }
 }

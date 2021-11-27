@@ -48,7 +48,11 @@ namespace Modal.test
             FileStream fs = new FileStream(pictureBoxProfile.Tag.ToString(), FileMode.Open, FileAccess.Read);
             byte[] bImage = new byte[fs.Length];
             fs.Read(bImage, 0, (int)fs.Length);
-            string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr1.Text + "', '" + textBoxNickname.Text + "', @Image, '" + textBoxPosition.Text + "')";
+            //string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr1.Text + "', '" + textBoxNickname.Text + "', @Image, '" + textBoxPosition.Text + "')";
+
+            string addr = textBoxAddr1.Text + "|" + textBoxAddr2.Text + "|" + textBoxAddr3.Text + "|" + textBoxAddr4.Text + "|";
+            string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, stateMessage, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', hex(aes_encrypt('" + textBoxPW.Text + "','pw')), '" + textBoxName.Text + "', '" + addr + "', '" + textBoxNickname.Text + "', '" + textBoxStateMessage.Text + "', @Image, '" + textBoxPosition.Text + "')";
+            //string query = "UPDATE user SET userPW = '" + textBoxPW.Text + "', name = '" + textBoxName.Text + "', addr = '" + textBoxAddr.Text + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + textBoxID.Text + "'";
 
             DBManager.GetDBManager().SqlImageCommand(query, bImage);
             fs.Close();
@@ -115,10 +119,11 @@ namespace Modal.test
                 return false;
             }
             
-            string query = "SELECT * FROM s5584534.user WHERE userID='" + valueToChecked + "';";
+            string query = "SELECT COUNT(*) as cnt FROM s5584534.user WHERE userID='" + valueToChecked + "';";
             DataTable checkedTable = new DataTable();
             checkedTable = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
-            if (checkedTable == null)
+            DataRow dataRow = checkedTable.Rows[0];
+            if (Convert.ToInt32(dataRow["cnt"]) == 0)
             {
                 MessageBox.Show("사용 가능한 ID입니다.");
                 return true;
@@ -129,7 +134,12 @@ namespace Modal.test
                 return false;
             }
         }
-    
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
 
 
         /*

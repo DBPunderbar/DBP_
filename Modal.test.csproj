@@ -130,12 +130,6 @@
     <Compile Include="messagesPage.Designer.cs">
       <DependentUpon>messagesPage.cs</DependentUpon>
     </Compile>
-    <Compile Include="joinUsInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="joinUsInfo.Designer.cs">
-      <DependentUpon>joinUsInfo.cs</DependentUpon>
-    </Compile>
     <Compile Include="UpdateInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -184,9 +178,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="joinUsInfo.resx">
-      <DependentUpon>joinUsInfo.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UpdateInfo.resx">
       <DependentUpon>UpdateInfo.cs</DependentUpon>
     </EmbeddedResource>
