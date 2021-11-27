@@ -1,7 +1,7 @@
 ﻿
 namespace Modal.test
 {
-    partial class UpdateInfo
+    partial class joinUsInfo
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,7 @@ namespace Modal.test
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBoxID = new System.Windows.Forms.TextBox();
             this.textBoxPW = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxAddr = new System.Windows.Forms.TextBox();
@@ -47,8 +48,10 @@ namespace Modal.test
             this.textBoxAddr4 = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxPosition = new System.Windows.Forms.TextBox();
+            this.buttonIDRedundancyCheck = new System.Windows.Forms.Button();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.labelUserID = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBoxStateMessage = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
             // 
@@ -100,11 +103,18 @@ namespace Modal.test
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(343, 34);
+            this.label6.Location = new System.Drawing.Point(344, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(87, 15);
             this.label6.TabIndex = 5;
             this.label6.Text = "프로필 사진";
+            // 
+            // textBoxID
+            // 
+            this.textBoxID.Location = new System.Drawing.Point(63, 31);
+            this.textBoxID.Name = "textBoxID";
+            this.textBoxID.Size = new System.Drawing.Size(154, 25);
+            this.textBoxID.TabIndex = 6;
             // 
             // textBoxPW
             // 
@@ -136,23 +146,21 @@ namespace Modal.test
             // 
             // buttonPictureRegister
             // 
-            this.buttonPictureRegister.Location = new System.Drawing.Point(309, 248);
+            this.buttonPictureRegister.Location = new System.Drawing.Point(309, 279);
             this.buttonPictureRegister.Name = "buttonPictureRegister";
             this.buttonPictureRegister.Size = new System.Drawing.Size(164, 25);
             this.buttonPictureRegister.TabIndex = 12;
             this.buttonPictureRegister.Text = "사진 불러오기";
             this.buttonPictureRegister.UseVisualStyleBackColor = true;
-            this.buttonPictureRegister.Click += new System.EventHandler(this.buttonPictureRegister_Click);
             // 
             // buttonUpdate
             // 
-            this.buttonUpdate.Location = new System.Drawing.Point(309, 280);
+            this.buttonUpdate.Location = new System.Drawing.Point(309, 318);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(164, 23);
             this.buttonUpdate.TabIndex = 13;
-            this.buttonUpdate.Text = "저장";
+            this.buttonUpdate.Text = "회원 가입";
             this.buttonUpdate.UseVisualStyleBackColor = true;
-            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonFindZoneCode
             // 
@@ -201,28 +209,48 @@ namespace Modal.test
             this.textBoxPosition.Size = new System.Drawing.Size(237, 25);
             this.textBoxPosition.TabIndex = 19;
             // 
+            // buttonIDRedundancyCheck
+            // 
+            this.buttonIDRedundancyCheck.Location = new System.Drawing.Point(223, 34);
+            this.buttonIDRedundancyCheck.Name = "buttonIDRedundancyCheck";
+            this.buttonIDRedundancyCheck.Size = new System.Drawing.Size(75, 23);
+            this.buttonIDRedundancyCheck.TabIndex = 20;
+            this.buttonIDRedundancyCheck.Text = "중복확인";
+            this.buttonIDRedundancyCheck.UseVisualStyleBackColor = true;
+            this.buttonIDRedundancyCheck.Click += new System.EventHandler(this.buttonIDRedundancyCheck_Click);
+            // 
             // pictureBoxProfile
             // 
-            this.pictureBoxProfile.Location = new System.Drawing.Point(309, 52);
+            this.pictureBoxProfile.Location = new System.Drawing.Point(309, 84);
             this.pictureBoxProfile.Name = "pictureBoxProfile";
             this.pictureBoxProfile.Size = new System.Drawing.Size(164, 184);
             this.pictureBoxProfile.TabIndex = 11;
             this.pictureBoxProfile.TabStop = false;
             // 
-            // labelUserID
+            // label8
             // 
-            this.labelUserID.AutoSize = true;
-            this.labelUserID.Location = new System.Drawing.Point(64, 34);
-            this.labelUserID.Name = "labelUserID";
-            this.labelUserID.Size = new System.Drawing.Size(0, 15);
-            this.labelUserID.TabIndex = 20;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(20, 322);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(82, 15);
+            this.label8.TabIndex = 21;
+            this.label8.Text = "상태메시지";
             // 
-            // UpdateInfo
+            // textBoxStateMessage
+            // 
+            this.textBoxStateMessage.Location = new System.Drawing.Point(112, 319);
+            this.textBoxStateMessage.Name = "textBoxStateMessage";
+            this.textBoxStateMessage.Size = new System.Drawing.Size(186, 25);
+            this.textBoxStateMessage.TabIndex = 22;
+            // 
+            // joinUsInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 319);
-            this.Controls.Add(this.labelUserID);
+            this.ClientSize = new System.Drawing.Size(507, 362);
+            this.Controls.Add(this.textBoxStateMessage);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.buttonIDRedundancyCheck);
             this.Controls.Add(this.textBoxPosition);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.textBoxAddr4);
@@ -236,6 +264,7 @@ namespace Modal.test
             this.Controls.Add(this.textBoxAddr);
             this.Controls.Add(this.textBoxName);
             this.Controls.Add(this.textBoxPW);
+            this.Controls.Add(this.textBoxID);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -244,8 +273,8 @@ namespace Modal.test
             this.Controls.Add(this.label1);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "UpdateInfo";
-            this.Text = "회원 정보";
+            this.Name = "joinUsInfo";
+            this.Text = "회원 정보 수정";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -260,6 +289,7 @@ namespace Modal.test
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox textBoxID;
         private System.Windows.Forms.TextBox textBoxPW;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxAddr;
@@ -273,6 +303,8 @@ namespace Modal.test
         private System.Windows.Forms.TextBox textBoxAddr4;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox textBoxPosition;
-        private System.Windows.Forms.Label labelUserID;
+        private System.Windows.Forms.Button buttonIDRedundancyCheck;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBoxStateMessage;
     }
 }

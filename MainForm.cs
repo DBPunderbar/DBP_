@@ -53,15 +53,10 @@ namespace Modal.test
 
         private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
-            UpdateInfo mainForm3 = new UpdateInfo();
+            UpdateInfo mainForm3 = new UpdateInfo(userID);
             mainForm3.ShowDialog();
         }
         //↑여기까지
-
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-        }
-
         //친구 테이블이 생성되었으니까 따로 수정 필요
         private void buttonFriend_Click(object sender, EventArgs e)
         {

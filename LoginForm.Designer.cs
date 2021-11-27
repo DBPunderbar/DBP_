@@ -128,6 +128,7 @@ namespace Modal.test
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(234, 23);
             this.textBoxID.TabIndex = 2;
+            this.textBoxID.TextChanged += new System.EventHandler(this.textBoxID_TextChanged);
             // 
             // panel3
             // 
@@ -208,6 +209,7 @@ namespace Modal.test
             this.buttonAddInfo.TabIndex = 6;
             this.buttonAddInfo.Text = "회원가입";
             this.buttonAddInfo.UseVisualStyleBackColor = false;
+            this.buttonAddInfo.Click += new System.EventHandler(this.buttonAddInfo_Click);
             // 
             // LoginForm
             // 

@@ -14,18 +14,11 @@ using System.Windows.Forms;
 
 namespace Modal.test
 {
-    public partial class UpdateInfo : Form
+    public partial class joinUsInfo : Form
     {
-        private string userID = "";
-        public UpdateInfo()
+        public joinUsInfo()
         {
             InitializeComponent();
-        }
-        public UpdateInfo(string userID)
-        {
-            InitializeComponent();
-            this.userID = userID;
-            labelUserID.Text = userID;
         }
 
         private void buttonPictureRegister_Click(object sender, EventArgs e)
@@ -59,8 +52,8 @@ namespace Modal.test
                 conn.Open();
 
                 string addr = textBoxAddr.Text + "|" + textBoxAddr2.Text + "|" + textBoxAddr3.Text + "|" + textBoxAddr4.Text + "|";
-                //string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr.Text + "', '" + textBoxNickname.Text + "', @Image)";
-                string query = "UPDATE user SET userPW = hex(aes_encrypt('" + textBoxPW.Text + "','pw')), name = '" + textBoxName.Text + "', addr = '" + addr + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + userID  + "'";
+                string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, stateMessage, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', hex(aes_encrypt('" + textBoxPW.Text + "','pw')), '" + textBoxName.Text + "', '" + addr + "', '" + textBoxNickname.Text + "', " + textBoxStateMessage.Text + ", @Image, '" + textBoxPosition.Text + "')";
+                //string query = "UPDATE user SET userPW = '" + textBoxPW.Text + "', name = '" + textBoxName.Text + "', addr = '" + textBoxAddr.Text + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + textBoxID.Text + "'";
 
                 MySqlCommand cmd = new MySqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Image", bImage);
@@ -70,7 +63,6 @@ namespace Modal.test
                 conn.Close();
             }
             fs.Close();
-            this.Close();
 
             /* 혹시 사진을 불러오고 싶을 때
              *
@@ -107,6 +99,11 @@ namespace Modal.test
             textBoxAddr4.Text = dr["EX"].ToString();
 
             textBoxAddr4.Focus();
+        }
+
+        private void buttonIDRedundancyCheck_Click(object sender, EventArgs e)
+        {
+            //중복확인
         }
     }
 }

@@ -21,10 +21,7 @@ namespace Modal.test
         private bool textBoxIDChange = false;
         public string getUserId()
         {
-            if (textBoxIDChange)
-                return userID;
-            else
-                return "입력없음";
+            return textBoxID.Text;
         }
 
         public LoginForm()
@@ -105,6 +102,7 @@ namespace Modal.test
 
         private void buttonLogin_Click(object sender, EventArgs e)
         {
+            //CAST(AES_DECRYPT(unhex(userPW), 'pw') as char)
             string query = "Select Count(*) as cnt from user where userID = '" + textBoxID.Text + "' and userPW = '" + textBoxPW.Text + "'";
 
             DataTable dt = DBManager.GetDBManager().SqlDataTableReturnCommand(query);
@@ -148,5 +146,15 @@ namespace Modal.test
            
         }
 
+        private void buttonAddInfo_Click(object sender, EventArgs e)
+        {
+            joinUsInfo joinUsInfo = new joinUsInfo();
+            joinUsInfo.ShowDialog();
+        }
+
+        private void textBoxID_TextChanged(object sender, EventArgs e)
+        {
+            userID = getUserId();
+        }
     }
 }
