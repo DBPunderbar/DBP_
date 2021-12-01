@@ -186,7 +186,6 @@ namespace Modal.test
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonDarkMode;
         private messagesPage messagesPage1;
-        private friendsPage friendsPage3;
     }
 }
 

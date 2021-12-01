@@ -54,23 +54,12 @@ namespace Modal.test
             byte[] bImage = new byte[fs.Length];
             fs.Read(bImage, 0, (int)fs.Length);
 
-            using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
-            {
-                conn.Open();
+            string addr = textBoxAddr.Text + "|" + textBoxAddr2.Text + "|" + textBoxAddr3.Text + "|" + textBoxAddr4.Text + "|";
+            DBManager.GetDBManager().SqlImageCommand("UPDATE user SET userPW = hex(aes_encrypt('" + textBoxPW.Text + "','pw')), name = '" + textBoxName.Text + "', addr = '" + addr + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + userID + "'", bImage);
 
-                string addr = textBoxAddr.Text + "|" + textBoxAddr2.Text + "|" + textBoxAddr3.Text + "|" + textBoxAddr4.Text + "|";
-                //string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, profileImage) VALUES (NULL, '" + textBoxID.Text + "', '" + textBoxPW.Text + "', '" + textBoxName.Text + "', '" + textBoxAddr.Text + "', '" + textBoxNickname.Text + "', @Image)";
-                string query = "UPDATE user SET userPW = hex(aes_encrypt('" + textBoxPW.Text + "','pw')), name = '" + textBoxName.Text + "', addr = '" + addr + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + userID  + "'";
-
-                MySqlCommand cmd = new MySqlCommand(query, conn);
-                cmd.Parameters.AddWithValue("@Image", bImage);
-
-                cmd.ExecuteNonQuery();
-
-                conn.Close();
-            }
             fs.Close();
             this.Close();
+
 
             /* 혹시 사진을 불러오고 싶을 때
              *
