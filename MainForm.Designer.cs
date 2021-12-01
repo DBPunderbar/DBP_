@@ -38,7 +38,6 @@ namespace Modal.test
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.friendsPage1 = new Modal.test.friendsPage();
             this.messagesPage1 = new Modal.test.messagesPage();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -148,14 +147,6 @@ namespace Modal.test
             this.panel3.Size = new System.Drawing.Size(828, 546);
             this.panel3.TabIndex = 11;
             // 
-            // friendsPage1
-            // 
-            this.friendsPage1.BackColor = System.Drawing.Color.White;
-            this.friendsPage1.Location = new System.Drawing.Point(0, 0);
-            this.friendsPage1.Name = "friendsPage1";
-            this.friendsPage1.Size = new System.Drawing.Size(828, 546);
-            this.friendsPage1.TabIndex = 1;
-            // 
             // messagesPage1
             // 
             this.messagesPage1.BackColor = System.Drawing.Color.White;
@@ -176,6 +167,7 @@ namespace Modal.test
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.buttonFriend_Click);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -193,8 +185,8 @@ namespace Modal.test
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonDarkMode;
-        private friendsPage friendsPage1;
         private messagesPage messagesPage1;
+        private friendsPage friendsPage3;
     }
 }
 

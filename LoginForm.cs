@@ -18,7 +18,6 @@ namespace Modal.test
         //근데 static이면 textBox에 접근할 수 없어 static은 static속성에만 접근이 가능하니까
 
         private string userID = "";
-        private bool textBoxIDChange = false;
         public string getUserId()
         {
             return textBoxID.Text;

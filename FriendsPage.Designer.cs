@@ -69,7 +69,6 @@ namespace Modal.test
             this.buttonSearch.TabIndex = 11;
             this.buttonSearch.Text = "검색";
             this.buttonSearch.UseVisualStyleBackColor = true;
-            this.buttonSearch.Click += new System.EventHandler(this.buttonSearch_Click);
             // 
             // friendsPage
             // 
