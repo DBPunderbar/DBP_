@@ -108,6 +108,7 @@ namespace Modal.test
 
             groupBoxMyProfile.Text = "";
             groupBoxMyProfile.Location = new Point(15, 50);
+            groupBoxMyProfile.Tag = 0;
 
             groupBoxMyProfile.Width = 650;
             groupBoxMyProfile.Height = 160;
@@ -121,11 +122,11 @@ namespace Modal.test
             groupBoxMyProfile.Controls.Add(pictureBoxMyProfile);
 
             Label Mynickname = new Label();
-            Mynickname.Location = new Point(215, 45);
             groupBoxMyProfile.Controls.Add(Mynickname);
 
             Label Myrole = new Label();
             Myrole.Location = new Point(175, 45);
+            Myrole.AutoSize = true;
             groupBoxMyProfile.Controls.Add(Myrole);
 
 
@@ -144,6 +145,10 @@ namespace Modal.test
             Myrole.Text = "[" + dataRowMyProfile["role"].ToString() + "]";
             MystateMessage.Text = dataRowMyProfile["stateMessage"].ToString();
             bImage = (byte[])dataRowMyProfile["profileImage"];
+
+            //role에 값이 있어야 Location 지정가능(원래 공백 + [positon] 길이 + 30띄워
+            Mynickname.Location = new Point(175 + Myrole.Width + 10, 45);
+
 
             if (bImage != null)
             {
@@ -166,8 +171,13 @@ namespace Modal.test
                 GroupBox groupBoxFriend = new GroupBox();
                 groupBoxFriend.Location = new Point(45, i * 150 + 220);
                 Controls.Add(groupBoxFriend);
+
+                //여기서 둘다 실행됨
+                groupBoxFriend.MouseDoubleClick += GroupBoxFriend_MouseDoubleClick;
                 groupBoxFriend.MouseClick += GroupBoxFriend_MouseClick;
-                groupBoxFriend.Tag = i;
+
+                //0은 본인 프로필
+                groupBoxFriend.Tag = i + 1;
 
                 groupBoxFriend.Text = "";
 
@@ -181,11 +191,11 @@ namespace Modal.test
                 groupBoxFriend.Controls.Add(pictureBoxFriendProfile);
 
                 Label friendnickname = new Label();
-                friendnickname.Location = new Point(190, 45);
                 groupBoxFriend.Controls.Add(friendnickname);
 
                 Label friendrole = new Label();
                 friendrole.Location = new Point(150, 45);
+                friendrole.AutoSize = true;
                 groupBoxFriend.Controls.Add(friendrole);
 
                 Label friendstateMessage = new Label();
@@ -194,13 +204,15 @@ namespace Modal.test
 
                 byte[] friendbImage = null;
 
-
-
                 //role과 상태메시지, 프로필 이미지는 notNull이 아니기 때문에 null이 불러와질 수 있음
                 if (friendInfoRow["role"] == System.DBNull.Value)
                     friendrole.Text = "";
                 else
                     friendrole.Text = "[" + friendInfoRow["role"].ToString() + "]";
+
+                //role에 값이 있어야 Location 지정가능(원래 공백 + [positon] 길이 + 30띄워
+                friendnickname.Location = new Point(150 + friendrole.Width + 10, 45);
+
 
                 if (friendInfoRow["stateMessage"] == System.DBNull.Value)
                     friendstateMessage.Text = "";
@@ -235,6 +247,26 @@ namespace Modal.test
             }
         }
 
+        private void GroupBoxFriend_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            
+            groupBoxInTexts.Clear();
+            //이벤트가 발생한 '그' 그룹박스 내의 컨트롤 들의 text를 모두 list에 저장
+            foreach (Control control in ((GroupBox)sender).Controls)
+            {
+                //무슨 순서로 들어오는지 모르니까 일단은 확인 필요
+                //[0] : pictureBox, [1] : label(별명), [2] : label(직책), [3] : label(상태메시지)
+                groupBoxInTexts.Add(control.Text);
+            }
+            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[1] + "'");
+            DataRow dataRowFriend = dataTablefriend.Rows[0];
+            string friendID = dataRowFriend["userID"].ToString();
+
+            //채팅중 플래그on
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
+            //더블클릭하면 채팅창으로 바로 이동
+        }
+
         private void GroupBoxFriend_MouseClick(object sender, MouseEventArgs e)
         {
             groupBoxInTexts.Clear();
@@ -258,6 +290,8 @@ namespace Modal.test
 
             else
             {
+                //profileViewForm이 닫힐 때 자동 새로고침은 어떻게 하더라
+                //showDialog로 하기 좀 그런뎅
                 ProfileViewForm profileViewForm = new ProfileViewForm(userID, groupBoxInTexts);
                 profileViewForm.Show();
             }
@@ -281,7 +315,6 @@ namespace Modal.test
                     DBManager.GetDBManager().SqlNonReturnCommand("DELETE FROM friends WHERE friendID = '" + friendUserID + "' AND userID = '" + userID + "'");
 
                     GroupBoxsRemove();
-                    myProfileLoad();
                     friendsProfileLoad(userID);
                     break;
             }
@@ -305,6 +338,8 @@ namespace Modal.test
             {
                 if (this.Controls[i] is GroupBox)
                 {
+                    //0이면 본인 프로필이니까 그거 빼고 삭제
+                    if(Convert.ToInt32(((GroupBox)this.Controls[i]).Tag) != 0)
                     //this.Controls[i].MouseClick -= GroupBoxFriend_MouseClick;
                     this.Controls[i].Dispose();
                 }

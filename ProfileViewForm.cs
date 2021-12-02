@@ -13,8 +13,7 @@ using System.Windows.Forms;
 namespace Modal.test
 {
     public partial class ProfileViewForm : Form
-    {
-
+    { 
         //지금 디폴트 디자인은 친구로 등록되어있는 친구의 프로필을 눌렀을 때의 화면
 
         //이걸 불러올 때마다 확인을 해야함 ==> 현재 불러온 사람이 누군지 flag가 필요할 듯
@@ -25,9 +24,15 @@ namespace Modal.test
         //본인 프로필 눌렀을 때 : 나와의 채팅, 프로필 편집
 
         private List<string> profile = new List<string>();
+        //현재 클라이언트 정보
         private string userID = "";
+
+        //프로필이 띄워진 사람의 userID
         private string currentUserID = "";
+
+        //프로필 속 사람과의 관계
         private int currentWho = -1;
+
         public ProfileViewForm(string userID, List<string> profile)
         {
             InitializeComponent();
@@ -110,17 +115,29 @@ namespace Modal.test
 
         private void ButtonAddFriend_Click(object sender, EventArgs e)
         {
+            //친구가 아닌사람인지 확인
+            if(currentWho == -1)
+            {
+                MessageBox.Show("친구 추가 완료");
+                DBManager.GetDBManager().SqlNonReturnCommand("INSERT INTO friends VALUES('" + userID + "', '" + currentUserID + "', 0)");
 
+                currentWho = 1;
+                buttonChange();
+            }
         }
 
         private void ButtonProfileUpdate_Click(object sender, EventArgs e)
         {
-
+            if(currentWho == 0)
+            {
+                UpdateInfo updateInfo = new UpdateInfo(userID);
+                updateInfo.ShowDialog();
+            }
         }
 
         private void ButtonChatWithMe_Click(object sender, EventArgs e)
         {
-
+            //나와의 채팅 뜨기
         }
 
         private void checkFriend()
@@ -133,7 +150,7 @@ namespace Modal.test
                 currentWho = 0;
             }
             //friends 컬럼을 찾아서 없으면 -1, 있으면 1
-            else if (dataTableFriendSearch.Rows[0] == null)
+            else if (dataTableFriendSearch.Rows.Count == 0)
             {
                 currentWho = -1;
             }
@@ -181,7 +198,8 @@ namespace Modal.test
                 groupBoxFriend.Location = new Point(45, i * 150 + 20);
                 splitContainer1.Panel2.Controls.Add(groupBoxFriend);
                 groupBoxFriend.MouseClick += GroupBoxFriend_MouseClick;
-                groupBoxFriend.Tag = i;
+                groupBoxFriend.MouseDoubleClick += GroupBoxFriend_MouseDoubleClick;
+                groupBoxFriend.Tag = i + 1;
 
                 groupBoxFriend.Text = "";
 
@@ -195,10 +213,10 @@ namespace Modal.test
                 groupBoxFriend.Controls.Add(pictureBoxFriendProfile);
 
                 Label friendnickname = new Label();
-                friendnickname.Location = new Point(190, 45);
                 groupBoxFriend.Controls.Add(friendnickname);
 
                 Label friendrole = new Label();
+                friendrole.AutoSize = true;
                 friendrole.Location = new Point(150, 45);
                 groupBoxFriend.Controls.Add(friendrole);
 
@@ -215,6 +233,11 @@ namespace Modal.test
                     friendrole.Text = "";
                 else
                     friendrole.Text = "[" + friendInfoRow["role"].ToString() + "]";
+
+                //role에 값이 있어야 Location 지정가능(원래 공백 + [positon] 길이 + 30띄워
+                //자꾸 안되는 이유가 그룹박스에 추가를 먼저 해서 위치정보가 달라져서 그런가
+                friendnickname.Location = new Point(150 + friendrole.Width + 10, 45);
+
 
                 if (friendInfoRow["stateMessage"] == System.DBNull.Value)
                     friendstateMessage.Text = "";
@@ -249,8 +272,16 @@ namespace Modal.test
             }
         }
 
+        private void GroupBoxFriend_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            //채팅중 플래그on
+            //더블클릭하면 채팅창으로 바로 이동
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
+        }
+
         private void GroupBoxFriend_MouseClick(object sender, MouseEventArgs e)
         {
+            //우클릭은 안넣어놨음
             List<string> groupBoxInTexts = new List<string>();
             groupBoxInTexts.Clear();
             //이벤트가 발생한 '그' 그룹박스 내의 컨트롤 들의 text를 모두 list에 저장
@@ -268,13 +299,16 @@ namespace Modal.test
         private void buttonChatting_Click(object sender, EventArgs e)
         {
             //채팅하는 곳으로 이동
-            //friends 테이블에 채팅중인 flag도 함께 디비에 저장
+            //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
         {
+            MessageBox.Show("삭제되었습니다.");
             DBManager.GetDBManager().SqlNonReturnCommand("DELETE FROM friends WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
             currentWho = -1;
+            buttonChange();
         }
     }
 }
