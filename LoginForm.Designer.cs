@@ -102,7 +102,7 @@ namespace Modal.test
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(-2, 31);
+            this.label1.Location = new System.Drawing.Point(15, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(226, 18);
             this.label1.TabIndex = 2;
@@ -124,7 +124,7 @@ namespace Modal.test
             this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxID.Font = new System.Drawing.Font("나눔스퀘어", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBoxID.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBoxID.Location = new System.Drawing.Point(85, 260);
+            this.textBoxID.Location = new System.Drawing.Point(85, 263);
             this.textBoxID.Name = "textBoxID";
             this.textBoxID.Size = new System.Drawing.Size(234, 23);
             this.textBoxID.TabIndex = 2;
@@ -166,7 +166,7 @@ namespace Modal.test
             this.textBoxPW.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxPW.Font = new System.Drawing.Font("나눔스퀘어", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBoxPW.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBoxPW.Location = new System.Drawing.Point(85, 339);
+            this.textBoxPW.Location = new System.Drawing.Point(85, 342);
             this.textBoxPW.Name = "textBoxPW";
             this.textBoxPW.PasswordChar = '●';
             this.textBoxPW.Size = new System.Drawing.Size(234, 23);
@@ -213,8 +213,7 @@ namespace Modal.test
             // 
             // LoginForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(381, 628);
             this.Controls.Add(this.buttonAddInfo);

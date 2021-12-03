@@ -72,41 +72,66 @@ namespace Modal.test
                 //0일때 본인(나와의채팅, 프로필수정), 1일때 친구(채팅,삭제) , -1일때 친구아님(친구추가)
                 case 0:
                     Button buttonChatWithMe = new Button();
-                    buttonChatWithMe.Location = new Point(60, 300);
+                    buttonChatWithMe.Location = new Point(40, 450);
                     buttonChatWithMe.Size = new Size(96, 30);
                     buttonChatWithMe.Text = "나와의 채팅";
+                    buttonChatWithMe.BackColor = Color.Lavender;
+                    buttonChatWithMe.FlatStyle = FlatStyle.Flat;
+                    buttonChatWithMe.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    buttonChatWithMe.FlatAppearance.BorderSize = 0;
+                    buttonChatWithMe.ForeColor = Color.DarkSlateBlue;
                     splitContainer1.Panel1.Controls.Add(buttonChatWithMe);
                     buttonChatWithMe.Click += ButtonChatWithMe_Click;
 
                     Button buttonProfileUpdate = new Button();
-                    buttonProfileUpdate.Location = new Point(180, 300);
+                    buttonProfileUpdate.Location = new Point(160, 450);
                     buttonProfileUpdate.Size = new Size(96, 30);
                     buttonProfileUpdate.Text = "프로필 편집";
+                    buttonProfileUpdate.BackColor = Color.Lavender;
+                    buttonProfileUpdate.FlatStyle = FlatStyle.Flat;
+                    buttonProfileUpdate.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    buttonProfileUpdate.FlatAppearance.BorderSize = 0;
+                    buttonProfileUpdate.ForeColor = Color.DarkSlateBlue;
                     splitContainer1.Panel1.Controls.Add(buttonProfileUpdate);
                     buttonProfileUpdate.Click += ButtonProfileUpdate_Click;
                     break;
 
                 case 1:
                     Button buttonChat = new Button();
-                    buttonChat.Location = new Point(60, 300);
+                    buttonChat.Location = new Point(40, 450);
                     buttonChat.Size = new Size(96, 30);
                     buttonChat.Text = "1:1 채팅하기";
+                    buttonChat.BackColor = Color.Lavender;
+                    buttonChat.FlatStyle = FlatStyle.Flat;
+                    buttonChat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    buttonChat.FlatAppearance.BorderSize = 0;
+                    buttonChat.ForeColor = Color.DarkSlateBlue;
                     splitContainer1.Panel1.Controls.Add(buttonChat);
                     buttonChat.Click += buttonChatting_Click;
 
                     Button buttonDel = new Button();
-                    buttonDel.Location = new Point(180, 300);
+                    buttonDel.Location = new Point(160, 450);
                     buttonDel.Size = new Size(96, 30);
                     buttonDel.Text = "친구 삭제";
+                    buttonDel.BackColor = Color.Lavender;
+                    buttonDel.FlatStyle = FlatStyle.Flat;
+                    buttonDel.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    buttonDel.FlatAppearance.BorderSize = 0;
+                    buttonDel.ForeColor = Color.DarkSlateBlue;
                     splitContainer1.Panel1.Controls.Add(buttonDel);
                     buttonDel.Click += buttonDelete_Click;
                     break;
 
                 case -1:
                     Button buttonAddFriend = new Button();
-                    buttonAddFriend.Location = new Point(135, 300);
+                    buttonAddFriend.Location = new Point(100, 450);
                     buttonAddFriend.Size = new Size(96, 30);
                     buttonAddFriend.Text = "친구 추가";
+                    buttonAddFriend.BackColor = Color.Lavender;
+                    buttonAddFriend.FlatStyle = FlatStyle.Flat;
+                    buttonAddFriend.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    buttonAddFriend.FlatAppearance.BorderSize = 0;
+                    buttonAddFriend.ForeColor = Color.DarkSlateBlue;
                     splitContainer1.Panel1.Controls.Add(buttonAddFriend);
                     buttonAddFriend.Click += ButtonAddFriend_Click;
                     break;
@@ -195,7 +220,7 @@ namespace Modal.test
                 DataRow friendInfoRow = friendInfo.Rows[0];
 
                 GroupBox groupBoxFriend = new GroupBox();
-                groupBoxFriend.Location = new Point(45, i * 150 + 20);
+                groupBoxFriend.Location = new Point(35, i * 150 + 20);
                 splitContainer1.Panel2.Controls.Add(groupBoxFriend);
                 groupBoxFriend.MouseClick += GroupBoxFriend_MouseClick;
                 groupBoxFriend.MouseDoubleClick += GroupBoxFriend_MouseDoubleClick;
@@ -203,7 +228,7 @@ namespace Modal.test
 
                 groupBoxFriend.Text = "";
 
-                groupBoxFriend.Width = 600;
+                groupBoxFriend.Width = 400;
                 groupBoxFriend.Height = 150;
 
                 PictureBox pictureBoxFriendProfile = new PictureBox();
@@ -213,14 +238,20 @@ namespace Modal.test
                 groupBoxFriend.Controls.Add(pictureBoxFriendProfile);
 
                 Label friendnickname = new Label();
+                friendnickname.Font = new Font("나눔스퀘어", 10, FontStyle.Bold);
+                friendnickname.ForeColor = Color.DarkSlateBlue;
                 groupBoxFriend.Controls.Add(friendnickname);
 
                 Label friendrole = new Label();
+                friendrole.Font = new Font("나눔스퀘어", 10, FontStyle.Bold);
+                friendrole.ForeColor = Color.DarkSlateBlue;
                 friendrole.AutoSize = true;
                 friendrole.Location = new Point(150, 45);
                 groupBoxFriend.Controls.Add(friendrole);
 
                 Label friendstateMessage = new Label();
+                friendstateMessage.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                friendstateMessage.ForeColor = Color.DarkSlateBlue;
                 friendstateMessage.Location = new Point(150, 80);
                 groupBoxFriend.Controls.Add(friendstateMessage);
 
@@ -301,6 +332,9 @@ namespace Modal.test
             //채팅하는 곳으로 이동
             //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
             DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
+            ChatForm ChatForm = new ChatForm();
+            ChatForm.Show();
+            this.Hide();
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)
@@ -310,5 +344,37 @@ namespace Modal.test
             currentWho = -1;
             buttonChange();
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        // 창 이동
+        private bool onClick;
+        private Point startPoint = new Point(0, 0);
+        private void moveWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (onClick)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
+            }
+        }
+        private void moveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            onClick = true;
+            startPoint = new Point(e.X, e.Y);
+        }
+        private void moveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            onClick = false;
+        }
+        // ↑여기까지
     }
 }

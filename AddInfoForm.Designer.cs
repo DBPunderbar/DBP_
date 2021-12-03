@@ -65,9 +65,14 @@ namespace Modal.test
             this.panel15 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
             this.textBoxPosition = new System.Windows.Forms.TextBox();
-            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
             this.textBoxStateMessage = new System.Windows.Forms.TextBox();
             this.buttonIDCheck = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
@@ -77,9 +82,9 @@ namespace Modal.test
             this.textBoxID.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBoxID.Font = new System.Drawing.Font("나눔스퀘어", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.textBoxID.ForeColor = System.Drawing.Color.MidnightBlue;
-            this.textBoxID.Location = new System.Drawing.Point(118, 63);
+            this.textBoxID.Location = new System.Drawing.Point(118, 66);
             this.textBoxID.Name = "textBoxID";
-            this.textBoxID.Size = new System.Drawing.Size(256, 23);
+            this.textBoxID.Size = new System.Drawing.Size(155, 23);
             this.textBoxID.TabIndex = 0;
             // 
             // textBoxPW
@@ -184,7 +189,7 @@ namespace Modal.test
             this.buttonAddInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddInfo.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buttonAddInfo.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.buttonAddInfo.Location = new System.Drawing.Point(484, 417);
+            this.buttonAddInfo.Location = new System.Drawing.Point(484, 482);
             this.buttonAddInfo.Name = "buttonAddInfo";
             this.buttonAddInfo.Size = new System.Drawing.Size(142, 39);
             this.buttonAddInfo.TabIndex = 10;
@@ -267,6 +272,7 @@ namespace Modal.test
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.buttonMin);
             this.panel1.Controls.Add(this.buttonClose);
             this.panel1.Location = new System.Drawing.Point(1, 1);
@@ -289,6 +295,7 @@ namespace Modal.test
             this.buttonMin.TabIndex = 1;
             this.buttonMin.Text = "_";
             this.buttonMin.UseVisualStyleBackColor = true;
+            this.buttonMin.Click += new System.EventHandler(this.buttonMin_Click);
             // 
             // buttonClose
             // 
@@ -309,7 +316,7 @@ namespace Modal.test
             this.panel3.BackColor = System.Drawing.Color.Lavender;
             this.panel3.Location = new System.Drawing.Point(118, 94);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(256, 3);
+            this.panel3.Size = new System.Drawing.Size(155, 3);
             this.panel3.TabIndex = 19;
             // 
             // panel2
@@ -403,9 +410,9 @@ namespace Modal.test
             // panel14
             // 
             this.panel14.BackColor = System.Drawing.Color.GhostWhite;
-            this.panel14.Location = new System.Drawing.Point(408, 44);
+            this.panel14.Location = new System.Drawing.Point(408, 50);
             this.panel14.Name = "panel14";
-            this.panel14.Size = new System.Drawing.Size(3, 440);
+            this.panel14.Size = new System.Drawing.Size(3, 490);
             this.panel14.TabIndex = 24;
             // 
             // panel15
@@ -437,6 +444,78 @@ namespace Modal.test
             this.textBoxPosition.Size = new System.Drawing.Size(256, 23);
             this.textBoxPosition.TabIndex = 25;
             // 
+            // textBoxStateMessage
+            // 
+            this.textBoxStateMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxStateMessage.Font = new System.Drawing.Font("나눔스퀘어", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBoxStateMessage.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.textBoxStateMessage.Location = new System.Drawing.Point(127, 488);
+            this.textBoxStateMessage.Name = "textBoxStateMessage";
+            this.textBoxStateMessage.Size = new System.Drawing.Size(233, 23);
+            this.textBoxStateMessage.TabIndex = 28;
+            this.textBoxStateMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // buttonIDCheck
+            // 
+            this.buttonIDCheck.BackColor = System.Drawing.Color.Lavender;
+            this.buttonIDCheck.FlatAppearance.BorderSize = 0;
+            this.buttonIDCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonIDCheck.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonIDCheck.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.buttonIDCheck.Location = new System.Drawing.Point(280, 65);
+            this.buttonIDCheck.Name = "buttonIDCheck";
+            this.buttonIDCheck.Size = new System.Drawing.Size(94, 30);
+            this.buttonIDCheck.TabIndex = 29;
+            this.buttonIDCheck.Text = "중복확인";
+            this.buttonIDCheck.UseVisualStyleBackColor = false;
+            this.buttonIDCheck.Click += new System.EventHandler(this.buttonIDCheck_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("나눔스퀘어 Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label8.Location = new System.Drawing.Point(33, 477);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 44);
+            this.label8.TabIndex = 30;
+            this.label8.Text = "상태\r\n메세지";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label9.Location = new System.Drawing.Point(114, 477);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 22);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "\"";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label10.Location = new System.Drawing.Point(356, 477);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 22);
+            this.label10.TabIndex = 32;
+            this.label10.Text = "\"";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Lavender;
+            this.panel16.Location = new System.Drawing.Point(118, 518);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(256, 3);
+            this.panel16.TabIndex = 33;
+            // 
             // pictureBoxProfile
             // 
             this.pictureBoxProfile.Location = new System.Drawing.Point(444, 94);
@@ -445,29 +524,26 @@ namespace Modal.test
             this.pictureBoxProfile.TabIndex = 12;
             this.pictureBoxProfile.TabStop = false;
             // 
-            // textBoxStateMessage
+            // label11
             // 
-            this.textBoxStateMessage.Location = new System.Drawing.Point(118, 489);
-            this.textBoxStateMessage.Name = "textBoxStateMessage";
-            this.textBoxStateMessage.Size = new System.Drawing.Size(100, 25);
-            this.textBoxStateMessage.TabIndex = 28;
-            // 
-            // buttonIDCheck
-            // 
-            this.buttonIDCheck.Location = new System.Drawing.Point(308, 71);
-            this.buttonIDCheck.Name = "buttonIDCheck";
-            this.buttonIDCheck.Size = new System.Drawing.Size(75, 23);
-            this.buttonIDCheck.TabIndex = 29;
-            this.buttonIDCheck.Text = "중복확인";
-            this.buttonIDCheck.UseVisualStyleBackColor = true;
-            this.buttonIDCheck.Click += new System.EventHandler(this.buttonIDCheck_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("나눔스퀘어 Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.label11.Location = new System.Drawing.Point(12, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(64, 17);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "회원가입";
             // 
             // AddInfoForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(674, 550);
+            this.Controls.Add(this.panel16);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.buttonIDCheck);
             this.Controls.Add(this.textBoxStateMessage);
             this.Controls.Add(this.panel15);
@@ -512,6 +588,7 @@ namespace Modal.test
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "회원가입";
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -559,5 +636,10 @@ namespace Modal.test
         private System.Windows.Forms.TextBox textBoxPosition;
         private System.Windows.Forms.TextBox textBoxStateMessage;
         private System.Windows.Forms.Button buttonIDCheck;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label11;
     }
 }

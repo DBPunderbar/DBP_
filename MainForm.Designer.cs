@@ -29,53 +29,24 @@ namespace Modal.test
         /// </summary>
         private void InitializeComponent()
         {
-            this.buttonFriend = new System.Windows.Forms.Button();
-            this.buttonChatting = new System.Windows.Forms.Button();
-            this.buttonUpdateInfo = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buttonDarkMode = new System.Windows.Forms.Button();
             this.buttonMin = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.messagesPage1 = new Modal.test.messagesPage();
+            this.buttonFriend = new System.Windows.Forms.Button();
+            this.buttonChatting = new System.Windows.Forms.Button();
+            this.buttonAddFriends = new System.Windows.Forms.Button();
+            this.buttonDarkMode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
-            // buttonFriend
-            // 
-            this.buttonFriend.Image = global::Modal.test.Properties.Resources.friend_c;
-            this.buttonFriend.Location = new System.Drawing.Point(12, 40);
-            this.buttonFriend.Name = "buttonFriend";
-            this.buttonFriend.Size = new System.Drawing.Size(75, 76);
-            this.buttonFriend.TabIndex = 0;
-            this.buttonFriend.Text = "친구";
-            this.buttonFriend.UseVisualStyleBackColor = true;
-            this.buttonFriend.Click += new System.EventHandler(this.buttonFriend_Click);
-            // 
-            // buttonChatting
-            // 
-            this.buttonChatting.Location = new System.Drawing.Point(12, 158);
-            this.buttonChatting.Name = "buttonChatting";
-            this.buttonChatting.Size = new System.Drawing.Size(75, 23);
-            this.buttonChatting.TabIndex = 1;
-            this.buttonChatting.Text = "채팅";
-            this.buttonChatting.UseVisualStyleBackColor = true;
-            this.buttonChatting.Click += new System.EventHandler(this.buttonChatting_Click);
-            // 
-            // buttonUpdateInfo
-            // 
-            this.buttonUpdateInfo.Location = new System.Drawing.Point(12, 448);
-            this.buttonUpdateInfo.Name = "buttonUpdateInfo";
-            this.buttonUpdateInfo.Size = new System.Drawing.Size(75, 28);
-            this.buttonUpdateInfo.TabIndex = 4;
-            this.buttonUpdateInfo.Text = "정보수정";
-            this.buttonUpdateInfo.UseVisualStyleBackColor = true;
-            this.buttonUpdateInfo.Click += new System.EventHandler(this.buttonUpdateInfo_Click);
-            // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.Color.White;
+            this.panel1.Controls.Add(this.buttonAddFriends);
             this.panel1.Controls.Add(this.buttonDarkMode);
             this.panel1.Controls.Add(this.buttonMin);
             this.panel1.Controls.Add(this.buttonClose);
@@ -86,20 +57,6 @@ namespace Modal.test
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseUp);
-            // 
-            // buttonDarkMode
-            // 
-            this.buttonDarkMode.BackColor = System.Drawing.Color.Transparent;
-            this.buttonDarkMode.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonDarkMode.FlatAppearance.BorderSize = 0;
-            this.buttonDarkMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDarkMode.Image = global::Modal.test.Properties.Resources.dark;
-            this.buttonDarkMode.Location = new System.Drawing.Point(809, 0);
-            this.buttonDarkMode.Name = "buttonDarkMode";
-            this.buttonDarkMode.Size = new System.Drawing.Size(39, 39);
-            this.buttonDarkMode.TabIndex = 2;
-            this.buttonDarkMode.UseVisualStyleBackColor = false;
-            this.buttonDarkMode.Click += new System.EventHandler(this.buttonDarkMode_Click);
             // 
             // buttonMin
             // 
@@ -131,10 +88,10 @@ namespace Modal.test
             // 
             // panel2
             // 
+            this.panel2.BackColor = System.Drawing.Color.GhostWhite;
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.buttonFriend);
             this.panel2.Controls.Add(this.buttonChatting);
-            this.panel2.Controls.Add(this.buttonUpdateInfo);
             this.panel2.Location = new System.Drawing.Point(0, 39);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(100, 546);
@@ -155,10 +112,63 @@ namespace Modal.test
             this.messagesPage1.Size = new System.Drawing.Size(828, 546);
             this.messagesPage1.TabIndex = 0;
             // 
+            // buttonFriend
+            // 
+            this.buttonFriend.BackColor = System.Drawing.Color.Transparent;
+            this.buttonFriend.FlatAppearance.BorderSize = 0;
+            this.buttonFriend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonFriend.Image = global::Modal.test.Properties.Resources.friend_c1;
+            this.buttonFriend.Location = new System.Drawing.Point(12, 40);
+            this.buttonFriend.Name = "buttonFriend";
+            this.buttonFriend.Size = new System.Drawing.Size(75, 76);
+            this.buttonFriend.TabIndex = 0;
+            this.buttonFriend.UseVisualStyleBackColor = false;
+            this.buttonFriend.Click += new System.EventHandler(this.buttonFriend_Click);
+            // 
+            // buttonChatting
+            // 
+            this.buttonChatting.BackColor = System.Drawing.Color.Transparent;
+            this.buttonChatting.FlatAppearance.BorderSize = 0;
+            this.buttonChatting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonChatting.Image = global::Modal.test.Properties.Resources.message_nc1;
+            this.buttonChatting.Location = new System.Drawing.Point(12, 158);
+            this.buttonChatting.Name = "buttonChatting";
+            this.buttonChatting.Size = new System.Drawing.Size(75, 76);
+            this.buttonChatting.TabIndex = 1;
+            this.buttonChatting.UseVisualStyleBackColor = false;
+            this.buttonChatting.Click += new System.EventHandler(this.buttonChatting_Click);
+            // 
+            // buttonAddFriends
+            // 
+            this.buttonAddFriends.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAddFriends.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonAddFriends.FlatAppearance.BorderSize = 0;
+            this.buttonAddFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddFriends.Image = global::Modal.test.Properties.Resources.addFriend_b;
+            this.buttonAddFriends.Location = new System.Drawing.Point(770, 0);
+            this.buttonAddFriends.Name = "buttonAddFriends";
+            this.buttonAddFriends.Size = new System.Drawing.Size(39, 39);
+            this.buttonAddFriends.TabIndex = 3;
+            this.buttonAddFriends.UseVisualStyleBackColor = false;
+            this.buttonAddFriends.Click += new System.EventHandler(this.buttonAddFriends_Click);
+            // 
+            // buttonDarkMode
+            // 
+            this.buttonDarkMode.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDarkMode.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonDarkMode.FlatAppearance.BorderSize = 0;
+            this.buttonDarkMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDarkMode.Image = global::Modal.test.Properties.Resources.dark1;
+            this.buttonDarkMode.Location = new System.Drawing.Point(809, 0);
+            this.buttonDarkMode.Name = "buttonDarkMode";
+            this.buttonDarkMode.Size = new System.Drawing.Size(39, 39);
+            this.buttonDarkMode.TabIndex = 2;
+            this.buttonDarkMode.UseVisualStyleBackColor = false;
+            this.buttonDarkMode.Click += new System.EventHandler(this.buttonDarkMode_Click);
+            // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(926, 583);
             this.Controls.Add(this.panel2);
@@ -178,7 +188,6 @@ namespace Modal.test
 
         private System.Windows.Forms.Button buttonFriend;
         private System.Windows.Forms.Button buttonChatting;
-        private System.Windows.Forms.Button buttonUpdateInfo;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonMin;
         private System.Windows.Forms.Button buttonClose;
@@ -186,6 +195,7 @@ namespace Modal.test
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonDarkMode;
         private messagesPage messagesPage1;
+        private System.Windows.Forms.Button buttonAddFriends;
     }
 }
 

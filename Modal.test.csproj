@@ -111,7 +111,19 @@
     <Compile Include="AdressFinder.designer.cs">
       <DependentUpon>AdressFinder.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChatForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChatForm.Designer.cs">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DarkMode.cs" />
+    <Compile Include="FindFriends.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FindFriends.Designer.cs">
+      <DependentUpon>FindFriends.cs</DependentUpon>
+    </Compile>
     <Compile Include="friendsPage.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,6 +148,11 @@
     <Compile Include="ProfileViewForm.Designer.cs">
       <DependentUpon>ProfileViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UpdateInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +169,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AddInfoForm.resx">
       <DependentUpon>AddInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChatForm.resx">
+      <DependentUpon>ChatForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FindFriends.resx">
+      <DependentUpon>FindFriends.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="friendsPage.resx">
       <DependentUpon>friendsPage.cs</DependentUpon>
@@ -170,14 +193,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UpdateInfo.resx">
       <DependentUpon>UpdateInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -198,12 +216,39 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Resources\addFriend_b.png" />
+    <Content Include="Resources\bright.png" />
+    <Content Include="Resources\chatSend_B.png" />
+    <Content Include="Resources\dark.png" />
+    <None Include="Resources\dark1.png" />
+    <None Include="Resources\emoticon_b1.png" />
+    <Content Include="Resources\emoticon_b.png" />
+    <Content Include="Resources\exit_b.png" />
+    <Content Include="Resources\file_b.png" />
+    <Content Include="Resources\friend_c.png" />
+    <None Include="Resources\friend_c1.png" />
+    <None Include="Resources\friend_c_b.png" />
+    <Content Include="Resources\friend_nc.png" />
+    <Content Include="Resources\message_c.png" />
+    <None Include="Resources\message_c1.png" />
+    <None Include="Resources\message_c_b.png" />
+    <Content Include="Resources\message_nc.png" />
+    <None Include="Resources\message_nc1.png" />
+    <Content Include="Resources\return_b.png" />
+    <Content Include="Resources\search_b.png" />
+    <Content Include="Resource\addFriend_b.png" />
     <Content Include="Resource\bright.png" />
+    <Content Include="Resource\chatSend_B.png" />
     <Content Include="Resource\dark.png" />
+    <Content Include="Resource\emoticon_b.png" />
+    <Content Include="Resource\exit_b.png" />
+    <Content Include="Resource\file_b.png" />
     <Content Include="Resource\friend_c.png" />
     <Content Include="Resource\friend_nc.png" />
     <Content Include="Resource\message_c.png" />
     <Content Include="Resource\message_nc.png" />
+    <Content Include="Resource\return_b.png" />
+    <Content Include="Resource\search_b.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

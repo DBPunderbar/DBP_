@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Modal.test.Properties;
+using MySql.Data.MySqlClient;
 //using MySqlConnector;
 using System;
 using System.Collections.Generic;
@@ -45,13 +46,14 @@ namespace Modal.test
         {
             onClick = false;
         }
+        //↑여기까지
 
-        private void buttonUpdateInfo_Click(object sender, EventArgs e)
+        /*private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
             UpdateInfo mainForm3 = new UpdateInfo(userID);
             mainForm3.ShowDialog();
-        }
-        //↑여기까지
+        }*/
+
         //친구 테이블이 생성되었으니까 따로 수정 필요
 
         //main폼이 불러와질때 친구 버튼 클릭 이벤트로 연결해서 폼이 불러와질때 친구목록이 뜨도록..
@@ -60,6 +62,8 @@ namespace Modal.test
         //생성자로 보내는 방법 말고 다른 방법이 있다면 이 부분도 수정이 가능할텐데.
         private void buttonFriend_Click(object sender, EventArgs e)
         {
+            buttonChatting.Image = Resources.message_nc;
+            buttonFriend.Image = Resources.friend_c;
             friendsPage friendsPage1 = new friendsPage(userID);
             friendsPage1.Location = new Point(98, 39);
             //828, 543
@@ -98,6 +102,14 @@ namespace Modal.test
         private void buttonChatting_Click(object sender, EventArgs e)
         {
             messagesPage1.BringToFront();
+            buttonChatting.Image = Resources.message_c;
+            buttonFriend.Image = Resources.friend_nc;
+        }
+
+        private void buttonAddFriends_Click(object sender, EventArgs e)
+        {
+            FindFriends findfriends = new FindFriends();
+            findfriends.Show();
         }
     }
 

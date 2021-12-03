@@ -140,6 +140,11 @@ namespace Modal.test
             this.Close();
         }
 
+        private void buttonMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
 
 
         /*

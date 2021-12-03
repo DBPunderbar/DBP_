@@ -97,5 +97,37 @@ namespace Modal.test
 
             textBoxAddr4.Focus();
         }
+
+        private void buttonClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void buttonMin_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        // 창 이동
+        private bool onClick;
+        private Point startPoint = new Point(0, 0);
+        private void moveWindow_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (onClick)
+            {
+                Point p = PointToScreen(e.Location);
+                Location = new Point(p.X - this.startPoint.X, p.Y - this.startPoint.Y);
+            }
+        }
+        private void moveWindow_MouseDown(object sender, MouseEventArgs e)
+        {
+            onClick = true;
+            startPoint = new Point(e.X, e.Y);
+        }
+        private void moveWindow_MouseUp(object sender, MouseEventArgs e)
+        {
+            onClick = false;
+        }
+        // ↑여기까지
     }
 }
