@@ -108,7 +108,7 @@ namespace Modal.test
 
         private void buttonAddFriends_Click(object sender, EventArgs e)
         {
-            FindFriends findfriends = new FindFriends();
+            FindFriends findfriends = new FindFriends(userID);
             findfriends.Show();
         }
     }
