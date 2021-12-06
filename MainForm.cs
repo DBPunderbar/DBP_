@@ -87,7 +87,7 @@ namespace Modal.test
         {
             panel1.BackColor = DarkMode.panelcolor;
             panel2.BackColor = DarkMode.panelcolor;
-            messagesPage1.BackColor = DarkMode.backcolor;
+            //messagePage1.BackColor = DarkMode.backcolor; -> messagePage1을 새로 생성해서 다크모드 적용이 안되는 것 같습니다,,
             buttonDarkMode.Image = DarkMode.imgMode;
             buttonMin.ForeColor = DarkMode.fontcolor;
             buttonClose.ForeColor = DarkMode.fontcolor;
@@ -101,9 +101,14 @@ namespace Modal.test
 
         private void buttonChatting_Click(object sender, EventArgs e)
         {
-            messagesPage1.BringToFront();
             buttonChatting.Image = Resources.message_c;
             buttonFriend.Image = Resources.friend_nc;
+            messagesPage messagePage1 = new messagesPage(userID);
+            messagePage1.Location = new Point(98, 39);
+            messagePage1.Size = new Size(828, 543);
+
+            Controls.Add(messagePage1);
+            messagePage1.BringToFront();
         }
 
         private void buttonAddFriends_Click(object sender, EventArgs e)

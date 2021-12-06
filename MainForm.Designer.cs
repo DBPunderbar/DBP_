@@ -34,7 +34,6 @@ namespace Modal.test
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.messagesPage1 = new Modal.test.messagesPage();
             this.buttonFriend = new System.Windows.Forms.Button();
             this.buttonChatting = new System.Windows.Forms.Button();
             this.buttonAddFriends = new System.Windows.Forms.Button();
@@ -103,14 +102,6 @@ namespace Modal.test
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(828, 546);
             this.panel3.TabIndex = 11;
-            // 
-            // messagesPage1
-            // 
-            this.messagesPage1.BackColor = System.Drawing.Color.White;
-            this.messagesPage1.Location = new System.Drawing.Point(0, 0);
-            this.messagesPage1.Name = "messagesPage1";
-            this.messagesPage1.Size = new System.Drawing.Size(828, 546);
-            this.messagesPage1.TabIndex = 0;
             // 
             // buttonFriend
             // 
@@ -194,7 +185,6 @@ namespace Modal.test
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonDarkMode;
-        private messagesPage messagesPage1;
         private System.Windows.Forms.Button buttonAddFriends;
     }
 }
