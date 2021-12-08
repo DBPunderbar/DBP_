@@ -60,7 +60,6 @@ namespace Modal.test
             {
                 if (this.splitContainer1.Panel1.Controls[i] is Button)
                 {
-                    Console.WriteLine(this.splitContainer1.Panel1.Controls[i].Location);
                     //this.Controls[i].MouseClick -= GroupBoxFriend_MouseClick;
                     //DIspose되면 이벤트 핸들러도 사라지나? 그러면 Hide로 해야하낭 Hide와 Visible false는 무슨 차이지
                     this.splitContainer1.Panel1.Controls[i].Dispose();
@@ -192,7 +191,10 @@ namespace Modal.test
             //    pictureBoxFriendProfile.SizeMode = PictureBoxSizeMode.StretchImage;
             //}
 
-            labelNickname.Text = profile[2] + " " + profile[1];
+            labelPosition.Text = profile[2];
+            labelNickname.Text = profile[1];
+            labelNickname.Location = new Point(70 + labelPosition.Width + 10, 292);
+
             labelStateMessage.Text = profile[3];
 
             DataTable dt = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + profile[1] + "'");
@@ -303,17 +305,48 @@ namespace Modal.test
             }
         }
 
+        bool clicked = false;
+
         private void GroupBoxFriend_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            clicked = false;
+
+            List<string> groupBoxInTexts = new List<string>();
+            groupBoxInTexts.Clear();
+            //이벤트가 발생한 '그' 그룹박스 내의 컨트롤 들의 text를 모두 list에 저장
+            foreach (Control control in ((GroupBox)sender).Controls)
+            {
+                //무슨 순서로 들어오는지 모르니까 일단은 확인 필요
+                //[0] : pictureBox, [1] : label(별명), [2] : label(직책), [3] : label(상태메시지)
+                groupBoxInTexts.Add(control.Text);
+            }
+
+            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[1] + "'");
+            DataRow dataRowFriend = dataTablefriend.Rows[0];
+            string friendID = dataRowFriend["userID"].ToString();
+
             //채팅중 플래그on
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
             //더블클릭하면 채팅창으로 바로 이동
-            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
+            MessageBox.Show("Double Clicked");
         }
 
-        private void GroupBoxFriend_MouseClick(object sender, MouseEventArgs e)
+        private async void GroupBoxFriend_MouseClick(object sender, MouseEventArgs e)
         {
+            if (clicked)
+                return;
+            clicked = true;
+            await Task.Delay(SystemInformation.DoubleClickTime);
+
+            //기다리는 동안 double click이 실행되면 doubleclick 이벤트에서 clicked가 false가 되니까 single click에선 return
+            //기다리는 동안 double click이 실행되지 않으면 clicked는 여전히 false, 
+            if (!(clicked))
+                return;
+            clicked = false;
+
             //우클릭은 안넣어놨음
             List<string> groupBoxInTexts = new List<string>();
+
             groupBoxInTexts.Clear();
             //이벤트가 발생한 '그' 그룹박스 내의 컨트롤 들의 text를 모두 list에 저장
             foreach (Control control in ((GroupBox)sender).Controls)

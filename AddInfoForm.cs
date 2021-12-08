@@ -57,6 +57,10 @@ namespace Modal.test
             DBManager.GetDBManager().SqlImageCommand(query, bImage);
             fs.Close();
 
+            //회원 가입에 성공하면 바로 mainform으로 갈 수 있도록
+            this.Hide();
+            MainForm mainForm = new MainForm(textBoxID.Text);
+            mainForm.ShowDialog();
             this.Close();
         }
 
