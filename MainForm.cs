@@ -95,7 +95,7 @@ namespace Modal.test
 
         private void buttonDarkMode_Click(object sender, EventArgs e)
         {
-            DarkMode.changeMode();
+            DarkMode.changeMode(userID);
             SetColor();
         }
 

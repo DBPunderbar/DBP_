@@ -17,14 +17,16 @@ namespace Modal.test
 
         public static bool on = false;
 
-        public static void changeMode()
+        public static void changeMode(string userID)
         {
             if (on)
             {
+                DBManager.GetDBManager().SqlNonReturnCommand("UPDATE user SET DarkFlag = '1' WHERE userID = '" + userID + "'");
                 SetarModeClear();
             }
             else
             {
+                DBManager.GetDBManager().SqlNonReturnCommand("UPDATE user SET DarkFlag = '0' WHERE userID = '" + userID + "'");
                 SetarModeDark();
             }
         }
