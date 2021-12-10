@@ -161,11 +161,21 @@ namespace DBP
 
         private void ButtonChatWithMe_Click(object sender, EventArgs e) // 나와의 채팅
         {
-            DBManager.GetDBManager().SqlDataTableReturnCommand("UPDATE s5584534.friends SET currentChat = '1' WHERE userID = '" + userID + "'");
-            ChatForm ChatForm = new ChatForm(userID, "ToMe");
-            ChatForm.Name = userID + "ToMe";
+            string tome = "ToMe";
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + tome + "'");
+
+            Form CF = Application.OpenForms[userID + tome];
+            //이미 채팅방이 열려있다면
+            if (CF != null)
+            {
+                //맨 앞으로 가져오고 return
+                CF.BringToFront();
+                return;
+            }
+
+            ChatForm ChatForm = new ChatForm(userID, tome);
+            ChatForm.Name = userID + tome;
             ChatForm.Show();
-            this.Close();
         }
 
         private void checkFriend()
@@ -224,6 +234,7 @@ namespace DBP
             {
                 if (dataRow["friendID"].ToString() == "ToMe")
                 {
+                    //i++됐을때 그룹박스 태그가 하나 비어짐 ==> 삭제할때 굳이 상관없을듯
                     i++;
                     continue;
                 }
@@ -339,10 +350,8 @@ namespace DBP
             DataRow dataRowFriend = dataTablefriend.Rows[0];
             string friendID = dataRowFriend["userID"].ToString();
 
-            //채팅중 플래그on
-            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
-            //더블클릭하면 채팅창으로 바로 이동
-            MessageBox.Show("Double Clicked");
+            //플래그 온, 채팅방 여는것까지 있음
+            StartChatting(friendID);
         }
 
         private async void GroupBoxFriend_MouseClick(object sender, MouseEventArgs e)
@@ -373,16 +382,29 @@ namespace DBP
             ProfileViewForm profileViewForm = new ProfileViewForm(userID, groupBoxInTexts);
             profileViewForm.Show();
         }
-
-        private void buttonChatting_Click(object sender, EventArgs e)
+        //누구와 채팅하는지 파라미터로 받아옴
+        private void StartChatting(string withWhom)
         {
             //채팅하는 곳으로 이동
             //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
-            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
-            ChatForm ChatForm = new ChatForm(userID, currentUserID);
-            ChatForm.Name = userID + currentUserID;
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + withWhom + "'");
+
+            Form CF = Application.OpenForms[userID + withWhom];
+            //이미 채팅방이 열려있다면
+            if (CF != null)
+            {
+                //맨 앞으로 가져오고 return
+                CF.BringToFront();
+                return;
+            }
+
+            ChatForm ChatForm = new ChatForm(userID, withWhom);
+            ChatForm.Name = userID + withWhom;
             ChatForm.Show();
-            this.Hide();
+        }
+        private void buttonChatting_Click(object sender, EventArgs e)
+        {
+            StartChatting(currentUserID);
         }
 
         private void buttonDelete_Click(object sender, EventArgs e)

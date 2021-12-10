@@ -26,11 +26,23 @@ namespace DBP
         //불러와질때 정보가 남아있도록
         private void initValues()
         {
-            DataTable dataTableInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + userID + "'");
+            DataTable dataTableInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT *, CAST(AES_DECRYPT(UNHEX(userPW), 'pw') as char) as pw FROM user WHERE userID = '" + userID + "'");
             DataRow dataRowInfo = dataTableInfo.Rows[0];
 
-            //addr할것, 컬럼 이름 맞는지 확인
-            textBoxPW.Text = dataRowInfo["userPW"].ToString();
+            byte[] friendbImage = (byte[])dataRowInfo["profileImage"];
+            if (friendbImage != null)
+            {
+                pictureBoxProfile.Image = new Bitmap(new MemoryStream(friendbImage));
+                pictureBoxProfile.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+
+            string[] stringArrayAddr = dataRowInfo["addr"].ToString().Split('|');
+            textBoxAddr.Text = stringArrayAddr[0];
+            textBoxAddr2.Text = stringArrayAddr[1];
+            textBoxAddr3.Text = stringArrayAddr[2];
+            textBoxAddr4.Text = stringArrayAddr[3];
+
+            textBoxPW.Text = dataRowInfo["pw"].ToString();
             textBoxName.Text = dataRowInfo["name"].ToString();
             textBoxNickname.Text = dataRowInfo["nickname"].ToString();
             textBoxPosition.Text = dataRowInfo["role"].ToString();
@@ -42,6 +54,7 @@ namespace DBP
             InitializeComponent();
             this.userID = userID;
             labelUserID.Text = userID;
+            initValues();
         }
 
         private void buttonPictureRegister_Click(object sender, EventArgs e)

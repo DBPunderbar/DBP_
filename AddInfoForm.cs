@@ -59,7 +59,7 @@ namespace DBP
             fs.Close();
 
             //+ToMe랑 friends테이블에 추가(currentChat은 0으로)
-            DBManager.GetDBManager().SqlNonReturnCommand("INSERT INTO friends VALUES('" + textBoxID.Text + "', 'ToMe', 0)");
+            //DBManager.GetDBManager().SqlNonReturnCommand("INSERT INTO friends VALUES('" + textBoxID.Text + "', 'ToMe', 0)");
 
             //회원 가입에 성공하면 바로 mainform으로 갈 수 있도록
             this.Hide();
