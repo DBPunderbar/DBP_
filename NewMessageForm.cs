@@ -19,6 +19,7 @@ namespace DBP {
         }
 
         private void NewMessageForm_VisibleChanged(object sender, EventArgs e) {
+            timer1.Stop();
             timer1.Start();
         }
     }
