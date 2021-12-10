@@ -1,5 +1,5 @@
 ﻿
-namespace Modal.test
+namespace DBP
 {
     partial class UpdateInfo
     {

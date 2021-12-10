@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AddressFinder;
 
-namespace Modal.test
+namespace DBP
 {
     public partial class AddInfoForm : Form
     {

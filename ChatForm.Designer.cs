@@ -1,5 +1,5 @@
 ﻿
-namespace Modal.test
+namespace DBP
 {
     partial class ChatForm
     {
@@ -136,7 +136,7 @@ namespace Modal.test
             this.buttonSendEmoji.BackColor = System.Drawing.Color.Transparent;
             this.buttonSendEmoji.FlatAppearance.BorderSize = 0;
             this.buttonSendEmoji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSendEmoji.Image = global::Modal.test.Properties.Resources.emoticon_b1;
+            this.buttonSendEmoji.Image = global::DBP.Properties.Resources.emoticon_b1;
             this.buttonSendEmoji.Location = new System.Drawing.Point(646, 533);
             this.buttonSendEmoji.Name = "buttonSendEmoji";
             this.buttonSendEmoji.Size = new System.Drawing.Size(39, 39);
@@ -148,7 +148,7 @@ namespace Modal.test
             this.buttonSendFile.BackColor = System.Drawing.Color.Transparent;
             this.buttonSendFile.FlatAppearance.BorderSize = 0;
             this.buttonSendFile.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSendFile.Image = global::Modal.test.Properties.Resources.file_b;
+            this.buttonSendFile.Image = global::DBP.Properties.Resources.file_b;
             this.buttonSendFile.Location = new System.Drawing.Point(691, 533);
             this.buttonSendFile.Name = "buttonSendFile";
             this.buttonSendFile.Size = new System.Drawing.Size(39, 39);
@@ -160,7 +160,7 @@ namespace Modal.test
             this.buttonExitChat.BackColor = System.Drawing.Color.Transparent;
             this.buttonExitChat.FlatAppearance.BorderSize = 0;
             this.buttonExitChat.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonExitChat.Image = global::Modal.test.Properties.Resources.exit_b;
+            this.buttonExitChat.Image = global::DBP.Properties.Resources.exit_b;
             this.buttonExitChat.Location = new System.Drawing.Point(877, 533);
             this.buttonExitChat.Name = "buttonExitChat";
             this.buttonExitChat.Size = new System.Drawing.Size(39, 39);
@@ -172,7 +172,7 @@ namespace Modal.test
             this.buttonSearchMsg.BackColor = System.Drawing.Color.Transparent;
             this.buttonSearchMsg.FlatAppearance.BorderSize = 0;
             this.buttonSearchMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSearchMsg.Image = global::Modal.test.Properties.Resources.search_b;
+            this.buttonSearchMsg.Image = global::DBP.Properties.Resources.search_b;
             this.buttonSearchMsg.Location = new System.Drawing.Point(866, 56);
             this.buttonSearchMsg.Name = "buttonSearchMsg";
             this.buttonSearchMsg.Size = new System.Drawing.Size(39, 39);
@@ -183,7 +183,7 @@ namespace Modal.test
             // 
             this.buttonSendMsg.FlatAppearance.BorderSize = 0;
             this.buttonSendMsg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonSendMsg.Image = global::Modal.test.Properties.Resources.chatSend_B;
+            this.buttonSendMsg.Image = global::DBP.Properties.Resources.chatSend_B;
             this.buttonSendMsg.Location = new System.Drawing.Point(582, 533);
             this.buttonSendMsg.Name = "buttonSendMsg";
             this.buttonSendMsg.Size = new System.Drawing.Size(39, 39);
@@ -196,7 +196,7 @@ namespace Modal.test
             this.buttonBackList.Dock = System.Windows.Forms.DockStyle.Left;
             this.buttonBackList.FlatAppearance.BorderSize = 0;
             this.buttonBackList.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBackList.Image = global::Modal.test.Properties.Resources.return_b;
+            this.buttonBackList.Image = global::DBP.Properties.Resources.return_b;
             this.buttonBackList.Location = new System.Drawing.Point(0, 0);
             this.buttonBackList.Name = "buttonBackList";
             this.buttonBackList.Size = new System.Drawing.Size(39, 39);

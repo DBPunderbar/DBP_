@@ -2,7 +2,7 @@
 using System.Data;
 using MySql.Data.MySqlClient;
 
-namespace Modal.test
+namespace DBP
 {
     public class DBManager
     {

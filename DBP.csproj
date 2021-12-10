@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{DD8B0A39-36C0-44CE-9F5F-7FD3CBFE0D32}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Modal.test</RootNamespace>
-    <AssemblyName>Modal.test</AssemblyName>
+    <RootNamespace>DBP</RootNamespace>
+    <AssemblyName>DBP</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -1,4 +1,4 @@
-﻿using Modal.test.Properties;
+﻿using DBP.Properties;
 using MySql.Data.MySqlClient;
 //using MySqlConnector;
 using System;
@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Modal.test
+namespace DBP
 {
     public partial class MainForm : Form
     {

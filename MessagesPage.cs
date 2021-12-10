@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Modal.test {
+namespace DBP {
     public partial class messagesPage : UserControl {
         // 채팅 contents 작성 방식
         // 이름|시간|내용\n ...

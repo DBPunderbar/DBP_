@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
-namespace Modal.test
+namespace DBP
 {
     public partial class LoginForm : Form
     {

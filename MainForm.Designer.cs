@@ -1,5 +1,5 @@
 ﻿
-namespace Modal.test
+namespace DBP
 {
     partial class MainForm
     {
@@ -108,7 +108,7 @@ namespace Modal.test
             this.buttonFriend.BackColor = System.Drawing.Color.Transparent;
             this.buttonFriend.FlatAppearance.BorderSize = 0;
             this.buttonFriend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFriend.Image = global::Modal.test.Properties.Resources.friend_c1;
+            this.buttonFriend.Image = global::DBP.Properties.Resources.friend_c1;
             this.buttonFriend.Location = new System.Drawing.Point(12, 40);
             this.buttonFriend.Name = "buttonFriend";
             this.buttonFriend.Size = new System.Drawing.Size(75, 76);
@@ -121,7 +121,7 @@ namespace Modal.test
             this.buttonChatting.BackColor = System.Drawing.Color.Transparent;
             this.buttonChatting.FlatAppearance.BorderSize = 0;
             this.buttonChatting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChatting.Image = global::Modal.test.Properties.Resources.message_nc1;
+            this.buttonChatting.Image = global::DBP.Properties.Resources.message_nc1;
             this.buttonChatting.Location = new System.Drawing.Point(12, 158);
             this.buttonChatting.Name = "buttonChatting";
             this.buttonChatting.Size = new System.Drawing.Size(75, 76);
@@ -135,7 +135,7 @@ namespace Modal.test
             this.buttonAddFriends.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonAddFriends.FlatAppearance.BorderSize = 0;
             this.buttonAddFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddFriends.Image = global::Modal.test.Properties.Resources.addFriend_b;
+            this.buttonAddFriends.Image = global::DBP.Properties.Resources.addFriend_b;
             this.buttonAddFriends.Location = new System.Drawing.Point(770, 0);
             this.buttonAddFriends.Name = "buttonAddFriends";
             this.buttonAddFriends.Size = new System.Drawing.Size(39, 39);
@@ -149,7 +149,7 @@ namespace Modal.test
             this.buttonDarkMode.Dock = System.Windows.Forms.DockStyle.Right;
             this.buttonDarkMode.FlatAppearance.BorderSize = 0;
             this.buttonDarkMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDarkMode.Image = global::Modal.test.Properties.Resources.dark1;
+            this.buttonDarkMode.Image = global::DBP.Properties.Resources.dark1;
             this.buttonDarkMode.Location = new System.Drawing.Point(809, 0);
             this.buttonDarkMode.Name = "buttonDarkMode";
             this.buttonDarkMode.Size = new System.Drawing.Size(39, 39);
