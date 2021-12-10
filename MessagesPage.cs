@@ -83,6 +83,13 @@ namespace DBP {
                 pictureBoxFriendProfileImage.Image = new Bitmap(new MemoryStream(imageByte));
                 groupBox.Controls.Add(pictureBoxFriendProfileImage);
 
+                //순서가 이렇게 되어야해서ㅠㅠ 죄송죄송합니다 
+                Label friendName = new Label();
+                friendName.Text = friendDR["nickname"].ToString();
+                friendName.AutoSize = true;
+                groupBox.Controls.Add(friendName);
+
+
                 Label friendRole = new Label();
                 friendRole.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
                 friendRole.Location = new Point(150, 47);
@@ -163,7 +170,36 @@ namespace DBP {
 
         private void groupBox_DoubleClicked(object sender, MouseEventArgs e)
         {
+            groupBoxInTexts.Clear();
+            foreach (Control control in ((GroupBox)sender).Controls)
+            {
+                groupBoxInTexts.Add(control.Text);
+            }
+
+            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[1] + "'");
+            DataRow dataRowFriend = dataTablefriend.Rows[0];
+            string friendID = dataRowFriend["userID"].ToString();
+
             // 챗 폼 열어주기 -> 멸망
+            //채팅하는 곳으로 이동
+            //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
+            if (friendID == userID)
+                friendID = "ToMe";
+
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
+
+            Form CF = Application.OpenForms[userID + friendID];
+            //이미 채팅방이 열려있다면
+            if (CF != null)
+            {
+                //맨 앞으로 가져오고 return
+                CF.BringToFront();
+                return;
+            }
+
+            ChatForm ChatForm = new ChatForm(userID, friendID);
+            ChatForm.Name = userID + friendID;
+            ChatForm.Show();
         }
     }
 }

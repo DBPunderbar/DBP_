@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -25,6 +26,7 @@ namespace DBP
         TcpClient client;
         public Thread receiveMessageThread = null;
         public static MainForm mainform;
+        NewMessageForm NMF = new NewMessageForm();
 
         public MainForm(string userID)
         {
@@ -49,6 +51,8 @@ namespace DBP
             }
 
             Connect();
+            NMF.Show();
+            NMF.Visible = false;
         }
 
         // 창 이동
@@ -100,7 +104,7 @@ namespace DBP
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            SendMessage("Server", "/exit");
+            SendMessage("Server", "/exit","0");
             receiveMessageThread.Abort();
             this.Close();
         }
@@ -150,8 +154,7 @@ namespace DBP
             findfriends.Show();
         }
 
-        private void Connect()
-        {
+        private void Connect() {
             client = new TcpClient();
             client.Connect("118.67.142.129", 1026); //118.67.142.129
 
@@ -166,37 +169,39 @@ namespace DBP
 
         public string receiveMessage = "";
         public string parsedMessage = "";
-        public void ReceiveMessage()
-        {
+        public void ReceiveMessage() {
             //ChatForm chatform = new ChatForm(userID, "");
-            while (true)
-            {
+            while (true) {
                 byte[] receiveByte = new byte[1024];
                 client.GetStream().Read(receiveByte, 0, receiveByte.Length);
                 receiveMessage = Encoding.Unicode.GetString(receiveByte);
                 string[] parse = receiveMessage.Split('|'); // [0]:writerName, [1]:receiverName, [2]:dateTime, [3]:contents
                 parsedMessage = string.Format("[{0}]{1} : {2}", parse[2], parse[0], parse[3]);
+                string NotificationMessage = string.Format("{0} : {1}", parse[0], parse[3]); // 알림 메시지 설정
+                if (NotificationMessage.Length > 30) {
+                    NotificationMessage = NotificationMessage.Substring(0, 30) + "...";
+                }
 
-                if (parsedMessage.Contains("/exit"))
-                {
+                if (parsedMessage.Contains("/exit")) {
                     return;
                 }
 
                 string receiver;
-                if (parse[1] == userID)
-                {
+                if (parse[1] == userID) {
                     receiver = parse[0];
                 }
-                else
-                {
+                else {
                     receiver = parse[1];
                 }
 
                 Form CF = Application.OpenForms[userID + receiver];
-                if (CF == null)
-                {
-                    MessageBox.Show("알림");
+                if (CF == null) {
+                    NewMessage(NotificationMessage);
                 }
+                else {
+                    this.Invoke(new Action(delegate () {
+                        ((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+                        ((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
                 else
                 {
                     this.Invoke(new Action(delegate ()
@@ -221,6 +226,12 @@ namespace DBP
                     }
                 }
 
+                if (parsedMessage.Contains("[ZIP]")) {
+                    string[] filepath2 = parsedMessage.Split(']');
+                    byte[] receiveBytes = new byte[10240000];
+                    SendMessage(filepath2[2], "", "1");
+                }
+
 
                 //ChatForm CF = new ChatForm(parse[0], parse[1]);
                 //CF.richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
@@ -234,14 +245,53 @@ namespace DBP
             }
         }
 
-        public void SendMessage(string receiverName, string text)
+        public void SendMessage(string receiverName, string text, string msgOrFile)
         {
-            string message = string.Format("{0}|{1}|{2}|{3}|", userID, receiverName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), text);
-            byte[] byteData = null;
+            if (msgOrFile == "1")
+            {
+                string filepath = receiverName;
 
-            byteData = new byte[message.Length];
-            byteData = Encoding.Unicode.GetBytes(message);
-            client.GetStream().Write(byteData, 0, byteData.Length);
+                FileStream fs = new FileStream(filepath, FileMode.Open);
+
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(new IPEndPoint(IPAddress.Parse("118.67.142.129"),1027));
+
+                byte[] byteData = new byte[socket.SendBufferSize];
+                int length = 0;
+
+                while(length < fs.Length)
+                {
+                    int read = fs.Read(byteData, 0, byteData.Length);
+                    length += read;
+
+                    Console.WriteLine(read + " " + length);
+                    socket.Send(byteData);
+                }
+                Console.WriteLine("File send end!!\r\n");
+            }
+            else
+            {
+                string message = string.Format("{0}|{1}|{2}|{3}|", userID, receiverName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), text);
+                byte[] byteData = null;
+
+                byteData = new byte[message.Length];
+                byteData = Encoding.Unicode.GetBytes(message);
+                client.GetStream().Write(byteData, 0, byteData.Length);
+            }
+        }
+
+        private void NewMessage(string Text) {
+            System.Drawing.Rectangle ScreenRectangle = Screen.PrimaryScreen.WorkingArea;
+
+            int xPos = ScreenRectangle.Width - NMF.Bounds.Width - 5;
+            int yPos = ScreenRectangle.Height - NMF.Bounds.Height;
+
+            this.Invoke(new Action(delegate () {
+                NMF.labelText.Text = Text;
+                NMF.Visible = true;
+                NMF.SetBounds(xPos, yPos, NMF.Size.Width, NMF.Size.Height, BoundsSpecified.Location);
+                NMF.BringToFront();
+            }));
         }
     }
 }

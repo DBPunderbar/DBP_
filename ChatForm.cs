@@ -69,7 +69,7 @@ namespace DBP
 
         private void buttonSendMsg_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.SendMessage(receiverName, textBoxWriteMsg.Text);
+            MainForm.mainform.SendMessage(receiverName, textBoxWriteMsg.Text, "0");
             textBoxWriteMsg.Clear();
         }
 
@@ -174,22 +174,32 @@ namespace DBP
 
         private void pictureBoxEmo1_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.SendMessage(receiverName, "[emoticon1]");
+            MainForm.mainform.SendMessage(receiverName, "[emoticon1]","0");
         }
 
         private void pictureBoxEmo2_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.SendMessage(receiverName, "[emoticon2]");
+            MainForm.mainform.SendMessage(receiverName, "[emoticon2]","0");
         }
 
         private void pictureBoxEmo3_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.SendMessage(receiverName, "[emoticon3]");
+            MainForm.mainform.SendMessage(receiverName, "[emoticon3]","0");
         }
 
         private void pictureBoxEmo4_Click(object sender, EventArgs e)
         {
-            MainForm.mainform.SendMessage(receiverName, "[emoticon4]");
+            MainForm.mainform.SendMessage(receiverName, "[emoticon4]","0");
+        }
+
+        private void buttonSendFile_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                string filepath = openFileDialog.FileName;
+                MainForm.mainform.SendMessage(receiverName, "[ZIP]"+filepath, "0");  // zip부터 보내고 알아듣게 하기
+            }
         }
     }
 }

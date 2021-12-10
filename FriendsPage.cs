@@ -406,6 +406,25 @@ namespace DBP
                 MessageBox.Show("닉네임이 " + searchNickname + "인 친구가 없습니다.");
             }
         }
+        private void StartChatting(string withWhom)
+        {
+            //채팅하는 곳으로 이동
+            //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
+            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + withWhom + "'");
+
+            Form CF = Application.OpenForms[userID + withWhom];
+            //이미 채팅방이 열려있다면
+            if (CF != null)
+            {
+                //맨 앞으로 가져오고 return
+                CF.BringToFront();
+                return;
+            }
+
+            ChatForm ChatForm = new ChatForm(userID, withWhom);
+            ChatForm.Name = userID + withWhom;
+            ChatForm.Show();
+        }
 
         bool clicked = false;
 
@@ -421,7 +440,7 @@ namespace DBP
 
             //더블클릭하면 채팅창으로 바로 이동
             //더블클릭 확인용이라 messageBox빼고 나와의 채팅창 show해주시면 돼요
-            MessageBox.Show("Double Clicked");
+            StartChatting("ToMe");
         }
 
         private void GroupBoxFriend_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -441,12 +460,9 @@ namespace DBP
             DataRow dataRowFriend = dataTablefriend.Rows[0];
             string friendID = dataRowFriend["userID"].ToString();
 
-            //채팅중 플래그on
-            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
-            //더블클릭하면 채팅창으로 바로 이동 더블클릭 확인용이라 messageBox빼고 채팅창 show해주시면 돼요
-            MessageBox.Show("Double Clicked");
+            StartChatting(friendID);
         }
-
+        
         private async void GroupBoxFriend_MouseClick(object sender, MouseEventArgs e)
         {
             //더블클릭인지 클릭인지 확인
