@@ -136,6 +136,9 @@
   <data name="dark" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\dark.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="friend_c_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\friend_c_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="chatSend_B" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\chatSend_B.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -145,8 +148,14 @@
   <data name="return_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\return_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="search_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\search_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="addFriend_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\addFriend_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="message_nc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\message_nc1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="message_c_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\message_c_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="message_c1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\message_c1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,19 +172,22 @@
   <data name="emoticon_b1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\emoticon_b1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="addFriend_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addFriend_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="search_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\search_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="bright" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resource\bright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="friend_c_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\friend_c_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="emoticon1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\emoticon\emoticon1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="message_c_b" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\message_c_b.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="emoticon2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\emoticon\emoticon2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="message_nc1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\message_nc1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="emoticon3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\emoticon\emoticon3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="emoticon4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\emoticon\emoticon4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -159,9 +159,13 @@ namespace DBP
             }
         }
 
-        private void ButtonChatWithMe_Click(object sender, EventArgs e)
+        public void ButtonChatWithMe_Click(object sender, EventArgs e)
         {
-            //나와의 채팅 뜨기
+            DBManager.GetDBManager().SqlDataTableReturnCommand("UPDATE s5584534.friends SET currentChat = '1' WHERE userID = '" + userID + "'");
+            ChatForm ChatForm = new ChatForm(userID, "ToMe");
+            ChatForm.Name = userID + "ToMe";
+            ChatForm.Show();
+            this.Close();
         }
 
         private void checkFriend()
@@ -218,11 +222,16 @@ namespace DBP
             int i = 0;
             foreach (DataRow dataRow in friendsID.Rows)
             {
+                if (dataRow["friendID"].ToString() == "ToMe")
+                {
+                    i++;
+                    continue;
+                }
                 DataTable friendInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + dataRow["friendID"].ToString() + "'");
 
                 //ToMe가 불러질 경우
-                if (friendInfo.Rows.Count == 0)
-                    continue;
+                //if (friendInfo.Rows.Count == 0)
+                //    continue;
 
                 DataRow friendInfoRow = friendInfo.Rows[0];
 
@@ -365,12 +374,13 @@ namespace DBP
             profileViewForm.Show();
         }
 
-        private void buttonChatting_Click(object sender, EventArgs e)
+        public void buttonChatting_Click(object sender, EventArgs e)
         {
             //채팅하는 곳으로 이동
             //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
             DBManager.GetDBManager().SqlNonReturnCommand("UPDATE friends SET currentChat = 1 WHERE userID = '" + userID + "' AND friendID = '" + currentUserID + "'");
-            ChatForm ChatForm = new ChatForm();
+            ChatForm ChatForm = new ChatForm(userID, currentUserID);
+            ChatForm.Name = userID + currentUserID;
             ChatForm.Show();
             this.Hide();
         }

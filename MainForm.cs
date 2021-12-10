@@ -9,7 +9,9 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,10 +22,16 @@ namespace DBP
         private string userID = "";
         DataTable table = new DataTable();
 
+        TcpClient client;
+        public Thread receiveMessageThread = null;
+        public static MainForm mainform;
+
         public MainForm(string userID)
         {
             this.userID = userID;
+            mainform = this;
             InitializeComponent();
+            Connect();
         }
 
         // 창 이동
@@ -75,6 +83,8 @@ namespace DBP
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
+            SendMessage("Server", "/exit");
+            receiveMessageThread.Abort();
             this.Close();
         }
 
@@ -116,6 +126,99 @@ namespace DBP
             FindFriends findfriends = new FindFriends(userID);
             findfriends.Show();
         }
-    }
 
+        private void Connect()
+        {
+            client = new TcpClient();
+            client.Connect("118.67.142.129", 1026); //118.67.142.129
+
+            string parsedName = "|||" + userID;
+            byte[] byteData = new byte[1024];
+            byteData = Encoding.Unicode.GetBytes(parsedName);
+            client.GetStream().Write(byteData, 0, byteData.Length);
+
+            receiveMessageThread = new Thread(ReceiveMessage);
+            receiveMessageThread.Start();
+        }
+
+        public string receiveMessage = "";
+        public string parsedMessage = "";
+        public void ReceiveMessage()
+        {
+            //ChatForm chatform = new ChatForm(userID, "");
+            while (true)
+            {
+                byte[] receiveByte = new byte[1024];
+                client.GetStream().Read(receiveByte, 0, receiveByte.Length);
+                receiveMessage = Encoding.Unicode.GetString(receiveByte);
+                string[] parse = receiveMessage.Split('|'); // [0]:writerName, [1]:receiverName, [2]:dateTime, [3]:contents
+                parsedMessage = string.Format("[{0}]{1} : {2}", parse[2], parse[0], parse[3]);
+
+                if (parsedMessage.Contains("/exit"))
+                {
+                    return;
+                }
+
+                string receiver;
+                if (parse[1] == userID)
+                {
+                    receiver = parse[0];
+                }
+                else
+                {
+                    receiver = parse[1];
+                }
+
+                Form CF = Application.OpenForms[userID + receiver];
+                if (CF == null)
+                {
+                    MessageBox.Show("알림");
+                }
+                else
+                {
+                    this.Invoke(new Action(delegate ()
+                    {
+                        ((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+                        ((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
+                    }));
+                }
+
+                if (parsedMessage.Contains("[emoticon")) {
+                    if (parsedMessage.Contains("[emoticon1]")) {
+                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon1;
+                    }
+                    else if (parsedMessage.Contains("[emoticon2]")) {
+                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon2;
+                    }
+                    else if (parsedMessage.Contains("[emoticon3]")) {
+                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon3;
+                    }
+                    else if (parsedMessage.Contains("[emoticon4]")) {
+                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon4;
+                    }
+                }
+
+
+                //ChatForm CF = new ChatForm(parse[0], parse[1]);
+                //CF.richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+                //ChatForm CF2 = new ChatForm(parse[1], parse[0]);
+                //CF2.richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+
+                //if (ChatForm.chatform.Created == false)
+                //    MessageBox.Show("새 메시지");
+                //ChatForm.chatform.ReceiveChat(parse[0], parse[1], parsedMessage);
+                //ChatForm.chatform.ReceiveChat(parse[1], parse[0], parsedMessage);
+            }
+        }
+
+        public void SendMessage(string receiverName, string text)
+        {
+            string message = string.Format("{0}|{1}|{2}|{3}|", userID, receiverName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), text);
+            byte[] byteData = null;
+
+            byteData = new byte[message.Length];
+            byteData = Encoding.Unicode.GetBytes(message);
+            client.GetStream().Write(byteData, 0, byteData.Length);
+        }
+    }
 }

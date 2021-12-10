@@ -216,6 +216,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <None Include="emoticon\emoticon1.png" />
+    <None Include="emoticon\emoticon2.png" />
+    <None Include="emoticon\emoticon3.png" />
+    <None Include="emoticon\emoticon4.png" />
     <Content Include="Resources\addFriend_b.png" />
     <Content Include="Resources\bright.png" />
     <Content Include="Resources\chatSend_B.png" />

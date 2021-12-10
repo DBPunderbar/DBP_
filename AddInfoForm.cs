@@ -54,6 +54,7 @@ namespace DBP
             string query = "INSERT INTO user(ID, userID, userPW, name, addr, nickname, stateMessage, profileImage, role) VALUES (NULL, '" + textBoxID.Text + "', hex(aes_encrypt('" + textBoxPW.Text + "','pw')), '" + textBoxName.Text + "', '" + addr + "', '" + textBoxNickname.Text + "', '" + textBoxStateMessage.Text + "', @Image, '" + textBoxPosition.Text + "')";
             //string query = "UPDATE user SET userPW = '" + textBoxPW.Text + "', name = '" + textBoxName.Text + "', addr = '" + textBoxAddr.Text + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + textBoxID.Text + "'";
 
+            DBManager.GetDBManager().SqlNonReturnCommand("INSERT INTO s5584534.friends VALUES ('" + textBoxID.Text + "', 'ToMe', '0')");
             DBManager.GetDBManager().SqlImageCommand(query, bImage);
             fs.Close();
 

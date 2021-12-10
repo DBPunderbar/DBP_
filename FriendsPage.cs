@@ -114,11 +114,17 @@ namespace DBP
             int i = 0;
             foreach (DataRow dataRow in friendsID.Rows)
             {
+                if (dataRow["friendID"].ToString() == "ToMe")
+                {
+                    i++;
+                    continue;
+                }
+
                 DataTable friendInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + dataRow["friendID"].ToString() + "'");
 
                 //ToMe는 유저정보가 없기 때문에 row에서 안불러와짐
-                if (friendInfo.Rows.Count == 0)
-                    continue;
+                //if (friendInfo.Rows.Count == 0)
+                //    continue;
 
 
                 DataRow friendInfoRow = friendInfo.Rows[0];

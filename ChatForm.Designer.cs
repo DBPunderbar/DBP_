@@ -37,6 +37,12 @@ namespace DBP
             this.textBox = new System.Windows.Forms.TextBox();
             this.panel14 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.panelEmoticonBox = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEmo4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEmo3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEmo2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxEmo1 = new System.Windows.Forms.PictureBox();
             this.buttonSendEmoji = new System.Windows.Forms.Button();
             this.buttonSendFile = new System.Windows.Forms.Button();
             this.buttonExitChat = new System.Windows.Forms.Button();
@@ -44,6 +50,12 @@ namespace DBP
             this.buttonSendMsg = new System.Windows.Forms.Button();
             this.buttonBackList = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            this.panelEmoticonBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -91,7 +103,7 @@ namespace DBP
             // 
             this.richTextBoxChatLog.BackColor = System.Drawing.Color.White;
             this.richTextBoxChatLog.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBoxChatLog.Font = new System.Drawing.Font("나눔스퀘어", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.richTextBoxChatLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.richTextBoxChatLog.ForeColor = System.Drawing.Color.MidnightBlue;
             this.richTextBoxChatLog.Location = new System.Drawing.Point(12, 56);
             this.richTextBoxChatLog.Name = "richTextBoxChatLog";
@@ -107,6 +119,7 @@ namespace DBP
             this.textBoxWriteMsg.Name = "textBoxWriteMsg";
             this.textBoxWriteMsg.Size = new System.Drawing.Size(564, 25);
             this.textBoxWriteMsg.TabIndex = 21;
+            this.textBoxWriteMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxWriteMsg_KeyDown);
             // 
             // textBox
             // 
@@ -131,6 +144,73 @@ namespace DBP
             this.textBox3.Size = new System.Drawing.Size(244, 410);
             this.textBox3.TabIndex = 30;
             // 
+            // panelEmoticonBox
+            // 
+            this.panelEmoticonBox.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo4);
+            this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo3);
+            this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo2);
+            this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo1);
+            this.panelEmoticonBox.Location = new System.Drawing.Point(475, 326);
+            this.panelEmoticonBox.Name = "panelEmoticonBox";
+            this.panelEmoticonBox.Size = new System.Drawing.Size(210, 210);
+            this.panelEmoticonBox.TabIndex = 31;
+            this.panelEmoticonBox.Visible = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.pictureBox1.Location = new System.Drawing.Point(521, 56);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBoxEmo4
+            // 
+            this.pictureBoxEmo4.Image = global::DBP.Properties.Resources.emoticon4;
+            this.pictureBoxEmo4.Location = new System.Drawing.Point(107, 107);
+            this.pictureBoxEmo4.Name = "pictureBoxEmo4";
+            this.pictureBoxEmo4.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxEmo4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEmo4.TabIndex = 6;
+            this.pictureBoxEmo4.TabStop = false;
+            this.pictureBoxEmo4.Click += new System.EventHandler(this.pictureBoxEmo4_Click);
+            // 
+            // pictureBoxEmo3
+            // 
+            this.pictureBoxEmo3.Image = global::DBP.Properties.Resources.emoticon3;
+            this.pictureBoxEmo3.Location = new System.Drawing.Point(3, 107);
+            this.pictureBoxEmo3.Name = "pictureBoxEmo3";
+            this.pictureBoxEmo3.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxEmo3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEmo3.TabIndex = 5;
+            this.pictureBoxEmo3.TabStop = false;
+            this.pictureBoxEmo3.Click += new System.EventHandler(this.pictureBoxEmo3_Click);
+            // 
+            // pictureBoxEmo2
+            // 
+            this.pictureBoxEmo2.Image = global::DBP.Properties.Resources.emoticon2;
+            this.pictureBoxEmo2.Location = new System.Drawing.Point(107, 3);
+            this.pictureBoxEmo2.Name = "pictureBoxEmo2";
+            this.pictureBoxEmo2.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxEmo2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEmo2.TabIndex = 4;
+            this.pictureBoxEmo2.TabStop = false;
+            this.pictureBoxEmo2.Click += new System.EventHandler(this.pictureBoxEmo2_Click);
+            // 
+            // pictureBoxEmo1
+            // 
+            this.pictureBoxEmo1.Image = global::DBP.Properties.Resources.emoticon1;
+            this.pictureBoxEmo1.Location = new System.Drawing.Point(3, 3);
+            this.pictureBoxEmo1.Name = "pictureBoxEmo1";
+            this.pictureBoxEmo1.Size = new System.Drawing.Size(100, 100);
+            this.pictureBoxEmo1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxEmo1.TabIndex = 3;
+            this.pictureBoxEmo1.TabStop = false;
+            this.pictureBoxEmo1.Click += new System.EventHandler(this.pictureBoxEmo1_Click);
+            // 
             // buttonSendEmoji
             // 
             this.buttonSendEmoji.BackColor = System.Drawing.Color.Transparent;
@@ -142,6 +222,7 @@ namespace DBP
             this.buttonSendEmoji.Size = new System.Drawing.Size(39, 39);
             this.buttonSendEmoji.TabIndex = 28;
             this.buttonSendEmoji.UseVisualStyleBackColor = false;
+            this.buttonSendEmoji.Click += new System.EventHandler(this.buttonSendEmoji_Click);
             // 
             // buttonSendFile
             // 
@@ -189,6 +270,7 @@ namespace DBP
             this.buttonSendMsg.Size = new System.Drawing.Size(39, 39);
             this.buttonSendMsg.TabIndex = 22;
             this.buttonSendMsg.UseVisualStyleBackColor = true;
+            this.buttonSendMsg.Click += new System.EventHandler(this.buttonSendMsg_Click);
             // 
             // buttonBackList
             // 
@@ -210,6 +292,8 @@ namespace DBP
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(926, 583);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.panelEmoticonBox);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.panel14);
             this.Controls.Add(this.buttonSendEmoji);
@@ -224,7 +308,14 @@ namespace DBP
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ChatForm";
             this.Text = "ChatForm";
+            this.Load += new System.EventHandler(this.ChatForm_Load);
             this.panel1.ResumeLayout(false);
+            this.panelEmoticonBox.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -235,7 +326,6 @@ namespace DBP
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button buttonMin;
         private System.Windows.Forms.Button buttonClose;
-        private System.Windows.Forms.RichTextBox richTextBoxChatLog;
         private System.Windows.Forms.TextBox textBoxWriteMsg;
         private System.Windows.Forms.Button buttonSendMsg;
         private System.Windows.Forms.TextBox textBox;
@@ -246,5 +336,12 @@ namespace DBP
         private System.Windows.Forms.Button buttonSendEmoji;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Panel panelEmoticonBox;
+        private System.Windows.Forms.PictureBox pictureBoxEmo4;
+        private System.Windows.Forms.PictureBox pictureBoxEmo3;
+        private System.Windows.Forms.PictureBox pictureBoxEmo2;
+        private System.Windows.Forms.PictureBox pictureBoxEmo1;
+        public System.Windows.Forms.RichTextBox richTextBoxChatLog;
+        public System.Windows.Forms.PictureBox pictureBox1;
     }
 }

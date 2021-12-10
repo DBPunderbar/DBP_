@@ -18,7 +18,9 @@ namespace DBP {
         // DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
 
         //friendsPage fp = new friendsPage();
-        public messagesPage(string userID) {
+        private List<string> groupBoxInTexts = new List<string>();
+        public messagesPage(string userID)
+        {
             InitializeComponent();
 
             this.userID = userID;
@@ -26,20 +28,36 @@ namespace DBP {
         }
 
         private string userID = "";
-        private void LoadChatList(string userID) {
+        private void LoadChatList(string userID)
+        {
             DataTable chatListDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT friendID FROM s5584534.friends WHERE userID = '" + userID + "' AND currentChat = '1'");
             DataRow chatListDR;
 
-            for (int i = 0; i < chatListDT.Rows.Count; i++) {
+            for (int i = 0; i < chatListDT.Rows.Count; i++)
+            {
                 chatListDR = chatListDT.Rows[i];
-                DataTable friendDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.user WHERE userID = '" + chatListDR["friendID"].ToString() + "'");
-                DataRow friendDR = friendDT.Rows[0];
-                DataTable chatDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.chatManagement WHERE (writerName = '" + userID + "' AND receiverName = '" + chatListDR["friendID"].ToString() + "') " +
-                    "OR (writerName = '" + chatListDR["friendID"].ToString() + "' AND receiverName = '" + userID + "')");
+                DataTable friendDT;
+                DataRow friendDR;
+                DataTable chatDT;
                 DataRow lastChatRow;
+                if (chatListDR["friendID"].ToString() == "ToMe")
+                {
+                    friendDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.user WHERE userID = '" + userID + "'");
+                    friendDR = friendDT.Rows[0];
+                    chatDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.chatManagement WHERE writerName = '" + userID + "' AND receiverName = 'ToMe'");
+                }
+                else
+                {
+                    friendDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.user WHERE userID = '" + chatListDR["friendID"].ToString() + "'");
+                    friendDR = friendDT.Rows[0];
+                    chatDT = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.chatManagement WHERE (writerName = '" + userID + "' AND receiverName = '" + chatListDR["friendID"].ToString() + "') " +
+                        "OR (writerName = '" + chatListDR["friendID"].ToString() + "' AND receiverName = '" + userID + "')");
+                }
+
                 if (chatDT.Rows.Count != 0) // 일반적인 경우
                     lastChatRow = chatDT.Rows[chatDT.Rows.Count - 1];
-                else { // currentChat은 1이나 채팅 내용이 없는 경우,, 아마 채팅방 생성만 하고 대화를 나누진 않았을 때?
+                else
+                { // currentChat은 1이나 채팅 내용이 없는 경우,, 아마 채팅방 생성만 하고 대화를 나누진 않았을 때?
                     DataTable temp = new DataTable();
                     temp.Columns.Add("contents", typeof(string));
                     lastChatRow = temp.NewRow();
@@ -73,7 +91,7 @@ namespace DBP {
 
                 Label friendName = new Label();
                 friendName.Location = new Point(150 + friendRole.Width, 45);
-                friendName.Text = chatListDR["friendID"].ToString();
+                friendName.Text = friendDR["nickname"].ToString();
                 friendName.AutoSize = true;
                 groupBox.Controls.Add(friendName);
 
@@ -85,22 +103,63 @@ namespace DBP {
             }
         }
 
-        public void DeleteChatList(string friendID, string deleteValues) {
-            DBManager.GetDBManager().SqlNonReturnCommand("UPDATE s5584534.friends SET currentChat = '0' WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
-        }
+        private void groupBox_Clicked(object sender, MouseEventArgs e)
+        {
+            groupBoxInTexts.Clear();
+            foreach (Control control in ((GroupBox)sender).Controls)
+            {
+                groupBoxInTexts.Add(control.Text);
+            }
 
-        private void groupBox_Clicked(object sender, MouseEventArgs e) { // 클릭 이벤트 어케한건지 모루겟소요,,,
-            if (e.Button.Equals(MouseButtons.Right)) {
+            if (e.Button.Equals(MouseButtons.Right))
+            {
                 ContextMenuStrip menu = new ContextMenuStrip();
 
                 menu.Items.Add("삭제");
-                //menu.ItemClicked += new ToolStripItemClickedEventHandler(Menu_ItemClicked);
+                menu.ItemClicked += new ToolStripItemClickedEventHandler(Menu_ItemClicked);
 
                 menu.Show((GroupBox)sender, new Point(e.X, e.Y));
             }
         }
 
-        private void groupBox_DoubleClicked(object sender, MouseEventArgs e) {
+        private void Menu_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+            switch (e.ClickedItem.Text)
+            {
+                case "삭제":
+                    DataTable dataTableWho = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.user WHERE nickname = '" + groupBoxInTexts[2] + "'");
+                    DataRow dataRowWho = dataTableWho.Rows[0];
+                    string friendID = dataRowWho["userID"].ToString();
+                    if (userID == friendID)
+                    {
+                        DBManager.GetDBManager().SqlNonReturnCommand("DELETE FROM s5584534.chatManagement WHERE writerName = '" + userID + "' AND receiverName = 'ToMe'");
+                        DBManager.GetDBManager().SqlNonReturnCommand("UPDATE s5584534.friends SET currentChat = '0' WHERE userID = '" + userID + "' AND friendID = 'ToMe'");
+                    }
+                    else
+                    {
+                        DBManager.GetDBManager().SqlNonReturnCommand("DELETE FROM s5584534.chatManagement WHERE (writerName = '" + userID + "' AND receiverName = '" + friendID + "') " +
+                            "OR (writerName = '" + friendID + "' AND receiverName = '" + userID + "')");
+                        DBManager.GetDBManager().SqlNonReturnCommand("UPDATE s5584534.friends SET currentChat = '0' WHERE userID = '" + userID + "' AND friendID = '" + friendID + "'");
+                    }
+                    GroupBoxsRemove();
+                    LoadChatList(userID);
+                    break;
+            }
+        }
+
+        private void GroupBoxsRemove()
+        {
+            for (int i = this.Controls.Count - 1; i >= 0; i--)
+            {
+                if (this.Controls[i] is GroupBox)
+                {
+                    this.Controls[i].Dispose();
+                }
+            }
+        }
+
+        private void groupBox_DoubleClicked(object sender, MouseEventArgs e)
+        {
             // 챗 폼 열어주기 -> 멸망
         }
     }

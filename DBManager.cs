@@ -58,6 +58,28 @@ namespace DBP
             }
         }
 
+        public string SelectAll(string query, string rt)
+        {
+            string str = "";
+            using (MySqlConnection conn = new MySqlConnection(strconn))
+            {
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataReader rdr = cmd.ExecuteReader();
+
+                //rdr.Read();
+                while (rdr.Read())
+                    str += rdr[rt] + "|";
+
+                if (str.Length > 1)
+                    str = str.Remove(str.Length - 1);
+
+                rdr.Close();
+            }
+
+            return str;
+        }
+
         public DBManager()
         {
         }
