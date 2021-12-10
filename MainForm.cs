@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
@@ -83,7 +84,7 @@ namespace DBP
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            SendMessage("Server", "/exit");
+            SendMessage("Server", "/exit","0");
             receiveMessageThread.Abort();
             this.Close();
         }
@@ -198,6 +199,13 @@ namespace DBP
                     }
                 }
 
+                if (parsedMessage.Contains("[ZIP]"))
+                {
+                    string[] filepath2 = parsedMessage.Split(']');
+                    byte[] receiveBytes = new byte[10240000];
+                    SendMessage(filepath2[2], "", "1");
+                }
+
 
                 //ChatForm CF = new ChatForm(parse[0], parse[1]);
                 //CF.richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
@@ -211,14 +219,39 @@ namespace DBP
             }
         }
 
-        public void SendMessage(string receiverName, string text)
+        public void SendMessage(string receiverName, string text, string msgOrFile)
         {
-            string message = string.Format("{0}|{1}|{2}|{3}|", userID, receiverName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), text);
-            byte[] byteData = null;
+            if (msgOrFile == "1")
+            {
+                string filepath = receiverName;
 
-            byteData = new byte[message.Length];
-            byteData = Encoding.Unicode.GetBytes(message);
-            client.GetStream().Write(byteData, 0, byteData.Length);
+                FileStream fs = new FileStream(filepath, FileMode.Open);
+
+                Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+                socket.Connect(new IPEndPoint(IPAddress.Parse("118.67.142.129"),1027));
+
+                byte[] byteData = new byte[socket.SendBufferSize];
+                int length = 0;
+
+                while(length < fs.Length)
+                {
+                    int read = fs.Read(byteData, 0, byteData.Length);
+                    length += read;
+
+                    Console.WriteLine(read + " " + length);
+                    socket.Send(byteData);
+                }
+                Console.WriteLine("File send end!!\r\n");
+            }
+            else
+            {
+                string message = string.Format("{0}|{1}|{2}|{3}|", userID, receiverName, DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"), text);
+                byte[] byteData = null;
+
+                byteData = new byte[message.Length];
+                byteData = Encoding.Unicode.GetBytes(message);
+                client.GetStream().Write(byteData, 0, byteData.Length);
+            }
         }
     }
 }
