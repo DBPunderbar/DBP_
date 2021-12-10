@@ -159,7 +159,7 @@ namespace DBP
             }
         }
 
-        private void ButtonChatWithMe_Click(object sender, EventArgs e)
+        private void ButtonChatWithMe_Click(object sender, EventArgs e) // 나와의 채팅
         {
             DBManager.GetDBManager().SqlDataTableReturnCommand("UPDATE s5584534.friends SET currentChat = '1' WHERE userID = '" + userID + "'");
             ChatForm ChatForm = new ChatForm(userID, "ToMe");
