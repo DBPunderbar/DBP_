@@ -159,7 +159,7 @@ namespace DBP
             }
         }
 
-        public void ButtonChatWithMe_Click(object sender, EventArgs e)
+        private void ButtonChatWithMe_Click(object sender, EventArgs e)
         {
             DBManager.GetDBManager().SqlDataTableReturnCommand("UPDATE s5584534.friends SET currentChat = '1' WHERE userID = '" + userID + "'");
             ChatForm ChatForm = new ChatForm(userID, "ToMe");
@@ -374,7 +374,7 @@ namespace DBP
             profileViewForm.Show();
         }
 
-        public void buttonChatting_Click(object sender, EventArgs e)
+        private void buttonChatting_Click(object sender, EventArgs e)
         {
             //채팅하는 곳으로 이동
             //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
