@@ -107,12 +107,20 @@ namespace Modal.test
             buttonFriendSearchByNickname.Click += ButtonFriendSearchByNickname_Click;
 
             List<string> friendIDArray = new List<string>();
+            //친구 목록을 모두 불러와서
+
             DataTable friendsID = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT friendID FROM friends WHERE userID = '" + ID + "'");
 
             int i = 0;
             foreach (DataRow dataRow in friendsID.Rows)
             {
                 DataTable friendInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + dataRow["friendID"].ToString() + "'");
+
+                //ToMe는 유저정보가 없기 때문에 row에서 안불러와짐
+                if (friendInfo.Rows.Count == 0)
+                    continue;
+
+
                 DataRow friendInfoRow = friendInfo.Rows[0];
 
                 GroupBox groupBoxFriend = new GroupBox();

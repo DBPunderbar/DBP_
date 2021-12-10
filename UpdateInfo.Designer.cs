@@ -47,6 +47,7 @@ namespace Modal.test
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label1 = new System.Windows.Forms.Label();
             this.buttonMin = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.textBoxAddr4 = new System.Windows.Forms.TextBox();
@@ -66,7 +67,7 @@ namespace Modal.test
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPW = new System.Windows.Forms.TextBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxStateMessage = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
             this.SuspendLayout();
@@ -227,6 +228,17 @@ namespace Modal.test
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseUp);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("나눔스퀘어 Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
+            this.label1.Location = new System.Drawing.Point(11, 12);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "정보수정";
             // 
             // buttonMin
             // 
@@ -445,22 +457,20 @@ namespace Modal.test
             this.pictureBoxProfile.TabIndex = 46;
             this.pictureBoxProfile.TabStop = false;
             // 
-            // label1
+            // textBoxStateMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("나눔스퀘어 Light", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.ForeColor = System.Drawing.Color.DarkSlateBlue;
-            this.label1.Location = new System.Drawing.Point(11, 12);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(64, 17);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "정보수정";
+            this.textBoxStateMessage.Location = new System.Drawing.Point(126, 487);
+            this.textBoxStateMessage.Name = "textBoxStateMessage";
+            this.textBoxStateMessage.Size = new System.Drawing.Size(100, 25);
+            this.textBoxStateMessage.TabIndex = 69;
+            this.textBoxStateMessage.Text = "상태메시지";
             // 
             // UpdateInfo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(674, 550);
+            this.Controls.Add(this.textBoxStateMessage);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.textBoxPosition);
@@ -548,5 +558,6 @@ namespace Modal.test
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxPW;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxStateMessage;
     }
 }

@@ -17,7 +17,7 @@ namespace Modal.test {
         // 현재시간 작성 기준
         // DateTime.Now.ToString("yyyy-MM-dd-HH-mm-ss");
 
-        friendsPage fp = new friendsPage();
+        //friendsPage fp = new friendsPage();
         public messagesPage(string userID) {
             InitializeComponent();
 

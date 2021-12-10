@@ -162,6 +162,14 @@ namespace Modal.test
             void groupBoxMyProfile_MouseClick(object sender, MouseEventArgs e)
             {
                 groupBoxInTexts.Clear();
+
+                foreach (Control control in ((GroupBox)sender).Controls)
+                {
+                    //무슨 순서로 들어오는지 모르니까 일단은 확인 필요
+                    //[0] : pictureBox, [1] : label(별명), [2] : label(직책), [3] : label(상태메시지)
+                    groupBoxInTexts.Add(control.Text);
+                }
+
                 ProfileViewForm profileViewForm = new ProfileViewForm(userID, groupBoxInTexts);
                 profileViewForm.Show();
                 
@@ -196,7 +204,7 @@ namespace Modal.test
                 rdr.Close();
             }
         }
-
+        /*
         public void friendsProfileLoad()
         {
             using (MySqlConnection conn = new MySqlConnection("Server=27.96.130.41;Database=s5584534;Uid=s5584534;Pwd=s5584534;Charset=utf8"))
@@ -314,7 +322,7 @@ namespace Modal.test
                 ProfileViewForm profileViewForm = new ProfileViewForm(userID, groupBoxInTexts);
                 profileViewForm.Show();
             }
-        }
+        }*/
         private void buttonSearchID_Click(object sender, EventArgs e)
         {
             myProfileLoad();

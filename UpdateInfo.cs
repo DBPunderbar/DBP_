@@ -20,6 +20,22 @@ namespace Modal.test
         public UpdateInfo()
         {
             InitializeComponent();
+            initValues();
+        }
+
+        //불러와질때 정보가 남아있도록
+        private void initValues()
+        {
+            DataTable dataTableInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + userID + "'");
+            DataRow dataRowInfo = dataTableInfo.Rows[0];
+
+            //addr할것, 컬럼 이름 맞는지 확인
+            textBoxPW.Text = dataRowInfo["userPW"].ToString();
+            textBoxName.Text = dataRowInfo["name"].ToString();
+            textBoxNickname.Text = dataRowInfo["nickname"].ToString();
+            textBoxPosition.Text = dataRowInfo["role"].ToString();
+            textBoxStateMessage.Text = dataRowInfo["stateMessage"].ToString();
+
         }
         public UpdateInfo(string userID)
         {

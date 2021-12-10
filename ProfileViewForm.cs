@@ -219,6 +219,11 @@ namespace Modal.test
             foreach (DataRow dataRow in friendsID.Rows)
             {
                 DataTable friendInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + dataRow["friendID"].ToString() + "'");
+
+                //ToMe가 불러질 경우
+                if (friendInfo.Rows.Count == 0)
+                    continue;
+
                 DataRow friendInfoRow = friendInfo.Rows[0];
 
                 GroupBox groupBoxFriend = new GroupBox();
