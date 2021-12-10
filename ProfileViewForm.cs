@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace DBP
 {
     public partial class ProfileViewForm : Form
-    { 
+    {
         //지금 디폴트 디자인은 친구로 등록되어있는 친구의 프로필을 눌렀을 때의 화면
 
         //이걸 불러올 때마다 확인을 해야함 ==> 현재 불러온 사람이 누군지 flag가 필요할 듯
@@ -22,6 +22,11 @@ namespace DBP
         //친구인 사람 프로필 눌렀을 때 버튼 : 1:1 채팅하기, 삭제하기
         //친구가 아닌 사람 프로필 눌렀을 때 버튼 : 친구 추가하기(단일)
         //본인 프로필 눌렀을 때 : 나와의 채팅, 프로필 편집
+
+        //placeholder 설정
+        public bool test = false;
+        TextBox[] txtList;
+        const string IdPlaceholder = "친구의 ID를 입력하세요 ...";
 
         private List<string> profile = new List<string>();
         //현재 클라이언트 정보

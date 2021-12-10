@@ -14,6 +14,9 @@ namespace DBP
         public static Color backcolor;
         public static Color panelcolor;
         public static Image imgMode;
+        public static Image imgMode_fbtn;
+        public static Image imgMode_cbtn;
+        public static Image imgMode_fadd;
 
         public static bool on = false;
 
@@ -31,19 +34,25 @@ namespace DBP
             }
         }
 
-        private static void SetarModeDark()
+        public static void SetarModeDark()
         {
             imgMode = Resources.dark;
-            fontcolor = Color.Black;
-            backcolor = Color.FromArgb(242, 242, 242);
-            panelcolor = Color.FromArgb(191, 191, 191);
+            imgMode_fbtn = Resources.friend_c;
+            imgMode_cbtn = Resources.message_nc;
+            imgMode_fadd = Resources.addfriend_b;
+            fontcolor = Color.DarkSlateBlue;
+            backcolor = Color.FromArgb(0, 0, 0);
+            panelcolor = Color.Lavender;
             on = true;
         }
 
-        private static void SetarModeClear()
+        public static void SetarModeClear()
         {
             imgMode = Resources.bright;
-            fontcolor = Color.White;
+            imgMode_fbtn = Resources.friend_c_b;
+            imgMode_fadd = Resources.addFriend_d;
+            imgMode_cbtn = Resources.message_c_b;
+            fontcolor = Color.DarkSlateBlue;
             backcolor = Color.FromArgb(51, 51, 51);
             panelcolor = Color.FromArgb(38, 38, 38);
             on = false;

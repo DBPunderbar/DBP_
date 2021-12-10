@@ -84,18 +84,21 @@ namespace DBP {
                 groupBox.Controls.Add(pictureBoxFriendProfileImage);
 
                 Label friendRole = new Label();
-                friendRole.Location = new Point(150, 45);
+                friendRole.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                friendRole.Location = new Point(150, 47);
                 friendRole.Text = "[" + friendDR["role"].ToString() + "]";
                 friendRole.AutoSize = true;
                 groupBox.Controls.Add(friendRole);
 
                 Label friendName = new Label();
+                friendName.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
                 friendName.Location = new Point(150 + friendRole.Width, 45);
-                friendName.Text = friendDR["nickname"].ToString();
+                friendName.Text = chatListDR["friendID"].ToString();
                 friendName.AutoSize = true;
                 groupBox.Controls.Add(friendName);
 
                 Label lastChat = new Label();
+                lastChat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
                 lastChat.Location = new Point(150, 80);
                 lastChat.Text = lastChatRow["contents"].ToString();
                 lastChat.AutoSize = true;

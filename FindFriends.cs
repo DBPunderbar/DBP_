@@ -108,39 +108,50 @@ namespace DBP
             pane1.AutoScroll = true;
             this.Controls.Add(pane1); 
             */
-            
+
             GroupBox groupBoxMyProfile = new GroupBox();
             this.Controls.Add(groupBoxMyProfile);
             groupBoxMyProfile.Text = "";
-            groupBoxMyProfile.Location = new Point(34, 127);
-            groupBoxMyProfile.Width = 302;
-            groupBoxMyProfile.Height = 122;
-            
+            groupBoxMyProfile.Location = new Point(29, 122);
+            groupBoxMyProfile.Width = 313;
+            groupBoxMyProfile.Height = 135;
+
             PictureBox pictureBoxMyProfile = new PictureBox();
-            pictureBoxMyProfile.Location = new Point(9, 33);
-            pictureBoxMyProfile.Width = 71;
-            pictureBoxMyProfile.Height = 75;
+            pictureBoxMyProfile.Location = new Point(9, 30);
+            pictureBoxMyProfile.Width = 80;
+            pictureBoxMyProfile.Height = 80;
 
             groupBoxMyProfile.Controls.Add(pictureBoxMyProfile);
 
             Label Mynickname = new Label();
-            Mynickname.Location = new Point(139, 33);
+            Mynickname.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
+            Mynickname.Location = new Point(170, 33);
+
+            Mynickname.TabIndex = 4;
             groupBoxMyProfile.Controls.Add(Mynickname);
 
             Label Myrole = new Label();
-            Myrole.Location = new Point(89, 33);
+            Myrole.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+            Myrole.Location = new Point(110, 35);
             groupBoxMyProfile.Controls.Add(Myrole);
 
 
             Label MystateMessage = new Label();
-            MystateMessage.Location = new Point(100, 70);
+            MystateMessage.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+            MystateMessage.Location = new Point(110, 70);
             groupBoxMyProfile.Controls.Add(MystateMessage);
 
             Button buttonAdd = new Button();
             buttonAdd.Text = "추가";
-            buttonAdd.Location = new Point(220, 60);
-            buttonAdd.Width = 75;
-            buttonAdd.Height = 35;
+            buttonAdd.Font = new Font("나눔스퀘어", 10, FontStyle.Bold);
+            buttonAdd.ForeColor = Color.DarkSlateBlue;
+            buttonAdd.Location = new Point(250, 56);
+            buttonAdd.Width = 55;
+            buttonAdd.Height = 30;
+            buttonAdd.TabIndex = 0;
+            buttonAdd.FlatStyle = FlatStyle.Flat;
+            buttonAdd.BackColor = Color.Lavender;
+            buttonAdd.FlatAppearance.BorderSize = 0;
             groupBoxMyProfile.Controls.Add(buttonAdd);
 
             buttonAdd.Click += new EventHandler(buttonAdd_Click);

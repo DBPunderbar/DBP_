@@ -15,6 +15,11 @@ namespace DBP
     public partial class friendsPage : UserControl
     {
         private List<string> groupBoxInTexts = new List<string>();
+        //placeholder 설정
+        public bool test = false;
+        TextBox[] txtList;
+        const string IdPlaceholder = "검색할 친구의 ID를 입력하세요 ...";
+
         //그룹박스를 동적생성 해서 누가 이벤트를 발생시켰는지 알기 위해 선언한 전역변수
         public friendsPage()
         {
@@ -28,6 +33,8 @@ namespace DBP
             this.userID = userID;
             myProfileLoad();
             friendsProfileLoad(userID);
+
+            
         }
 
         private string userID = "";
@@ -35,9 +42,9 @@ namespace DBP
         public void myProfileLoad()
         {
             GroupBox groupBoxMyProfile = new GroupBox();
-
+            //groupBoxMyProfile.BackColor = Color.GhostWhite;
             groupBoxMyProfile.Text = "";
-            groupBoxMyProfile.Location = new Point(15, 50);
+            groupBoxMyProfile.Location = new Point(45, 50);
             groupBoxMyProfile.Tag = 0;
 
             groupBoxMyProfile.Width = 650;
@@ -47,26 +54,36 @@ namespace DBP
             //마이프로필에서도 더블클릭하면 되게 해야할텐데 따로 만들어야하나 아니면 음... 따로 만드는게 나을 것 같기도
 
             PictureBox pictureBoxMyProfile = new PictureBox();
-            pictureBoxMyProfile.Location = new Point(25, 25);
+            pictureBoxMyProfile.Location = new Point(25, 23);
             pictureBoxMyProfile.Width = 120;
             pictureBoxMyProfile.Height = 120;
 
             groupBoxMyProfile.Controls.Add(pictureBoxMyProfile);
 
             Label Mynickname = new Label();
+            Mynickname.Font = new Font("나눔스퀘어", 15, FontStyle.Bold);
             groupBoxMyProfile.Controls.Add(Mynickname);
 
             Label Myrole = new Label();
-            Myrole.Location = new Point(175, 45);
+            Myrole.Font = new Font("나눔스퀘어", 15, FontStyle.Regular);
+            Myrole.Location = new Point(175, 46);
             Myrole.AutoSize = true;
             groupBoxMyProfile.Controls.Add(Myrole);
 
 
             Label MystateMessage = new Label();
-            MystateMessage.Location = new Point(175, 80);
+            MystateMessage.Location = new Point(175, 100);
+            MystateMessage.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
             groupBoxMyProfile.Controls.Add(MystateMessage);
 
+            Panel separate = new Panel();
+            separate.Location = new Point(40, 216);
+            separate.Width = 740;
+            separate.Height = 3;
+            separate.BackColor = Color.GhostWhite;
+
             Controls.Add(groupBoxMyProfile);
+            Controls.Add(separate);
 
             DataTable dataTableMyProfile = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + userID + "'");
             DataRow dataRowMyProfile = dataTableMyProfile.Rows[0];
@@ -93,16 +110,63 @@ namespace DBP
         {
             //친구 위에다 친구 검색창 만들기
             TextBox textBoxFriendSearchByNickname = new TextBox();
-            textBoxFriendSearchByNickname.Location = new Point(300, 230);
-            textBoxFriendSearchByNickname.Width = 90;
-            textBoxFriendSearchByNickname.Height = 21;
+            textBoxFriendSearchByNickname.Location = new Point(580, 12);
+            textBoxFriendSearchByNickname.Width = 120;
+            textBoxFriendSearchByNickname.Height = 30;
+            textBoxFriendSearchByNickname.BorderStyle = BorderStyle.None;
+            textBoxFriendSearchByNickname.Font = new Font("나눔스퀘어", 12, FontStyle.Regular);
+            textBoxFriendSearchByNickname.ForeColor = Color.MidnightBlue;
             Controls.Add(textBoxFriendSearchByNickname);
 
+            txtList = new TextBox[] { textBoxFriendSearchByNickname };
+            foreach (var txt in txtList)
+            {
+                //처음 공백 Placeholder 지정
+                txt.ForeColor = Color.LightSteelBlue;
+                if (txt == textBoxFriendSearchByNickname) txt.Text = IdPlaceholder;
+                //텍스트박스 커서 Focus 여부에 따라 이벤트 지정
+                txt.GotFocus += RemovePlaceholder;
+                txt.LostFocus += SetPlaceholder;
+            }
+
+            void RemovePlaceholder(object sender, EventArgs e)
+            {
+                TextBox txt = (TextBox)sender;
+                if (txt.Text == IdPlaceholder)
+                { //텍스트박스 내용이 사용자가 입력한 값이 아닌 Placeholder일 경우에만, 커서 포커스일때 빈칸으로 만들기
+                    txt.ForeColor = Color.MidnightBlue; //사용자 입력 진한 글씨
+                    txt.Text = string.Empty;
+                }
+            }
+
+            void SetPlaceholder(object sender, EventArgs e)
+            {
+                TextBox txt = (TextBox)sender;
+                if (string.IsNullOrWhiteSpace(txt.Text))
+                {
+                    //사용자 입력값이 하나도 없는 경우에 포커스 잃으면 Placeholder 적용해주기
+                    txt.ForeColor = Color.LightSteelBlue; //Placeholder 흐린 글씨
+                    if (txt == textBoxFriendSearchByNickname) txt.Text = IdPlaceholder;
+                }
+            }
+
+            Panel separate = new Panel();
+            separate.Location = new Point(580, 35);
+            separate.Width = 120;
+            separate.Height = 3;
+            separate.BackColor = Color.Lavender;
+            Controls.Add(separate);
+
             Button buttonFriendSearchByNickname = new Button();
-            buttonFriendSearchByNickname.Location = new Point(400, 230);
-            buttonFriendSearchByNickname.Width = 40;
-            buttonFriendSearchByNickname.Height = 21;
+            buttonFriendSearchByNickname.Location = new Point(722, 12);
+            buttonFriendSearchByNickname.Width = 50;
+            buttonFriendSearchByNickname.Height = 25;
             buttonFriendSearchByNickname.Text = "검색";
+            buttonFriendSearchByNickname.BackColor = Color.Lavender;
+            buttonFriendSearchByNickname.FlatStyle = FlatStyle.Flat;
+            buttonFriendSearchByNickname.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+            buttonFriendSearchByNickname.FlatAppearance.BorderSize = 0;
+            buttonFriendSearchByNickname.ForeColor = Color.DarkSlateBlue;
             Controls.Add(buttonFriendSearchByNickname);
             buttonFriendSearchByNickname.Click += ButtonFriendSearchByNickname_Click;
 
@@ -130,7 +194,7 @@ namespace DBP
                 DataRow friendInfoRow = friendInfo.Rows[0];
 
                 GroupBox groupBoxFriend = new GroupBox();
-                groupBoxFriend.Location = new Point(45, i * 150 + 270);
+                groupBoxFriend.Location = new Point(45, i * 150 + 220);
                 Controls.Add(groupBoxFriend);
 
                 //여기서 둘다 실행됨
@@ -146,21 +210,24 @@ namespace DBP
                 groupBoxFriend.Height = 150;
 
                 PictureBox pictureBoxFriendProfile = new PictureBox();
-                pictureBoxFriendProfile.Location = new Point(25, 25);
+                pictureBoxFriendProfile.Location = new Point(25, 28);
                 pictureBoxFriendProfile.Width = 100;
                 pictureBoxFriendProfile.Height = 100;
                 groupBoxFriend.Controls.Add(pictureBoxFriendProfile);
 
                 Label friendnickname = new Label();
+                friendnickname.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
                 groupBoxFriend.Controls.Add(friendnickname);
 
                 Label friendrole = new Label();
-                friendrole.Location = new Point(150, 45);
+                friendrole.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                friendrole.Location = new Point(150, 47);
                 friendrole.AutoSize = true;
                 groupBoxFriend.Controls.Add(friendrole);
 
                 Label friendstateMessage = new Label();
-                friendstateMessage.Location = new Point(150, 80);
+                friendstateMessage.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                friendstateMessage.Location = new Point(150, 90);
                 groupBoxFriend.Controls.Add(friendstateMessage);
 
                 byte[] friendbImage = null;
@@ -253,7 +320,7 @@ namespace DBP
                 GroupBox groupBoxFriend = new GroupBox();
                 //groupBoxFriend.Location = new Point(45, i * 150 + 270);
 
-                groupBoxFriend.Location = new Point(45, i * 150 + 270);
+                groupBoxFriend.Location = new Point(45, i * 150 + 220);
                 groupBoxFriend.MouseClick += GroupBoxFriend_MouseClick;
                 groupBoxFriend.MouseDoubleClick += GroupBoxFriend_MouseDoubleClick;
 
@@ -269,21 +336,24 @@ namespace DBP
                 Console.WriteLine(groupBoxFriend.Location);
 
                 PictureBox pictureBoxFriendProfile = new PictureBox();
-                pictureBoxFriendProfile.Location = new Point(25, 25);
+                pictureBoxFriendProfile.Location = new Point(25, 28);
                 pictureBoxFriendProfile.Width = 100;
                 pictureBoxFriendProfile.Height = 100;
                 groupBoxFriend.Controls.Add(pictureBoxFriendProfile);
 
                 Label friendnickname = new Label();
+                friendnickname.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
                 groupBoxFriend.Controls.Add(friendnickname);
 
                 Label friendrole = new Label();
-                friendrole.Location = new Point(150, 45);
+                friendrole.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                friendrole.Location = new Point(150, 47);
                 friendrole.AutoSize = true;
                 groupBoxFriend.Controls.Add(friendrole);
 
                 Label friendstateMessage = new Label();
-                friendstateMessage.Location = new Point(150, 80);
+                friendstateMessage.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                friendstateMessage.Location = new Point(150, 90);
                 groupBoxFriend.Controls.Add(friendstateMessage);
 
                 byte[] friendbImage = null;

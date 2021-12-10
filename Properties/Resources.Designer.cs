@@ -63,9 +63,19 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap addFriend_b {
+        internal static System.Drawing.Bitmap addfriend_b {
             get {
-                object obj = ResourceManager.GetObject("addFriend_b", resourceCulture);
+                object obj = ResourceManager.GetObject("addfriend_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap addFriend_d {
+            get {
+                object obj = ResourceManager.GetObject("addFriend_d", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -93,9 +103,9 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap dark {
+        internal static System.Drawing.Bitmap chatSend_D {
             get {
-                object obj = ResourceManager.GetObject("dark", resourceCulture);
+                object obj = ResourceManager.GetObject("chatSend_D", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +113,9 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap dark1 {
+        internal static System.Drawing.Bitmap dark {
             get {
-                object obj = ResourceManager.GetObject("dark1", resourceCulture);
+                object obj = ResourceManager.GetObject("dark", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +133,9 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap emoticon_b1 {
+        internal static System.Drawing.Bitmap emoticon_d {
             get {
-                object obj = ResourceManager.GetObject("emoticon_b1", resourceCulture);
+                object obj = ResourceManager.GetObject("emoticon_d", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +193,29 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap exit_d {
+            get {
+                object obj = ResourceManager.GetObject("exit_d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap file_b {
             get {
                 object obj = ResourceManager.GetObject("file_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap file_d {
+            get {
+                object obj = ResourceManager.GetObject("file_d", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,16 +236,6 @@ namespace DBP.Properties {
         internal static System.Drawing.Bitmap friend_c_b {
             get {
                 object obj = ResourceManager.GetObject("friend_c_b", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap friend_c1 {
-            get {
-                object obj = ResourceManager.GetObject("friend_c1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -253,29 +273,9 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
-        internal static System.Drawing.Bitmap message_c1 {
-            get {
-                object obj = ResourceManager.GetObject("message_c1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
         internal static System.Drawing.Bitmap message_nc {
             get {
                 object obj = ResourceManager.GetObject("message_nc", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
-        /// </summary>
-        internal static System.Drawing.Bitmap message_nc1 {
-            get {
-                object obj = ResourceManager.GetObject("message_nc1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -293,9 +293,29 @@ namespace DBP.Properties {
         /// <summary>
         ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
         /// </summary>
+        internal static System.Drawing.Bitmap return_d {
+            get {
+                object obj = ResourceManager.GetObject("return_d", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
         internal static System.Drawing.Bitmap search_b {
             get {
                 object obj = ResourceManager.GetObject("search_b", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   System.Drawing.Bitmap 형식의 지역화된 리소스를 찾습니다.
+        /// </summary>
+        internal static System.Drawing.Bitmap search_d {
+            get {
+                object obj = ResourceManager.GetObject("search_d", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

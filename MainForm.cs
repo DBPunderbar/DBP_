@@ -31,6 +31,23 @@ namespace DBP
             this.userID = userID;
             mainform = this;
             InitializeComponent();
+            SetColor();
+
+            DataTable dataTableInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + userID + "'");
+            DataRow dataRowInfo = dataTableInfo.Rows[0];
+            string DarkFlag = dataRowInfo["DarkFlag"].ToString();
+
+            if (DarkFlag == "False")
+            {
+                DarkMode.SetarModeDark();
+                SetColor();
+            }
+            else if (DarkFlag == "True")
+            {
+                DarkMode.SetarModeClear();
+                SetColor();
+            }
+
             Connect();
         }
 
@@ -95,12 +112,18 @@ namespace DBP
 
         private void SetColor()
         {
-            panel1.BackColor = DarkMode.panelcolor;
+            //panel1.BackColor = DarkMode.panelcolor;
             panel2.BackColor = DarkMode.panelcolor;
             //messagePage1.BackColor = DarkMode.backcolor; -> messagePage1을 새로 생성해서 다크모드 적용이 안되는 것 같습니다,,
             buttonDarkMode.Image = DarkMode.imgMode;
             buttonMin.ForeColor = DarkMode.fontcolor;
             buttonClose.ForeColor = DarkMode.fontcolor;
+            buttonFriend.Image = DarkMode.imgMode_fbtn;
+
+            if (buttonChatting.Image == Resources.message_nc)
+            {
+                buttonChatting.Image = DarkMode.imgMode_cbtn;
+            }
         }
 
         private void buttonDarkMode_Click(object sender, EventArgs e)
@@ -178,8 +201,8 @@ namespace DBP
                 {
                     this.Invoke(new Action(delegate ()
                     {
-                        ((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-                        ((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
+                        //((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+                        //((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
                     }));
                 }
 

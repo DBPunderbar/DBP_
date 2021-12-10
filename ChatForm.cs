@@ -92,11 +92,34 @@ namespace DBP
             string[] contents = line3.Split('|');
             for (int i = 0; i < contents.Length; i++)
             {
-                string message = string.Format("[{0}]{1} : {2}", dateTime[i], writerName[i], contents[i]);
+                string message = string.Format("[{0}] {1} : {2}", dateTime[i], writerName[i], contents[i]);
 
                 this.Invoke(new Action(delegate () {
-                    richTextBoxChatLog.AppendText("\r\n" + message);
-                    richTextBoxChatLog.ScrollToCaret();
+                    GroupBox groupBoxChat = new GroupBox();
+                    groupBoxChat.Location = new Point(35, i * 150 + 20);
+
+                    flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
+                    flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
+                    groupBoxChat.Tag = i + 1;
+
+                    groupBoxChat.Text = "";
+
+                    groupBoxChat.Width = 500;
+                    groupBoxChat.Height = 50;
+
+                    Label chat = new Label();
+                    chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    chat.ForeColor = Color.DarkSlateBlue;
+                    chat.Location = new Point(20, 20);
+                    chat.AutoSize = true;
+
+                    groupBoxChat.Controls.Add(chat);
+
+                    chat.Text = message;
+
+                    //Console.WriteLine(chat.Text);
+                    //flowLayoutPanelChatLog.AppendText("\r\n" + message);
+                    //flowLayoutPanelChatLog.ScrollToCaret();
                 }));
             }
         }
@@ -106,8 +129,30 @@ namespace DBP
             if (writer == userID && receiver == receiverName)
             {
                 this.Invoke(new Action(delegate () {
-                    richTextBoxChatLog.AppendText("\r\n" + Message);
-                    richTextBoxChatLog.ScrollToCaret();
+
+                    GroupBox groupBoxChat = new GroupBox();
+                    groupBoxChat.Location = new Point(35, 150 + 20);
+
+                    flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
+                    flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
+
+                    groupBoxChat.Text = "";
+
+                    groupBoxChat.Width = 500;
+                    groupBoxChat.Height = 50;
+
+                    Label chat = new Label();
+                    chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                    chat.ForeColor = Color.DarkSlateBlue;
+                    chat.Location = new Point(20, 20);
+                    chat.AutoSize = true;
+
+                    groupBoxChat.Controls.Add(chat);
+
+                    chat.Text = Message;
+
+                    //flowLayoutPanelChatLog.AppendText("\r\n" + Message);
+                    //flowLayoutPanelChatLog.ScrollToCaret();
                 }));
             }
         }

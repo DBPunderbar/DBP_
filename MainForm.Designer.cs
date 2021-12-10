@@ -29,15 +29,16 @@ namespace DBP
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonAddFriends = new System.Windows.Forms.Button();
+            this.buttonDarkMode = new System.Windows.Forms.Button();
             this.buttonMin = new System.Windows.Forms.Button();
             this.buttonClose = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonFriend = new System.Windows.Forms.Button();
             this.buttonChatting = new System.Windows.Forms.Button();
-            this.buttonAddFriends = new System.Windows.Forms.Button();
-            this.buttonDarkMode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -56,6 +57,34 @@ namespace DBP
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseDown);
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.moveWindow_MouseUp);
+            // 
+            // buttonAddFriends
+            // 
+            this.buttonAddFriends.BackColor = System.Drawing.Color.Transparent;
+            this.buttonAddFriends.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonAddFriends.FlatAppearance.BorderSize = 0;
+            this.buttonAddFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddFriends.Image = global::DBP.Properties.Resources.addfriend_b;
+            this.buttonAddFriends.Location = new System.Drawing.Point(770, 0);
+            this.buttonAddFriends.Name = "buttonAddFriends";
+            this.buttonAddFriends.Size = new System.Drawing.Size(39, 39);
+            this.buttonAddFriends.TabIndex = 3;
+            this.buttonAddFriends.UseVisualStyleBackColor = false;
+            this.buttonAddFriends.Click += new System.EventHandler(this.buttonAddFriends_Click);
+            // 
+            // buttonDarkMode
+            // 
+            this.buttonDarkMode.BackColor = System.Drawing.Color.Transparent;
+            this.buttonDarkMode.Dock = System.Windows.Forms.DockStyle.Right;
+            this.buttonDarkMode.FlatAppearance.BorderSize = 0;
+            this.buttonDarkMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDarkMode.Image = ((System.Drawing.Image)(resources.GetObject("buttonDarkMode.Image")));
+            this.buttonDarkMode.Location = new System.Drawing.Point(809, 0);
+            this.buttonDarkMode.Name = "buttonDarkMode";
+            this.buttonDarkMode.Size = new System.Drawing.Size(39, 39);
+            this.buttonDarkMode.TabIndex = 2;
+            this.buttonDarkMode.UseVisualStyleBackColor = false;
+            this.buttonDarkMode.Click += new System.EventHandler(this.buttonDarkMode_Click);
             // 
             // buttonMin
             // 
@@ -107,8 +136,10 @@ namespace DBP
             // 
             this.buttonFriend.BackColor = System.Drawing.Color.Transparent;
             this.buttonFriend.FlatAppearance.BorderSize = 0;
+            this.buttonFriend.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonFriend.FlatAppearance.MouseOverBackColor = System.Drawing.Color.GhostWhite;
             this.buttonFriend.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonFriend.Image = global::DBP.Properties.Resources.friend_c1;
+            this.buttonFriend.Image = ((System.Drawing.Image)(resources.GetObject("buttonFriend.Image")));
             this.buttonFriend.Location = new System.Drawing.Point(12, 40);
             this.buttonFriend.Name = "buttonFriend";
             this.buttonFriend.Size = new System.Drawing.Size(75, 76);
@@ -120,42 +151,16 @@ namespace DBP
             // 
             this.buttonChatting.BackColor = System.Drawing.Color.Transparent;
             this.buttonChatting.FlatAppearance.BorderSize = 0;
+            this.buttonChatting.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
+            this.buttonChatting.FlatAppearance.MouseOverBackColor = System.Drawing.Color.GhostWhite;
             this.buttonChatting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonChatting.Image = global::DBP.Properties.Resources.message_nc1;
+            this.buttonChatting.Image = ((System.Drawing.Image)(resources.GetObject("buttonChatting.Image")));
             this.buttonChatting.Location = new System.Drawing.Point(12, 158);
             this.buttonChatting.Name = "buttonChatting";
             this.buttonChatting.Size = new System.Drawing.Size(75, 76);
             this.buttonChatting.TabIndex = 1;
             this.buttonChatting.UseVisualStyleBackColor = false;
             this.buttonChatting.Click += new System.EventHandler(this.buttonChatting_Click);
-            // 
-            // buttonAddFriends
-            // 
-            this.buttonAddFriends.BackColor = System.Drawing.Color.Transparent;
-            this.buttonAddFriends.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonAddFriends.FlatAppearance.BorderSize = 0;
-            this.buttonAddFriends.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddFriends.Image = global::DBP.Properties.Resources.addFriend_b;
-            this.buttonAddFriends.Location = new System.Drawing.Point(770, 0);
-            this.buttonAddFriends.Name = "buttonAddFriends";
-            this.buttonAddFriends.Size = new System.Drawing.Size(39, 39);
-            this.buttonAddFriends.TabIndex = 3;
-            this.buttonAddFriends.UseVisualStyleBackColor = false;
-            this.buttonAddFriends.Click += new System.EventHandler(this.buttonAddFriends_Click);
-            // 
-            // buttonDarkMode
-            // 
-            this.buttonDarkMode.BackColor = System.Drawing.Color.Transparent;
-            this.buttonDarkMode.Dock = System.Windows.Forms.DockStyle.Right;
-            this.buttonDarkMode.FlatAppearance.BorderSize = 0;
-            this.buttonDarkMode.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDarkMode.Image = global::DBP.Properties.Resources.dark1;
-            this.buttonDarkMode.Location = new System.Drawing.Point(809, 0);
-            this.buttonDarkMode.Name = "buttonDarkMode";
-            this.buttonDarkMode.Size = new System.Drawing.Size(39, 39);
-            this.buttonDarkMode.TabIndex = 2;
-            this.buttonDarkMode.UseVisualStyleBackColor = false;
-            this.buttonDarkMode.Click += new System.EventHandler(this.buttonDarkMode_Click);
             // 
             // MainForm
             // 

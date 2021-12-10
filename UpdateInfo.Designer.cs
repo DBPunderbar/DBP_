@@ -67,6 +67,10 @@ namespace DBP
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.textBoxPW = new System.Windows.Forms.TextBox();
             this.pictureBoxProfile = new System.Windows.Forms.PictureBox();
+            this.panel16 = new System.Windows.Forms.Panel();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.textBoxStateMessage = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxProfile)).BeginInit();
@@ -457,19 +461,72 @@ namespace DBP
             this.pictureBoxProfile.TabIndex = 46;
             this.pictureBoxProfile.TabStop = false;
             // 
+            // panel16
+            // 
+            this.panel16.BackColor = System.Drawing.Color.Lavender;
+            this.panel16.Location = new System.Drawing.Point(117, 524);
+            this.panel16.Name = "panel16";
+            this.panel16.Size = new System.Drawing.Size(256, 3);
+            this.panel16.TabIndex = 79;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label10.Location = new System.Drawing.Point(355, 483);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(18, 22);
+            this.label10.TabIndex = 78;
+            this.label10.Text = "\"";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("나눔스퀘어 ExtraBold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label9.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label9.Location = new System.Drawing.Point(113, 483);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(18, 22);
+            this.label9.TabIndex = 77;
+            this.label9.Text = "\"";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("나눔스퀘어 Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label8.ForeColor = System.Drawing.Color.DarkBlue;
+            this.label8.Location = new System.Drawing.Point(32, 483);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(64, 44);
+            this.label8.TabIndex = 76;
+            this.label8.Text = "상태\r\n메세지";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // textBoxStateMessage
             // 
-            this.textBoxStateMessage.Location = new System.Drawing.Point(126, 487);
+            this.textBoxStateMessage.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxStateMessage.Font = new System.Drawing.Font("나눔스퀘어", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.textBoxStateMessage.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.textBoxStateMessage.Location = new System.Drawing.Point(126, 494);
             this.textBoxStateMessage.Name = "textBoxStateMessage";
-            this.textBoxStateMessage.Size = new System.Drawing.Size(100, 25);
-            this.textBoxStateMessage.TabIndex = 69;
-            this.textBoxStateMessage.Text = "상태메시지";
+            this.textBoxStateMessage.Size = new System.Drawing.Size(233, 23);
+            this.textBoxStateMessage.TabIndex = 75;
+            this.textBoxStateMessage.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // UpdateInfo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(674, 550);
+            this.Controls.Add(this.panel16);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.textBoxStateMessage);
             this.Controls.Add(this.panel15);
             this.Controls.Add(this.label11);
@@ -558,6 +615,10 @@ namespace DBP
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.TextBox textBoxPW;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel16;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox textBoxStateMessage;
     }
 }
