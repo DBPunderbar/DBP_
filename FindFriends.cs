@@ -323,6 +323,30 @@ namespace DBP
                 profileViewForm.Show();
             }
         }*/
+
+        private void GroupBoxsRemove()
+        {
+            //foreach로 하니까 컨트롤 내에서 컨트롤이 없어지면 count는 그대로인데 control 전체 수는 작아져서 마지막 컨트롤 삭제를 못함
+            //ex) 전체 컨트롤 수가 4개인데 한개를 삭제하면 전체 수가 3개로 줄지만 4번째 컨트롤을 삭제를 못함
+            //foreach (Control control in this.Controls)
+            //{
+            //    if (control is GroupBox)
+            //    {
+            //        control.MouseClick -= GroupBoxFriend_MouseClick;
+            //        //this.Controls.Remove(control);
+            //        control.Dispose();
+            //    }
+            //}
+
+            //위의 foreach에서의 문제를 해결하기 위해 뒤에서부터 없애기로 함
+            for (int i = this.Controls.Count - 1; i >= 0; i--)
+            {
+                if (this.Controls[i] is GroupBox)
+                {
+                    this.Controls[i].Dispose();
+                }
+            }
+        }
         private void buttonSearchID_Click(object sender, EventArgs e)
         {
             myProfileLoad();
@@ -331,9 +355,8 @@ namespace DBP
 
         private void textBoxSearch_TextChanged(object sender, EventArgs e)
         {
-            if (textBoxSearch.Text == "")
-                return;
-            
+            if (textBoxSearch.Text.Length == 0)
+                GroupBoxsRemove();
         }
     }
 }
