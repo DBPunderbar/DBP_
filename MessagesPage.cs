@@ -84,10 +84,10 @@ namespace DBP {
                 groupBox.Controls.Add(pictureBoxFriendProfileImage);
 
                 //순서가 이렇게 되어야해서ㅠㅠ 죄송죄송합니다 
-                Label friendName = new Label();
-                friendName.Text = friendDR["nickname"].ToString();
-                friendName.AutoSize = true;
-                groupBox.Controls.Add(friendName);
+                //Label friendName = new Label();
+                //friendName.Text = friendDR["nickname"].ToString();
+                //friendName.AutoSize = true;
+                //groupBox.Controls.Add(friendName);
 
 
                 Label friendRole = new Label();
@@ -100,7 +100,7 @@ namespace DBP {
                 Label friendName = new Label();
                 friendName.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
                 friendName.Location = new Point(150 + friendRole.Width, 45);
-                friendName.Text = chatListDR["friendID"].ToString();
+                friendName.Text = friendDR["nickname"].ToString();
                 friendName.AutoSize = true;
                 groupBox.Controls.Add(friendName);
 

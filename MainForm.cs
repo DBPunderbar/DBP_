@@ -198,18 +198,20 @@ namespace DBP
                 if (CF == null) {
                     NewMessage(NotificationMessage);
                 }
-                else {
-                    this.Invoke(new Action(delegate () {
-                        ((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-                        ((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
-                else
-                {
-                    this.Invoke(new Action(delegate ()
-                    {
-                        //((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-                        //((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
-                    }));
-                }
+                //else {
+                //    this.Invoke(new Action(delegate () {
+                //        ((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+                //        ((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
+                //    }));
+                //}
+                //else
+                //{
+                //    this.Invoke(new Action(delegate ()
+                //    {
+                //        //((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
+                //        //((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
+                //    }));
+                //}
 
                 if (parsedMessage.Contains("[emoticon")) {
                     if (parsedMessage.Contains("[emoticon1]")) {
