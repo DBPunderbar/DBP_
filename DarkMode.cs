@@ -41,7 +41,7 @@ namespace DBP
             imgMode_cbtn = Resources.message_nc;
             imgMode_fadd = Resources.addfriend_b;
             fontcolor = Color.DarkSlateBlue;
-            backcolor = Color.FromArgb(0, 0, 0);
+            backcolor = Color.FromArgb(255, 255, 255);
             panelcolor = Color.Lavender;
             on = true;
         }

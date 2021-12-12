@@ -98,9 +98,15 @@ namespace DBP
             friendsPage1.Location = new Point(98, 39);
             //828, 543
             friendsPage1.Size = new Size(828, 543);
+            friendsPage1.BackColor = Color.Transparent;
 
             Controls.Add(friendsPage1);
             friendsPage1.BringToFront();
+
+            if (this.BackColor == Color.FromArgb(51, 51, 51))
+            {
+                buttonFriend.Image = Resources.friend_c_b;
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -127,11 +133,9 @@ namespace DBP
             buttonMin.ForeColor = DarkMode.fontcolor;
             buttonClose.ForeColor = DarkMode.fontcolor;
             buttonFriend.Image = DarkMode.imgMode_fbtn;
+            buttonUpdateInfo.ForeColor = DarkMode.fontcolor;
+            this.BackColor = DarkMode.backcolor;
 
-            if (buttonChatting.Image == Resources.message_nc)
-            {
-                buttonChatting.Image = DarkMode.imgMode_cbtn;
-            }
         }
 
         private void buttonDarkMode_Click(object sender, EventArgs e)
@@ -144,10 +148,14 @@ namespace DBP
         {
             buttonChatting.Image = Resources.message_c;
             buttonFriend.Image = Resources.friend_nc;
-
+            if(this.BackColor== Color.FromArgb(51, 51, 51))
+            {
+                buttonChatting.Image = Resources.message_c_b;
+            }
             messagesPage messagePage1 = new messagesPage(userID);
             messagePage1.Location = new Point(98, 39);
             messagePage1.Size = new Size(828, 543);
+            messagePage1.BackColor = Color.Transparent;
 
             Controls.Add(messagePage1);
             messagePage1.BringToFront();
