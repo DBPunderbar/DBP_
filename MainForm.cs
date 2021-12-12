@@ -207,7 +207,7 @@ namespace DBP
                 if (parsedMessage.Contains("[ZIP]")) {
                     string[] filepath2 = parsedMessage.Split(']');
                     byte[] receiveBytes = new byte[10240000];
-                    SendMessage(filepath2[2], "", "1");
+                    SendMessage(filepath2[2], filepath2[3], "1");
                 }
             }
         }
@@ -217,6 +217,7 @@ namespace DBP
             if (msgOrFile == "1")
             {
                 string filepath = receiverName;
+                string filename = text;
 
                 FileStream fs = new FileStream(filepath, FileMode.Open);
 
@@ -224,9 +225,19 @@ namespace DBP
                 socket.Connect(new IPEndPoint(IPAddress.Parse("118.67.142.129"),1027));
 
                 byte[] byteData = new byte[socket.SendBufferSize];
+                byte[] nameData = Encoding.UTF8.GetBytes(filename);
                 int length = 0;
+                //int nameLength = 0;
+                //파일 이름 보내기
+                /*for(int i=0;i<20;i++)
+                {
+                    Console.WriteLine(nameLength + "!!!");
+                    socket.Send(nameData);
+                }
+                Console.WriteLine("File name end!\r\n");*/
 
-                while(length < fs.Length)
+                // 파일 보내기
+                while(length <= fs.Length)
                 {
                     int read = fs.Read(byteData, 0, byteData.Length);
                     length += read;

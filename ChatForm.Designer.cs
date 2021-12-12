@@ -34,7 +34,7 @@ namespace DBP
             this.buttonClose = new System.Windows.Forms.Button();
             this.buttonBackList = new System.Windows.Forms.Button();
             this.textBoxWriteMsg = new System.Windows.Forms.TextBox();
-            this.textBox = new System.Windows.Forms.TextBox();
+            this.chatSearchtextBox = new System.Windows.Forms.TextBox();
             this.panel14 = new System.Windows.Forms.Panel();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.panelEmoticonBox = new System.Windows.Forms.Panel();
@@ -123,13 +123,13 @@ namespace DBP
             this.textBoxWriteMsg.TabIndex = 21;
             this.textBoxWriteMsg.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxWriteMsg_KeyDown);
             // 
-            // textBox
+            // chatSearchtextBox
             // 
-            this.textBox.Location = new System.Drawing.Point(576, 52);
-            this.textBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.textBox.Name = "textBox";
-            this.textBox.Size = new System.Drawing.Size(177, 21);
-            this.textBox.TabIndex = 23;
+            this.chatSearchtextBox.Location = new System.Drawing.Point(576, 52);
+            this.chatSearchtextBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.chatSearchtextBox.Name = "chatSearchtextBox";
+            this.chatSearchtextBox.Size = new System.Drawing.Size(177, 21);
+            this.chatSearchtextBox.TabIndex = 23;
             // 
             // panel14
             // 
@@ -262,6 +262,7 @@ namespace DBP
             this.buttonSearchMsg.Size = new System.Drawing.Size(34, 31);
             this.buttonSearchMsg.TabIndex = 24;
             this.buttonSearchMsg.UseVisualStyleBackColor = false;
+            this.buttonSearchMsg.Click += new System.EventHandler(this.buttonSearchMsg_Click);
             // 
             // buttonSendMsg
             // 
@@ -298,7 +299,7 @@ namespace DBP
             this.Controls.Add(this.buttonSendFile);
             this.Controls.Add(this.buttonExitChat);
             this.Controls.Add(this.buttonSearchMsg);
-            this.Controls.Add(this.textBox);
+            this.Controls.Add(this.chatSearchtextBox);
             this.Controls.Add(this.buttonSendMsg);
             this.Controls.Add(this.textBoxWriteMsg);
             this.Controls.Add(this.panel1);
@@ -325,7 +326,7 @@ namespace DBP
         private System.Windows.Forms.Button buttonClose;
         private System.Windows.Forms.TextBox textBoxWriteMsg;
         private System.Windows.Forms.Button buttonSendMsg;
-        private System.Windows.Forms.TextBox textBox;
+        private System.Windows.Forms.TextBox chatSearchtextBox;
         private System.Windows.Forms.Button buttonSearchMsg;
         private System.Windows.Forms.Button buttonExitChat;
         private System.Windows.Forms.Button buttonBackList;
