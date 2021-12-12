@@ -434,36 +434,6 @@ namespace DBP
             int contentByteLength = 0;
             FileStream fs = new FileStream(localpath+"/DBP_.zip", FileMode.Create, FileAccess.Write);
 
-            /*byte[] receive = new byte[10240000];
-            socket.Receive(receive);
-            int index = 0;
-            for (int i = 0; i < 10240000; i++)
-            {
-                if (receive[i] == '0')
-                {
-                    break;
-                }
-                index = i;
-            }
-            BinaryWriter bw = new BinaryWriter(fs);
-            bw.Write(receive, 0, 576325);*/
-
-            int recv = 0;
-            /*byte[] receive = new byte[10240000];
-            socket.Receive(receive);
-            int index = 0;
-            for (int i = 0; i < 10240000; i++)
-            {
-                if (receive[i] == '0')
-                {
-                    break;
-                }
-                index = i;
-            }
-            BinaryWriter bw = new BinaryWriter(fs);
-            bw.Write(receive, 0, 576325);*/
-
-            int recv = 0;
             int brk = 0;
             while (contentByteLength < 10240000)
             {
