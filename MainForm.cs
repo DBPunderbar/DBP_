@@ -92,7 +92,9 @@ namespace DBP
         private void buttonFriend_Click(object sender, EventArgs e)
         {
             buttonChatting.Image = Resources.message_nc;
+            buttonChatting.Image.Tag = 0;
             buttonFriend.Image = Resources.friend_c;
+            buttonFriend.Image.Tag = 1;
 
             friendsPage friendsPage1 = new friendsPage(userID);
             friendsPage1.Location = new Point(98, 39);
@@ -147,8 +149,11 @@ namespace DBP
         private void buttonChatting_Click(object sender, EventArgs e)
         {
             buttonChatting.Image = Resources.message_c;
+            buttonChatting.Image.Tag = 1;
             buttonFriend.Image = Resources.friend_nc;
-            if(this.BackColor== Color.FromArgb(51, 51, 51))
+            buttonFriend.Image.Tag = 0;
+
+            if (this.BackColor== Color.FromArgb(51, 51, 51))
             {
                 buttonChatting.Image = Resources.message_c_b;
             }
@@ -268,8 +273,8 @@ namespace DBP
 
         private void MainForm_Activated(object sender, EventArgs e)
         {
-            buttonChatting.Image = Resources.message_nc;
-            buttonFriend.Image = Resources.friend_c;
+            if (Convert.ToInt32(buttonFriend.Image.Tag) == 0)
+                return;
 
             friendsPage friendsPage1 = new friendsPage(userID);
             friendsPage1.Location = new Point(98, 39);

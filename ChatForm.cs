@@ -539,6 +539,22 @@ namespace DBP
             }
         }
 
+        private void buttonExitChat_Click(object sender, EventArgs e)
+        {
 
+            if (userID == receiverName)
+            {
+                DBManager.GetDBManager().SqlNonReturnCommand("DELETE FROM s5584534.chatManagement WHERE writerName = '" + userID + "' AND receiverName = 'ToMe'");
+                DBManager.GetDBManager().SqlNonReturnCommand("UPDATE s5584534.friends SET currentChat = '0' WHERE userID = '" + userID + "' AND friendID = 'ToMe'");
+            }
+            else
+            {
+                DBManager.GetDBManager().SqlNonReturnCommand("DELETE FROM s5584534.chatManagement WHERE (writerName = '" + userID + "' AND receiverName = '" + receiverName + "') " +
+                    "OR (writerName = '" + receiverName + "' AND receiverName = '" + userID + "')");
+                DBManager.GetDBManager().SqlNonReturnCommand("UPDATE s5584534.friends SET currentChat = '0' WHERE userID = '" + userID + "' AND friendID = '" + receiverName + "'");
+            }
+            this.Close();
+            
+        }
     }
 }

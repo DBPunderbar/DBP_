@@ -83,7 +83,8 @@ namespace DBP
             DataRow dataRowInfo = dataTableInfo.Rows[0];
 
             byte[] bImage = (byte[])dataRowInfo["profileImage"];
-            if (pictureBoxProfile.Tag != null) {
+            if (pictureBoxProfile.Tag != null)
+            {
                 FileStream fs = new FileStream(pictureBoxProfile.Tag.ToString(), FileMode.Open, FileAccess.Read);
                 bImage = new byte[fs.Length];
                 fs.Read(bImage, 0, (int)fs.Length);
@@ -91,7 +92,7 @@ namespace DBP
             }
 
             string addr = textBoxAddr.Text + "|" + textBoxAddr2.Text + "|" + textBoxAddr3.Text + "|" + textBoxAddr4.Text + "|";
-            DBManager.GetDBManager().SqlImageCommand("UPDATE user SET userPW = hex(aes_encrypt('" + textBoxPW.Text + "','pw')), name = '" + textBoxName.Text + "', addr = '" + addr + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + userID + "'", bImage);
+            DBManager.GetDBManager().SqlImageCommand("UPDATE user SET userPW = hex(aes_encrypt('" + textBoxPW.Text + "','pw')), name = '" + textBoxName.Text + "', addr = '" + addr + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "', stateMessage = '" + textBoxStateMessage.Text + "' WHERE userID = '" + userID + "'", bImage);
 
             this.Close();
 
