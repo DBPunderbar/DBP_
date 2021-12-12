@@ -89,6 +89,11 @@ namespace DBP {
                 //friendName.AutoSize = true;
                 //groupBox.Controls.Add(friendName);
 
+                Label friendName = new Label();
+                friendName.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
+                friendName.Text = friendDR["nickname"].ToString();
+                friendName.AutoSize = true;
+                groupBox.Controls.Add(friendName);
 
                 Label friendRole = new Label();
                 friendRole.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
@@ -97,12 +102,7 @@ namespace DBP {
                 friendRole.AutoSize = true;
                 groupBox.Controls.Add(friendRole);
 
-                Label friendName = new Label();
-                friendName.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
-                friendName.Location = new Point(150 + friendRole.Width, 45);
-                friendName.Text = friendDR["nickname"].ToString();
-                friendName.AutoSize = true;
-                groupBox.Controls.Add(friendName);
+                friendName.Location = new Point(150 + friendRole.Width, 45); // friendRole.Width 가 필요해서 뒤로 빼둠
 
                 Label lastChat = new Label();
                 lastChat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
@@ -137,7 +137,7 @@ namespace DBP {
             switch (e.ClickedItem.Text)
             {
                 case "삭제":
-                    DataTable dataTableWho = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.user WHERE nickname = '" + groupBoxInTexts[2] + "'");
+                    DataTable dataTableWho = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM s5584534.user WHERE nickname = '" + groupBoxInTexts[1] + "'");
                     DataRow dataRowWho = dataTableWho.Rows[0];
                     string friendID = dataRowWho["userID"].ToString();
                     if (userID == friendID)
@@ -176,7 +176,7 @@ namespace DBP {
                 groupBoxInTexts.Add(control.Text);
             }
 
-            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[2] + "'");
+            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[1] + "'");
             DataRow dataRowFriend = dataTablefriend.Rows[0];
             string friendID = dataRowFriend["userID"].ToString();
 

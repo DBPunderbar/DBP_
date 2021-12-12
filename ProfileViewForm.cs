@@ -240,7 +240,7 @@ namespace DBP
                 if (dataRow["friendID"].ToString() == "ToMe")
                 {
                     //i++됐을때 그룹박스 태그가 하나 비어짐 ==> 삭제할때 굳이 상관없을듯
-                    i++;
+                    //i++;
                     continue;
                 }
                 DataTable friendInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + dataRow["friendID"].ToString() + "'");
