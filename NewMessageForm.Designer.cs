@@ -35,7 +35,7 @@ namespace DBP {
             this.labelText.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labelText.Location = new System.Drawing.Point(0, 0);
             this.labelText.Name = "labelText";
-            this.labelText.Size = new System.Drawing.Size(300, 180);
+            this.labelText.Size = new System.Drawing.Size(262, 144);
             this.labelText.TabIndex = 1;
             this.labelText.Text = "내용";
             this.labelText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -48,21 +48,22 @@ namespace DBP {
             // labelTitle
             // 
             this.labelTitle.AutoSize = true;
-            this.labelTitle.Location = new System.Drawing.Point(100, 30);
+            this.labelTitle.Location = new System.Drawing.Point(88, 24);
             this.labelTitle.Name = "labelTitle";
-            this.labelTitle.Size = new System.Drawing.Size(107, 15);
+            this.labelTitle.Size = new System.Drawing.Size(85, 12);
             this.labelTitle.TabIndex = 2;
             this.labelTitle.Text = "새 메시지 알림";
             // 
             // NewMessageForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(300, 180);
+            this.ClientSize = new System.Drawing.Size(262, 144);
             this.Controls.Add(this.labelTitle);
             this.Controls.Add(this.labelText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "NewMessageForm";
             this.Text = "NewMessageForm";
             this.TopMost = true;

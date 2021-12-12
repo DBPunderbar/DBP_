@@ -176,11 +176,10 @@ namespace DBP {
                 groupBoxInTexts.Add(control.Text);
             }
 
-            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[1] + "'");
+            DataTable dataTablefriend = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname = '" + groupBoxInTexts[2] + "'");
             DataRow dataRowFriend = dataTablefriend.Rows[0];
             string friendID = dataRowFriend["userID"].ToString();
 
-            // 챗 폼 열어주기 -> 멸망
             //채팅하는 곳으로 이동
             //friends 테이블에 채팅중인 flag도 함께 디비에 저장(UPDATE문으로)
             if (friendID == userID)

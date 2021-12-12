@@ -95,64 +95,155 @@ namespace DBP
                 string message = string.Format("[{0}] {1} : {2}", dateTime[i], writerName[i], contents[i]);
 
                 this.Invoke(new Action(delegate () {
-                    GroupBox groupBoxChat = new GroupBox();
-                    groupBoxChat.Location = new Point(35, i * 150 + 20);
+                    if (!message.Contains("[emoticon")) { // 일반 메시지
+                        GroupBox groupBoxChat = new GroupBox();
+                        groupBoxChat.Location = new Point(35, 150 + 20);
+                        groupBoxChat.Text = "";
+                        groupBoxChat.Width = 500;
+                        groupBoxChat.Height = 50;
 
-                    flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
-                    flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
-                    groupBoxChat.Tag = i + 1;
+                        flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
+                        flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
 
-                    groupBoxChat.Text = "";
+                        Label chat = new Label();
+                        chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                        chat.ForeColor = Color.DarkSlateBlue;
+                        chat.Dock = DockStyle.Fill;
+                        if (writerName[i] == userID)
+                            chat.TextAlign = ContentAlignment.MiddleRight;
+                        else
+                            chat.TextAlign = ContentAlignment.MiddleLeft;
+                        chat.AutoSize = false;
 
-                    groupBoxChat.Width = 500;
-                    groupBoxChat.Height = 50;
+                        groupBoxChat.Controls.Add(chat);
+                        chat.Text = message;
+                    }
 
-                    Label chat = new Label();
-                    chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
-                    chat.ForeColor = Color.DarkSlateBlue;
-                    chat.Location = new Point(20, 20);
-                    chat.AutoSize = true;
+                    else { // 이모티콘
+                        GroupBox groupBoxChat = new GroupBox();
+                        groupBoxChat.Location = new Point(35, 150 + 20);
+                        groupBoxChat.Text = "";
+                        groupBoxChat.Width = 500;
+                        groupBoxChat.Height = 160;
 
-                    groupBoxChat.Controls.Add(chat);
+                        flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
+                        flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
 
-                    chat.Text = message;
+                        PictureBox emoticon = new PictureBox();
+                        emoticon.Size = new Size(100, 100);
+                        emoticon.SizeMode = PictureBoxSizeMode.Zoom;
+                        emoticon.Location = new Point(380, 50);
+                        if (message.Contains("[emoticon1]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon1;
+                        }
+                        else if (message.Contains("[emoticon2]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon2;
+                        }
+                        else if (message.Contains("[emoticon3]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon3;
+                        }
+                        else if (message.Contains("[emoticon4]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon4;
+                        }
+                        groupBoxChat.Controls.Add(emoticon);
 
-                    //Console.WriteLine(chat.Text);
-                    //flowLayoutPanelChatLog.AppendText("\r\n" + message);
-                    //flowLayoutPanelChatLog.ScrollToCaret();
+                        Label chat = new Label();
+                        chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                        chat.ForeColor = Color.DarkSlateBlue;
+                        chat.Dock = DockStyle.Top;
+                        if (writerName[i] == userID) {
+                            chat.TextAlign = ContentAlignment.MiddleRight;
+                            emoticon.Location = new Point(380, 50);
+                        }
+                        else {
+                            chat.TextAlign = ContentAlignment.MiddleLeft;
+                            emoticon.Location = new Point(20, 50);
+                        }
+                        chat.AutoSize = false;
+                        groupBoxChat.Controls.Add(chat);
+
+                        message = message.Substring(0, message.Length - 12);
+                        chat.Text = message;
+                    }
                 }));
             }
         }
 
-        public void ReceiveChat(string writer, string receiver, string Message)
+        public void ReceiveChat(string writer, string receiver, string message)
         {
             if (writer == userID && receiver == receiverName)
             {
                 this.Invoke(new Action(delegate () {
+                    if (!message.Contains("[emoticon")) { // 일반 메시지
+                        GroupBox groupBoxChat = new GroupBox();
+                        groupBoxChat.Location = new Point(35, 150 + 20);
+                        groupBoxChat.Text = "";
+                        groupBoxChat.Width = 500;
+                        groupBoxChat.Height = 50;
 
-                    GroupBox groupBoxChat = new GroupBox();
-                    groupBoxChat.Location = new Point(35, 150 + 20);
+                        flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
+                        flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
 
-                    flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
-                    flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
+                        Label chat = new Label();
+                        chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                        chat.ForeColor = Color.DarkSlateBlue;
+                        chat.Dock = DockStyle.Fill;
+                        if (writer == userID)
+                            chat.TextAlign = ContentAlignment.MiddleRight;
+                        else
+                            chat.TextAlign = ContentAlignment.MiddleLeft;
+                        chat.AutoSize = false;
+                        groupBoxChat.Controls.Add(chat);
+                        chat.Text = message;
+                    }
+                    else { // 이모티콘
+                        GroupBox groupBoxChat = new GroupBox();
+                        groupBoxChat.Location = new Point(35, 150 + 20);
+                        groupBoxChat.Text = "";
+                        groupBoxChat.Width = 500;
+                        groupBoxChat.Height = 160;
 
-                    groupBoxChat.Text = "";
+                        flowLayoutPanelChatLog.Controls.Add(groupBoxChat);
+                        flowLayoutPanelChatLog.ScrollControlIntoView(groupBoxChat);
 
-                    groupBoxChat.Width = 500;
-                    groupBoxChat.Height = 50;
+                        PictureBox emoticon = new PictureBox();
+                        emoticon.Size = new Size(100, 100);
+                        emoticon.SizeMode = PictureBoxSizeMode.Zoom;
+                        
+                        if (message.Contains("[emoticon1]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon1;
+                        }
+                        else if (message.Contains("[emoticon2]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon2;
+                        }
+                        else if (message.Contains("[emoticon3]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon3;
+                        }
+                        else if (message.Contains("[emoticon4]")) {
+                            emoticon.Image = DBP.Properties.Resources.emoticon4;
+                        }
+                        groupBoxChat.Controls.Add(emoticon);
 
-                    Label chat = new Label();
-                    chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
-                    chat.ForeColor = Color.DarkSlateBlue;
-                    chat.Location = new Point(20, 20);
-                    chat.AutoSize = true;
+                        Label chat = new Label();
+                        chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                        chat.ForeColor = Color.DarkSlateBlue;
+                        chat.Dock = DockStyle.Top;
+                        if (writer == userID) {
+                            chat.TextAlign = ContentAlignment.MiddleRight;
+                            emoticon.Location = new Point(380, 50);
+                        }
+                        else {
+                            chat.TextAlign = ContentAlignment.MiddleLeft;
+                            emoticon.Location = new Point(20, 50);
+                        }
+                        chat.AutoSize = false;
+                        groupBoxChat.Controls.Add(chat);
 
-                    groupBoxChat.Controls.Add(chat);
+                        message = message.Substring(0, message.Length - 12);
+                        chat.Text = message;
+                    }
 
-                    chat.Text = Message;
-
-                    //flowLayoutPanelChatLog.AppendText("\r\n" + Message);
-                    //flowLayoutPanelChatLog.ScrollToCaret();
+                    flowLayoutPanelChatLog.Refresh();
                 }));
             }
         }

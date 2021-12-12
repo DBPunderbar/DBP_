@@ -42,7 +42,6 @@ namespace DBP
             this.pictureBoxEmo3 = new System.Windows.Forms.PictureBox();
             this.pictureBoxEmo2 = new System.Windows.Forms.PictureBox();
             this.pictureBoxEmo1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.buttonSendEmoji = new System.Windows.Forms.Button();
             this.buttonSendFile = new System.Windows.Forms.Button();
             this.buttonExitChat = new System.Windows.Forms.Button();
@@ -55,7 +54,6 @@ namespace DBP
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -111,7 +109,7 @@ namespace DBP
             this.buttonBackList.Image = global::DBP.Properties.Resources.return_b;
             this.buttonBackList.Location = new System.Drawing.Point(0, 0);
             this.buttonBackList.Name = "buttonBackList";
-            this.buttonBackList.Size = new System.Drawing.Size(39, 39);
+            this.buttonBackList.Size = new System.Drawing.Size(39, 31);
             this.buttonBackList.TabIndex = 26;
             this.buttonBackList.UseVisualStyleBackColor = false;
             this.buttonBackList.Click += new System.EventHandler(this.buttonBackList_Click);
@@ -158,7 +156,7 @@ namespace DBP
             this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo3);
             this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo2);
             this.panelEmoticonBox.Controls.Add(this.pictureBoxEmo1);
-            this.panelEmoticonBox.Location = new System.Drawing.Point(658, 323);
+            this.panelEmoticonBox.Location = new System.Drawing.Point(566, 253);
             this.panelEmoticonBox.Name = "panelEmoticonBox";
             this.panelEmoticonBox.Size = new System.Drawing.Size(184, 168);
             this.panelEmoticonBox.TabIndex = 31;
@@ -212,23 +210,13 @@ namespace DBP
             this.pictureBoxEmo1.TabStop = false;
             this.pictureBoxEmo1.Click += new System.EventHandler(this.pictureBoxEmo1_Click);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlDark;
-            this.pictureBox1.Location = new System.Drawing.Point(529, 46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(100, 100);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            // 
             // buttonSendEmoji
             // 
             this.buttonSendEmoji.BackColor = System.Drawing.Color.Transparent;
             this.buttonSendEmoji.FlatAppearance.BorderSize = 0;
             this.buttonSendEmoji.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSendEmoji.Image = global::DBP.Properties.Resources.emoticon_b;
-            this.buttonSendEmoji.Location = new System.Drawing.Point(646, 533);
+            this.buttonSendEmoji.Location = new System.Drawing.Point(569, 426);
             this.buttonSendEmoji.Name = "buttonSendEmoji";
             this.buttonSendEmoji.Size = new System.Drawing.Size(34, 31);
             this.buttonSendEmoji.TabIndex = 28;
@@ -293,20 +281,8 @@ namespace DBP
             this.flowLayoutPanelChatLog.AutoScroll = true;
             this.flowLayoutPanelChatLog.Location = new System.Drawing.Point(12, 56);
             this.flowLayoutPanelChatLog.Name = "flowLayoutPanelChatLog";
-            this.flowLayoutPanelChatLog.Size = new System.Drawing.Size(609, 471);
+            this.flowLayoutPanelChatLog.Size = new System.Drawing.Size(531, 365);
             this.flowLayoutPanelChatLog.TabIndex = 33;
-            // 
-            this.buttonBackList.Name = "buttonBackList";
-            this.buttonBackList.Size = new System.Drawing.Size(39, 39);
-            this.buttonBackList.TabIndex = 26;
-            this.buttonBackList.UseVisualStyleBackColor = false;
-            this.buttonBackList.Click += new System.EventHandler(this.buttonBackList_Click);
-            // 
-            this.buttonBackList.Name = "buttonBackList";
-            this.buttonBackList.Size = new System.Drawing.Size(39, 39);
-            this.buttonBackList.TabIndex = 26;
-            this.buttonBackList.UseVisualStyleBackColor = false;
-            this.buttonBackList.Click += new System.EventHandler(this.buttonBackList_Click);
             // 
             // ChatForm
             // 
@@ -314,7 +290,6 @@ namespace DBP
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(810, 466);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.panelEmoticonBox);
             this.Controls.Add(this.flowLayoutPanelChatLog);
             this.Controls.Add(this.textBox3);
@@ -338,7 +313,6 @@ namespace DBP
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxEmo1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -364,7 +338,6 @@ namespace DBP
         private System.Windows.Forms.PictureBox pictureBoxEmo3;
         private System.Windows.Forms.PictureBox pictureBoxEmo2;
         private System.Windows.Forms.PictureBox pictureBoxEmo1;
-        public System.Windows.Forms.PictureBox pictureBox1;
         public System.Windows.Forms.FlowLayoutPanel flowLayoutPanelChatLog;
     }
 }

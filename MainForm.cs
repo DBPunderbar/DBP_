@@ -170,7 +170,6 @@ namespace DBP
         public string receiveMessage = "";
         public string parsedMessage = "";
         public void ReceiveMessage() {
-            //ChatForm chatform = new ChatForm(userID, "");
             while (true) {
                 byte[] receiveByte = new byte[1024];
                 client.GetStream().Read(receiveByte, 0, receiveByte.Length);
@@ -198,34 +197,11 @@ namespace DBP
                 if (CF == null) {
                     NewMessage(NotificationMessage);
                 }
-                //else {
-                //    this.Invoke(new Action(delegate () {
-                //        ((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-                //        ((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
-                //    }));
-                //}
-                //else
-                //{
-                //    this.Invoke(new Action(delegate ()
-                //    {
-                //        //((ChatForm)CF).richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-                //        //((ChatForm)CF).richTextBoxChatLog.ScrollToCaret();
-                //    }));
-                //}
-
-                if (parsedMessage.Contains("[emoticon")) {
-                    if (parsedMessage.Contains("[emoticon1]")) {
-                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon1;
-                    }
-                    else if (parsedMessage.Contains("[emoticon2]")) {
-                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon2;
-                    }
-                    else if (parsedMessage.Contains("[emoticon3]")) {
-                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon3;
-                    }
-                    else if (parsedMessage.Contains("[emoticon4]")) {
-                        ((ChatForm)CF).pictureBox1.Image = DBP.Properties.Resources.emoticon4;
-                    }
+                else {
+                    ChatForm.chatform.ReceiveChat(parse[0], parse[1], parsedMessage);
+                    this.Invoke(new Action(delegate () {
+                        ((ChatForm)CF).flowLayoutPanelChatLog.Refresh();
+                    }));
                 }
 
                 if (parsedMessage.Contains("[ZIP]")) {
@@ -233,17 +209,6 @@ namespace DBP
                     byte[] receiveBytes = new byte[10240000];
                     SendMessage(filepath2[2], "", "1");
                 }
-
-
-                //ChatForm CF = new ChatForm(parse[0], parse[1]);
-                //CF.richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-                //ChatForm CF2 = new ChatForm(parse[1], parse[0]);
-                //CF2.richTextBoxChatLog.AppendText("\r\n" + parsedMessage);
-
-                //if (ChatForm.chatform.Created == false)
-                //    MessageBox.Show("새 메시지");
-                //ChatForm.chatform.ReceiveChat(parse[0], parse[1], parsedMessage);
-                //ChatForm.chatform.ReceiveChat(parse[1], parse[0], parsedMessage);
             }
         }
 
