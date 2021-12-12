@@ -324,8 +324,10 @@ namespace DBP
 
         List<string> groupBoxInTexts = new List<string>();
         string groupBoxTag = string.Empty;
+        bool button = false;
         private void GroupBoxChat_MouseClick(object sender, MouseEventArgs e)
         {
+            button = false;
             Console.WriteLine(sender.ToString());
             groupBoxInTexts.Clear();
             foreach (Control control in ((GroupBox)sender).Controls)
@@ -347,6 +349,7 @@ namespace DBP
 
                 menu.Items.Add("삭제");
                 // 버튼(다운로드)의 경우
+                if(((GroupBox)sender).Controls[0] is Button) { button = true; }
                 groupBoxTag = ((GroupBox)sender).Tag.ToString();
                 menu.ItemClicked += new ToolStripItemClickedEventHandler(Menu_ItemClicked);
 
@@ -362,9 +365,23 @@ namespace DBP
                 case "삭제":
                     string[] contentValue = groupBoxTag.Split(':');
                     string[] contentTime = groupBoxTag.Split(']');
-                    string query = "UPDATE s5584534.chatManagement SET contents='메세지가 삭제되었습니다.' WHERE ((writerName = '" + userID + "' AND receiverName = '" + receiverName + "') "
-                + "OR (writerName = '" + receiverName + "' AND receiverName = '" + userID + "')) AND dateTime LIKE '%"+contentTime[0].Substring(1)+"%'AND contents='" + contentValue[3].Substring(1) + "';";
-                    DBManager.GetDBManager().SqlNonReturnCommand(query);
+                    string deleteSlash = groupBoxTag.Replace(':', '@');
+                    string[] deletegol = deleteSlash.Split('@');
+                    string query = "";
+                    if (button == true)
+                    {
+                        deletegol[3] = deletegol[3] + ":" + deletegol[4];
+                        query = "UPDATE s5584534.chatManagement SET contents='메세지가 삭제되었습니다.' WHERE ((writerName = '" + userID + "' AND receiverName = '" + receiverName + "') "
+                + "OR (writerName = '" + receiverName + "' AND receiverName = '" + userID + "')) AND dateTime='" + contentTime[0].Substring(1) + "' AND contents='" + deletegol[3].Substring(1) + "';";
+                        DBManager.GetDBManager().SqlNonReturnCommand(query);
+                    }
+                    else
+                    {
+                        query = "UPDATE s5584534.chatManagement SET contents='메세지가 삭제되었습니다.' WHERE ((writerName = '" + userID + "' AND receiverName = '" + receiverName + "') "
+                + "OR (writerName = '" + receiverName + "' AND receiverName = '" + userID + "')) AND dateTime='" + contentTime[0].Substring(1) + "' AND contents='" + contentValue[3].Substring(1) + "';";
+                        DBManager.GetDBManager().SqlNonReturnCommand(query);
+                    }
+                    Console.WriteLine("삭제 끝");
                     flowLayoutPanelChatLog.Controls.Clear();
                     ChattedLoad();
                     break;
