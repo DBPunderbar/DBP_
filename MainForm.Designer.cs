@@ -131,7 +131,7 @@ namespace DBP
             // 
             this.buttonUpdateInfo.FlatAppearance.BorderSize = 0;
             this.buttonUpdateInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdateInfo.Font = new System.Drawing.Font("나눔스퀘어 Bold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonUpdateInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.buttonUpdateInfo.ForeColor = System.Drawing.Color.MidnightBlue;
             this.buttonUpdateInfo.Location = new System.Drawing.Point(12, 484);
             this.buttonUpdateInfo.Name = "buttonUpdateInfo";
@@ -189,6 +189,7 @@ namespace DBP
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Activated += new System.EventHandler(this.MainForm_Activated);
             this.Load += new System.EventHandler(this.buttonFriend_Click);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
