@@ -25,8 +25,8 @@ namespace DBP
 
         //placeholder 설정
         public bool test = false;
-        TextBox[] txtList;
-        const string IdPlaceholder = "친구의 ID를 입력하세요 ...";
+        //TextBox[] txtList;
+        //const string IdPlaceholder = "친구의 ID를 입력하세요 ...";
 
         private List<string> profile = new List<string>();
         //현재 클라이언트 정보
@@ -240,7 +240,7 @@ namespace DBP
                 if (dataRow["friendID"].ToString() == "ToMe")
                 {
                     //i++됐을때 그룹박스 태그가 하나 비어짐 ==> 삭제할때 굳이 상관없을듯
-                    i++;
+                    //i++;
                     continue;
                 }
                 DataTable friendInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE userID = '" + dataRow["friendID"].ToString() + "'");

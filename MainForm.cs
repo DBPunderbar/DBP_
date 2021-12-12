@@ -77,11 +77,11 @@ namespace DBP
         }
         //↑여기까지
 
-        /*private void buttonUpdateInfo_Click(object sender, EventArgs e)
+        private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
             UpdateInfo mainForm3 = new UpdateInfo(userID);
             mainForm3.ShowDialog();
-        }*/
+        }
 
         //친구 테이블이 생성되었으니까 따로 수정 필요
 
@@ -93,18 +93,25 @@ namespace DBP
         {
             buttonChatting.Image = Resources.message_nc;
             buttonFriend.Image = Resources.friend_c;
+
             friendsPage friendsPage1 = new friendsPage(userID);
             friendsPage1.Location = new Point(98, 39);
             //828, 543
             friendsPage1.Size = new Size(828, 543);
+            friendsPage1.BackColor = Color.Transparent;
 
             Controls.Add(friendsPage1);
             friendsPage1.BringToFront();
+
+            if (this.BackColor == Color.FromArgb(51, 51, 51))
+            {
+                buttonFriend.Image = Resources.friend_c_b;
+            }
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            SendMessage("Server", "/exit","0");
+            SendMessage("Server", "/exit", "0");
             receiveMessageThread.Abort();
             this.Close();
         }
@@ -116,18 +123,19 @@ namespace DBP
 
         private void SetColor()
         {
-            //panel1.BackColor = DarkMode.panelcolor;
-            panel2.BackColor = DarkMode.panelcolor;
             //messagePage1.BackColor = DarkMode.backcolor; -> messagePage1을 새로 생성해서 다크모드 적용이 안되는 것 같습니다,,
+            //friendsPage1.BackColor = DarkMode.backcolor;
+
+            //이제 panel1도 살려도 되지않을까.?
+            panel1.BackColor = DarkMode.panelcolor;
+            panel2.BackColor = DarkMode.panelcolor;
             buttonDarkMode.Image = DarkMode.imgMode;
             buttonMin.ForeColor = DarkMode.fontcolor;
             buttonClose.ForeColor = DarkMode.fontcolor;
             buttonFriend.Image = DarkMode.imgMode_fbtn;
+            buttonUpdateInfo.ForeColor = DarkMode.fontcolor;
+            this.BackColor = DarkMode.backcolor;
 
-            if (buttonChatting.Image == Resources.message_nc)
-            {
-                buttonChatting.Image = DarkMode.imgMode_cbtn;
-            }
         }
 
         private void buttonDarkMode_Click(object sender, EventArgs e)
@@ -140,13 +148,19 @@ namespace DBP
         {
             buttonChatting.Image = Resources.message_c;
             buttonFriend.Image = Resources.friend_nc;
+            if(this.BackColor== Color.FromArgb(51, 51, 51))
+            {
+                buttonChatting.Image = Resources.message_c_b;
+            }
             messagesPage messagePage1 = new messagesPage(userID);
             messagePage1.Location = new Point(98, 39);
             messagePage1.Size = new Size(828, 543);
+            messagePage1.BackColor = Color.Transparent;
 
             Controls.Add(messagePage1);
             messagePage1.BringToFront();
         }
+
 
         private void buttonAddFriends_Click(object sender, EventArgs e)
         {

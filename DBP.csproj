@@ -236,7 +236,6 @@
     <None Include="emoticon\emoticon4.png" />
     <None Include="Resources\addfriend_b.png" />
     <None Include="Resources\addfriend_d.png" />
-    <None Include="Resources\bright.png" />
     <None Include="Resources\chatsend_b.png" />
     <None Include="Resources\chatsend_d.png" />
     <None Include="Resources\dark.png" />
@@ -256,6 +255,9 @@
     <None Include="Resources\return_d.png" />
     <None Include="Resources\search_b.png" />
     <None Include="Resources\search_d.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bright.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

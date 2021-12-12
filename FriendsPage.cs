@@ -18,7 +18,7 @@ namespace DBP
         //placeholder 설정
         public bool test = false;
         TextBox[] txtList;
-        const string IdPlaceholder = "검색할 친구의 ID를 입력하세요 ...";
+        const string IdPlaceholder = "검색할 친구의 닉네임을 입력하세요 ...";
 
         //그룹박스를 동적생성 해서 누가 이벤트를 발생시켰는지 알기 위해 선언한 전역변수
         public friendsPage()
@@ -96,7 +96,7 @@ namespace DBP
             bImage = (byte[])dataRowMyProfile["profileImage"];
 
             //role에 값이 있어야 Location 지정가능(원래 공백 + [positon] 길이 + 30띄워
-            Mynickname.Location = new Point(175 + Myrole.Width + 10, 45);
+            Mynickname.Location = new Point(170 + Myrole.Width, 45);
 
 
             if (bImage != null)
@@ -180,7 +180,7 @@ namespace DBP
             {
                 if (dataRow["friendID"].ToString() == "ToMe")
                 {
-                    i++;
+                    //i++;
                     continue;
                 }
 
@@ -239,7 +239,7 @@ namespace DBP
                     friendrole.Text = "[" + friendInfoRow["role"].ToString() + "]";
 
                 //role에 값이 있어야 Location 지정가능(원래 공백 + [positon] 길이 + 30띄워
-                friendnickname.Location = new Point(150 + friendrole.Width + 10, 45);
+                friendnickname.Location = new Point(150 + friendrole.Width, 45);
 
 
                 if (friendInfoRow["stateMessage"] == System.DBNull.Value)
@@ -302,6 +302,9 @@ namespace DBP
             //where user.nickname LIKE '%(검색창에 넣은)nickname%'
             //이렇게 하면 되나? ==> 이러면 잠시만. nickname이 이것을 포함하는 userID가 내 친구 테이블에 있어야 하니까 userID = friendID면 될까? ==> 포기 머리안돌아가..
 
+            if (searchNickname == IdPlaceholder)
+                searchNickname = "";
+
             DataTable dataTableSearchByNickname = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT * FROM user WHERE nickname LIKE '%" + searchNickname + "%'");
 
             int i = 0;
@@ -343,6 +346,7 @@ namespace DBP
 
                 Label friendnickname = new Label();
                 friendnickname.Font = new Font("나눔스퀘어", 12, FontStyle.Bold);
+                friendnickname.AutoSize = true;
                 groupBoxFriend.Controls.Add(friendnickname);
 
                 Label friendrole = new Label();
@@ -365,7 +369,7 @@ namespace DBP
                     friendrole.Text = "[" + dataRowSearchByNickname["role"].ToString() + "]";
 
                 //role에 값이 있어야 Location 지정가능(원래 공백 + [positon] 길이 + 30띄워
-                friendnickname.Location = new Point(150 + friendrole.Width + 10, 45);
+                friendnickname.Location = new Point(150 + friendrole.Width, 45);
 
 
                 if (dataRowSearchByNickname["stateMessage"] == System.DBNull.Value)
