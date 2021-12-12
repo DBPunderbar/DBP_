@@ -285,5 +285,25 @@ namespace DBP
                 NMF.BringToFront();
             }));
         }
+
+        private void MainForm_Activated(object sender, EventArgs e)
+        {
+            buttonChatting.Image = Resources.message_nc;
+            buttonFriend.Image = Resources.friend_c;
+
+            friendsPage friendsPage1 = new friendsPage(userID);
+            friendsPage1.Location = new Point(98, 39);
+            //828, 543
+            friendsPage1.Size = new Size(828, 543);
+            friendsPage1.BackColor = Color.Transparent;
+
+            Controls.Add(friendsPage1);
+            friendsPage1.BringToFront();
+
+            if (this.BackColor == Color.FromArgb(51, 51, 51))
+            {
+                buttonFriend.Image = Resources.friend_c_b;
+            }
+        }
     }
 }

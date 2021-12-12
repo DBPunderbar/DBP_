@@ -44,13 +44,14 @@ namespace DBP
             // 
             // friendsPage
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "friendsPage";
-            this.Size = new System.Drawing.Size(828, 546);
+            this.Size = new System.Drawing.Size(1035, 655);
             this.ResumeLayout(false);
             this.PerformLayout();
 
