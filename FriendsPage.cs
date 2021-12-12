@@ -116,6 +116,7 @@ namespace DBP
             textBoxFriendSearchByNickname.BorderStyle = BorderStyle.None;
             textBoxFriendSearchByNickname.Font = new Font("나눔스퀘어", 12, FontStyle.Regular);
             textBoxFriendSearchByNickname.ForeColor = Color.MidnightBlue;
+            textBoxFriendSearchByNickname.KeyDown += textBoxFriendSearchByNickname_KeyDown;
             Controls.Add(textBoxFriendSearchByNickname);
 
             txtList = new TextBox[] { textBoxFriendSearchByNickname };
@@ -410,6 +411,12 @@ namespace DBP
                 MessageBox.Show("닉네임이 " + searchNickname + "인 친구가 없습니다.");
             }
         }
+
+        private void textBoxFriendSearchByNickname_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter)
+                ButtonFriendSearchByNickname_Click(sender, e);
+        }
+
         private void StartChatting(string withWhom)
         {
             //채팅하는 곳으로 이동

@@ -501,6 +501,11 @@ namespace DBP
             }
         }
 
+        private void chatSearchtextBox_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter)
+                buttonSearchMsg_Click(sender, e);
+        }
+
         private void buttonSearchMsg_Click(object sender, EventArgs e)
         {
             textBox3.Clear();
@@ -530,5 +535,7 @@ namespace DBP
                 }
             }
         }
+
+
     }
 }

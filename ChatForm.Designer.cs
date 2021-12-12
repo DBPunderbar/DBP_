@@ -130,6 +130,7 @@ namespace DBP
             this.chatSearchtextBox.Name = "chatSearchtextBox";
             this.chatSearchtextBox.Size = new System.Drawing.Size(177, 21);
             this.chatSearchtextBox.TabIndex = 23;
+            this.chatSearchtextBox.KeyDown += new System.Windows.Forms.KeyEventHandler(this.chatSearchtextBox_KeyDown);
             // 
             // panel14
             // 

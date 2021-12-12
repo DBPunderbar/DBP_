@@ -358,6 +358,12 @@ namespace DBP
                 }
             }
         }
+
+        private void textBoxSearch_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter)
+               buttonSearchID_Click(sender, e);
+        }
+
         private void buttonSearchID_Click(object sender, EventArgs e)
         {
             myProfileLoad();
