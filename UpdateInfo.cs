@@ -79,14 +79,20 @@ namespace DBP
 
         private void buttonUpdate_Click(object sender, EventArgs e)
         {
-            FileStream fs = new FileStream(pictureBoxProfile.Tag.ToString(), FileMode.Open, FileAccess.Read);
-            byte[] bImage = new byte[fs.Length];
-            fs.Read(bImage, 0, (int)fs.Length);
+            DataTable dataTableInfo = DBManager.GetDBManager().SqlDataTableReturnCommand("SELECT *, CAST(AES_DECRYPT(UNHEX(userPW), 'pw') as char) as pw FROM user WHERE userID = '" + userID + "'");
+            DataRow dataRowInfo = dataTableInfo.Rows[0];
+
+            byte[] bImage = (byte[])dataRowInfo["profileImage"];
+            if (pictureBoxProfile.Tag != null) {
+                FileStream fs = new FileStream(pictureBoxProfile.Tag.ToString(), FileMode.Open, FileAccess.Read);
+                bImage = new byte[fs.Length];
+                fs.Read(bImage, 0, (int)fs.Length);
+                fs.Close();
+            }
 
             string addr = textBoxAddr.Text + "|" + textBoxAddr2.Text + "|" + textBoxAddr3.Text + "|" + textBoxAddr4.Text + "|";
             DBManager.GetDBManager().SqlImageCommand("UPDATE user SET userPW = hex(aes_encrypt('" + textBoxPW.Text + "','pw')), name = '" + textBoxName.Text + "', addr = '" + addr + "', nickname = '" + textBoxNickname.Text + "', profileImage = @Image , role = '" + textBoxPosition.Text + "' WHERE userID = '" + userID + "'", bImage);
 
-            fs.Close();
             this.Close();
 
 

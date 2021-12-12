@@ -217,10 +217,6 @@ namespace DBP
                         ((ChatForm)CF).flowLayoutPanelChatLog.Refresh();
                     }));
                 }
-
-                if (parsedMessage.Contains("[ZIP]")) {
-                    return;
-                }
             }
         }
 
