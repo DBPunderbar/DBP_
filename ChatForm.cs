@@ -428,14 +428,46 @@ namespace DBP
         {
             Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socket.Connect(new IPEndPoint(IPAddress.Parse("118.67.142.129"), 1028));
+            string localpath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            
 
             int contentByteLength = 0;
-            FileStream fs = new FileStream(@"C:/Users/doya/Desktop/DBP_.zip", FileMode.Create, FileAccess.Write);
+            FileStream fs = new FileStream(localpath+"/DBP_.zip", FileMode.Create, FileAccess.Write);
 
+            /*byte[] receive = new byte[10240000];
+            socket.Receive(receive);
+            int index = 0;
+            for (int i = 0; i < 10240000; i++)
+            {
+                if (receive[i] == '0')
+                {
+                    break;
+                }
+                index = i;
+            }
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(receive, 0, 576325);*/
+
+            int recv = 0;
+            /*byte[] receive = new byte[10240000];
+            socket.Receive(receive);
+            int index = 0;
+            for (int i = 0; i < 10240000; i++)
+            {
+                if (receive[i] == '0')
+                {
+                    break;
+                }
+                index = i;
+            }
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(receive, 0, 576325);*/
+
+            int recv = 0;
             int brk = 0;
             while (contentByteLength < 10240000)
             {
-                Thread.Sleep(75);
+                Thread.Sleep(85);
                 if (socket.Available > 0)
                 {
                     byte[] receive = new byte[socket.Available];
@@ -495,6 +527,7 @@ namespace DBP
                 string filepath = openFileDialog.FileName;
                 string fileName = Path.GetFileNameWithoutExtension(openFileDialog.FileName);
                 MainForm.mainform.SendMessage(receiverName, "[ZIP]"+filepath+"]"+fileName, "0");  // zip부터 보내고 알아듣게 하기
+                MainForm.mainform.SendMessage(filepath, fileName, "1");                           // zip 보내기
             }
         }
 
