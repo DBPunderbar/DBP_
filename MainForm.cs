@@ -94,28 +94,13 @@ namespace DBP
             buttonChatting.Image = Resources.message_nc;
             buttonFriend.Image = Resources.friend_c;
 
-            friendsPage friendspage = friendsPageLoad();
-            friendspage.BringToFront();
-        }
-
-        private friendsPage friendsPageLoad()
-        {
-            //먼저 기존의 friendsPage 없애고
-            foreach (Control control in this.Controls)
-            {
-                if (control is friendsPage)
-                    control.Dispose();
-            }
-
             friendsPage friendsPage1 = new friendsPage(userID);
             friendsPage1.Location = new Point(98, 39);
             //828, 543
             friendsPage1.Size = new Size(828, 543);
-            friendsPage1.BackColor = DarkMode.backcolor;
 
             Controls.Add(friendsPage1);
-            //friendsPage1.BringToFront();
-            return friendsPage1;
+            friendsPage1.BringToFront();
         }
 
         private void buttonClose_Click(object sender, EventArgs e)
@@ -133,22 +118,7 @@ namespace DBP
         private void SetColor()
         {
             //messagePage1.BackColor = DarkMode.backcolor; -> messagePage1을 새로 생성해서 다크모드 적용이 안되는 것 같습니다,,
-
-            //너무 렉걸리는 것 같으면 friensPageLoad함수랑 messagePageLoad함수에 foreach문을 없애도 괜찮을지도.. 아몰랑 생성만해..
-            //누굴 위로 올릴건지 정해야 하는데 ==> 현재 버튼 색깔을 보면..!
-            //친구버튼이 클릭된 상태라면
-            if (buttonFriend.Image == Resources.friend_c)
-            {
-                friendsPage friendsPage = friendsPageLoad();
-                friendsPage.BringToFront();
-            }
-
-            //아니라면
-            else
-            {
-                messagesPage messagePage = messagePageLoad();
-                messagePage.BringToFront();
-            }
+            //friendsPage1.BackColor = DarkMode.backcolor;
 
             //이제 panel1도 살려도 되지않을까.?
             panel1.BackColor = DarkMode.panelcolor;
@@ -169,33 +139,18 @@ namespace DBP
             DarkMode.changeMode(userID);
             SetColor();
         }
-        private messagesPage messagePageLoad()
-        {
-            //먼저 기존의 messagePage를 없애고
-            foreach (Control control in this.Controls)
-            {
-                if (control is messagesPage)
-                    control.Dispose();
-            }
 
-            //다시 생성..
-            messagesPage messagePage1 = new messagesPage(userID);
-            messagePage1.Location = new Point(98, 39);
-            messagePage1.Size = new Size(828, 543);
-            messagePage1.BackColor = DarkMode.backcolor; //-> messagePage1을 새로 생성해서 다크모드 적용이 안되는 것 같습니다,,
-
-            Controls.Add(messagePage1);
-            //messagePage1.BringToFront();
-            //앞으로 가져오는건 setColor에서 하면 안되니까 return하면 되겠다
-            return messagePage1;
-        }
         private void buttonChatting_Click(object sender, EventArgs e)
         {
             buttonChatting.Image = Resources.message_c;
             buttonFriend.Image = Resources.friend_nc;
 
-            messagesPage messagePage = messagePageLoad();
-            messagePage.BringToFront();
+            messagesPage messagePage1 = new messagesPage(userID);
+            messagePage1.Location = new Point(98, 39);
+            messagePage1.Size = new Size(828, 543);
+
+            Controls.Add(messagePage1);
+            messagePage1.BringToFront();
         }
 
 
