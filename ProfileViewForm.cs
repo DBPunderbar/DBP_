@@ -25,8 +25,8 @@ namespace DBP
 
         //placeholder 설정
         public bool test = false;
-        TextBox[] txtList;
-        const string IdPlaceholder = "친구의 ID를 입력하세요 ...";
+        //TextBox[] txtList;
+        //const string IdPlaceholder = "친구의 ID를 입력하세요 ...";
 
         private List<string> profile = new List<string>();
         //현재 클라이언트 정보
