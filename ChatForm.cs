@@ -96,6 +96,8 @@ namespace DBP
             string[] contents = line3.Split('|');
             for (int i = 0; i < contents.Length; i++)
             {
+                if (contents.Length == 1 && contents[0] == "")
+                    break;
                 string message = string.Format("[{0}] {1} : {2}", dateTime[i], writerName[i], contents[i]);
 
                 _ = this.Invoke(new Action(delegate ()
