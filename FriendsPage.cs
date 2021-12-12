@@ -18,7 +18,7 @@ namespace DBP
         //placeholder 설정
         public bool test = false;
         TextBox[] txtList;
-        const string IdPlaceholder = "검색할 친구의 ID를 입력하세요 ...";
+        const string IdPlaceholder = "검색할 친구의 닉네임을 입력하세요 ...";
 
         //그룹박스를 동적생성 해서 누가 이벤트를 발생시켰는지 알기 위해 선언한 전역변수
         public friendsPage()

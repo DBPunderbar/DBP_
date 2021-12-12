@@ -77,11 +77,11 @@ namespace DBP
         }
         //↑여기까지
 
-        /*private void buttonUpdateInfo_Click(object sender, EventArgs e)
+        private void buttonUpdateInfo_Click(object sender, EventArgs e)
         {
             UpdateInfo mainForm3 = new UpdateInfo(userID);
             mainForm3.ShowDialog();
-        }*/
+        }
 
         //친구 테이블이 생성되었으니까 따로 수정 필요
 
@@ -120,10 +120,10 @@ namespace DBP
             panel2.BackColor = DarkMode.panelcolor;
             //messagePage1.BackColor = DarkMode.backcolor; -> messagePage1을 새로 생성해서 다크모드 적용이 안되는 것 같습니다,,
             buttonDarkMode.Image = DarkMode.imgMode;
-            buttonMin.ForeColor = DarkMode.fontcolor;
-            buttonClose.ForeColor = DarkMode.fontcolor;
+            //buttonMin.ForeColor = DarkMode.fontcolor;
+            //buttonClose.ForeColor = DarkMode.fontcolor;
             buttonFriend.Image = DarkMode.imgMode_fbtn;
-
+            buttonUpdateInfo.ForeColor = DarkMode.fontcolor;
             if (buttonChatting.Image == Resources.message_nc)
             {
                 buttonChatting.Image = DarkMode.imgMode_cbtn;

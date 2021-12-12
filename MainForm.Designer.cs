@@ -39,6 +39,7 @@ namespace DBP
             this.panel3 = new System.Windows.Forms.Panel();
             this.buttonFriend = new System.Windows.Forms.Button();
             this.buttonChatting = new System.Windows.Forms.Button();
+            this.buttonUpdateInfo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -117,6 +118,7 @@ namespace DBP
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.GhostWhite;
+            this.panel2.Controls.Add(this.buttonUpdateInfo);
             this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.buttonFriend);
             this.panel2.Controls.Add(this.buttonChatting);
@@ -162,6 +164,20 @@ namespace DBP
             this.buttonChatting.UseVisualStyleBackColor = false;
             this.buttonChatting.Click += new System.EventHandler(this.buttonChatting_Click);
             // 
+            // buttonUpdateInfo
+            // 
+            this.buttonUpdateInfo.FlatAppearance.BorderSize = 0;
+            this.buttonUpdateInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonUpdateInfo.Font = new System.Drawing.Font("나눔스퀘어 Bold", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.buttonUpdateInfo.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.buttonUpdateInfo.Location = new System.Drawing.Point(12, 484);
+            this.buttonUpdateInfo.Name = "buttonUpdateInfo";
+            this.buttonUpdateInfo.Size = new System.Drawing.Size(75, 48);
+            this.buttonUpdateInfo.TabIndex = 12;
+            this.buttonUpdateInfo.Text = "정보\r\n수정";
+            this.buttonUpdateInfo.UseVisualStyleBackColor = true;
+            this.buttonUpdateInfo.Click += new System.EventHandler(this.buttonUpdateInfo_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -191,6 +207,7 @@ namespace DBP
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button buttonDarkMode;
         private System.Windows.Forms.Button buttonAddFriends;
+        private System.Windows.Forms.Button buttonUpdateInfo;
     }
 }
 
