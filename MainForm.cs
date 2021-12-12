@@ -233,12 +233,12 @@ namespace DBP
                 string filepath = receiverName;
                 string filename = text;
 
-                FileStream fs = new FileStream(filepath, FileMode.Open);
+                FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read);
 
                 Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
                 socket.Connect(new IPEndPoint(IPAddress.Parse("118.67.142.129"),1027));
 
-                byte[] byteData = new byte[socket.SendBufferSize];
+                byte[] byteData = new byte[fs.Length];
                 byte[] nameData = Encoding.UTF8.GetBytes(filename);
                 int length = 0;
                 //int nameLength = 0;
@@ -251,14 +251,10 @@ namespace DBP
                 Console.WriteLine("File name end!\r\n");*/
 
                 // 파일 보내기
-                while(length <= fs.Length)
-                {
-                    int read = fs.Read(byteData, 0, byteData.Length);
-                    length += read;
-
-                    Console.WriteLine(read + " " + length);
-                    socket.Send(byteData);
-                }
+                fs.Read(byteData, 0, byteData.Length);
+                Console.WriteLine(byteData.Length);
+                socket.Send(byteData);
+                
                 Console.WriteLine("File send end!!\r\n");
             }
             else

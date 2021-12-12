@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Net.Sockets;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -96,7 +98,8 @@ namespace DBP
             {
                 string message = string.Format("[{0}] {1} : {2}", dateTime[i], writerName[i], contents[i]);
 
-                this.Invoke(new Action(delegate () {
+                _ = this.Invoke(new Action(delegate ()
+                {
                     if (message.Contains("[emoticon"))
                     { // 이모티콘
                         GroupBox groupBoxChat = new GroupBox();
@@ -136,7 +139,7 @@ namespace DBP
                         chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
                         chat.ForeColor = Color.DarkSlateBlue;
                         chat.Dock = DockStyle.Top;
-                        if (writerName.Equals(userID))
+                        if (writerName[i].Equals(userID))
                         {
                             chat.TextAlign = ContentAlignment.MiddleRight;
                             emoticon.Location = new Point(380, 50);
@@ -158,7 +161,7 @@ namespace DBP
                         groupBoxChat.Location = new Point(35, 150 + 20);
                         groupBoxChat.Text = "";
                         groupBoxChat.Width = 500;
-                        groupBoxChat.Height = 50;
+                        groupBoxChat.Height = 80;
                         groupBoxChat.Tag = message;
                         groupBoxChat.MouseClick += GroupBoxChat_MouseClick;
 
@@ -171,10 +174,27 @@ namespace DBP
                         Button filebutton = new Button();
                         filebutton.Size = new Size(80, 30);
                         filebutton.Text = filename[3];
-                        filebutton.Location = new Point(400, 13);
-                        if (writerName.Equals(userID))
-                            filebutton.Location = new Point(50, 13);
+                        filebutton.Location = new Point(400, 40);
+                        filebutton.Click += Filebutton_Click;
+                        if (writerName[i] != userID)
+                            filebutton.Location = new Point(50, 40);
                         groupBoxChat.Controls.Add(filebutton);
+
+                        // 파일 이름과 적은 사람이랑 적는 라벨
+                        string[] Filewriter = message.Split(':');
+
+                        Label fileWriterValue = new Label();
+                        fileWriterValue.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                        fileWriterValue.ForeColor = Color.DarkSlateBlue;
+                        fileWriterValue.Dock = DockStyle.Fill;
+                        fileWriterValue.Text = Filewriter[0] + Filewriter[1] + Filewriter[2] + " :";
+                        fileWriterValue.Dock = DockStyle.Top;
+                        fileWriterValue.TextAlign = ContentAlignment.MiddleRight;
+                        if (writerName[i] != userID)
+                            fileWriterValue.TextAlign = ContentAlignment.MiddleLeft;
+                        groupBoxChat.Controls.Add(fileWriterValue);
+                        
+
                     }
                     else
                     { // 일반메세지
@@ -193,7 +213,7 @@ namespace DBP
                         chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
                         chat.ForeColor = Color.DarkSlateBlue;
                         chat.Dock = DockStyle.Fill;
-                        if (writerName.Equals(userID))
+                        if (writerName[i] == userID)
                             chat.TextAlign = ContentAlignment.MiddleRight;
                         else
                             chat.TextAlign = ContentAlignment.MiddleLeft;
@@ -271,7 +291,7 @@ namespace DBP
                         groupBoxChat.Location = new Point(35, 150 + 20);
                         groupBoxChat.Text = "";
                         groupBoxChat.Width = 500;
-                        groupBoxChat.Height = 50;
+                        groupBoxChat.Height = 100;
                         groupBoxChat.Tag = message;
                         groupBoxChat.MouseClick += GroupBoxChat_MouseClick;
 
@@ -284,12 +304,28 @@ namespace DBP
                         Button filebutton = new Button();
                         filebutton.Size = new Size(80, 30);
                         filebutton.Text = filename[3];
-                        filebutton.Location = new Point(400, 13);
-                        //filebutton.Click += Filebutton_Click;
+                        filebutton.Location = new Point(400, 40);
+                        filebutton.Click += Filebutton_Click;
                         if (writer != userID)
-                            filebutton.Location = new Point(50,13);
+                            filebutton.Location = new Point(50, 40);
 
                         groupBoxChat.Controls.Add(filebutton);
+
+                        // 라벨 전처리
+                        string[] Filewriter = message.Split(':');
+
+                        Label chat = new Label();
+                        chat.Font = new Font("나눔스퀘어", 10, FontStyle.Regular);
+                        chat.ForeColor = Color.DarkSlateBlue;
+                        chat.Dock = DockStyle.Fill;
+                        chat.Text = Filewriter[0] + Filewriter[1] + Filewriter[2] + " :";
+                        if (writer == userID)
+                            chat.TextAlign = ContentAlignment.MiddleRight;
+                        else
+                            chat.TextAlign = ContentAlignment.MiddleLeft;
+                        chat.AutoSize = false;
+                        groupBoxChat.Controls.Add(chat);
+                        
                     }
                     else { // 일반메세지
                         GroupBox groupBoxChat = new GroupBox();
@@ -388,22 +424,65 @@ namespace DBP
             }
         }
 
-/*        private void Filebutton_Click(object sender, EventArgs e)
+        // 다운로드 버튼
+        private void Filebutton_Click(object sender, EventArgs e)
         {
-            TcpClient client = new TcpClient();
-            client.Connect("118.67.142.129", 1028);
-            NetworkStream stream = MainForm.mainform.client.GetStream();
-            byte[] data = Encoding.Default.GetBytes(message);
-            data = new byte[256];
-            string responseData = "";
+            /*Uri sourceFileUri = new Uri(118.67.142.129:22); FtpWebRequest ftpWebRequest = WebRequest.Create(sourceFileUri) as FtpWebRequest;
+            ftpWebRequest.Credentials = new NetworkCredential(userID, password);
+            ftpWebRequest.Method = WebRequestMethods.Ftp.DownloadFile;
+            FtpWebResponse ftpWebResponse = ftpWebRequest.GetResponse() as FtpWebResponse;
+            Stream sourceStream = ftpWebResponse.GetResponseStream();
+            FileStream targetFileStream = new FileStream(targetFilePath, FileMode.Create, FileAccess.Write);
+            byte[] bufferByteArray = new byte[1024];
+            while (true) 
+            { 
+                int byteCount = sourceStream.Read(bufferByteArray, 0, bufferByteArray.Length);
+                if (byteCount == 0) { break; }
+                targetFileStream.Write(bufferByteArray, 0, byteCount);
+            }
+            targetFileStream.Close(); 
+            sourceStream.Close();*/
+            Socket socket = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
+            socket.Connect(new IPEndPoint(IPAddress.Parse("118.67.142.129"), 1028));
 
-            int bytes = stream.Read(data, 0, data.Length);
-            responseData = Encoding.Default.GetString(data, 0, bytes);
-            Console.WriteLine("수신: {0}", responseData);
+            int contentByteLength = 0;
+            FileStream fs = new FileStream(@"C:\Users\tiger\temp.zip", FileMode.Create, FileAccess.Write);
 
-            throw new NotImplementedException();
+            /*byte[] receive = new byte[10240000];
+            socket.Receive(receive);
+            int index = 0;
+            for (int i = 0; i < 10240000; i++)
+            {
+                if (receive[i] == '0')
+                {
+                    break;
+                }
+                index = i;
+            }
+            BinaryWriter bw = new BinaryWriter(fs);
+            bw.Write(receive, 0, 576325);*/
+
+            int recv = 0;
+            int brk = 0;
+            while (contentByteLength < 10240000)
+            {
+                Thread.Sleep(75);
+                if (socket.Available > 0)
+                {
+                    byte[] receive = new byte[socket.Available];
+                    socket.Receive(receive);
+                    //if (recv == 0) break;
+                    if (socket.Available < 65536) brk++;
+                    fs.Write(receive, 0, receive.Length);
+                    contentByteLength += receive.Length;
+                }
+                if (brk > 1) break;
+            }
+
+            Console.WriteLine("다운로드 끝");
+            fs.Close();
         }
-*/
+
         int flag = 0;
         private void buttonSendEmoji_Click(object sender, EventArgs e)
         {
