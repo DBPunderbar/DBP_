@@ -171,7 +171,7 @@ namespace DBP
 
         public void ReceiveChat(string writer, string receiver, string message)
         {
-            if (writer == userID && receiver == receiverName)
+            if (writer == userID && receiver == receiverName || writer == receiverName && receiver == userID)
             {
                 this.Invoke(new Action(delegate () {
                     if (!message.Contains("[emoticon")) { // 일반 메시지
